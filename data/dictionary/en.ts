@@ -115,7 +115,7 @@ export const en: Dictionary = {
     greeting: "Welcome to ",
     greetingEm: "Fadezy.",
     statement: ["Digital", "presence", "for premium"],
-    statementOverlap: "barbershops.",
+    statementOverlap: "barbershops & beauty salons.",
     sub: "Websites, brand and growth for shops that already take their craft seriously.",
     ctaProject: "Start a project →",
     metaSecondary: "The digital studio",
