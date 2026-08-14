@@ -14,7 +14,7 @@ export const Services = (): ReactElement => {
           <span className="eyebrow">{t.services.count}</span>
         </div>
         {t.services.items.map((item) => (
-          <div className="service-row reveal" key={item.num}>
+          <div className="service-row" key={item.num}>
             <span className="service-num">{item.num}</span>
             <h3 className="service-title">{item.title}</h3>
             <p className="service-desc">{item.desc}</p>

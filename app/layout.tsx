@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { LocaleProvider } from "@/context/LocaleProvider";
+import {
+  OG_IMAGE_ALT,
+  OG_IMAGE_PATH,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/data/site";
+import { structuredDataJson } from "@/lib/structured-data";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -23,9 +32,23 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fadezy — Websites for barbershops, salons & grooming brands",
-  description:
-    "Fadezy builds websites for barbershops, beauty salons and grooming brands — so the first click feels like walking into your shop. Remote-first, worldwide.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/assets/favicon/favicon.ico", sizes: "any" },
@@ -40,11 +63,26 @@ export const metadata: Metadata = {
   },
   manifest: "/assets/favicon/site.webmanifest",
   openGraph: {
-    title:
-      "Fadezy — Your craft deserves a digital presence that feels just as good.",
-    description:
-      "Websites for barbershops, salons and grooming brands. Built so the first click feels like walking into your shop.",
     type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: OG_IMAGE_PATH,
+        width: 1200,
+        height: 630,
+        alt: OG_IMAGE_ALT,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE_PATH],
   },
 };
 
@@ -59,6 +97,10 @@ const RootLayout = ({
       className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: structuredDataJson }}
+        />
         <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>

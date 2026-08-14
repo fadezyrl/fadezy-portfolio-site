@@ -38,9 +38,6 @@ export const Hero = (): ReactElement => {
     <section className="hero" aria-label="Welcome">
       <div className="hero-bg" aria-hidden="true" />
 
-      <span className="hero-meta hero-meta-primary" aria-hidden="true">
-        {t.hero.metaPrimary}
-      </span>
       <span className="hero-meta hero-meta-secondary" aria-hidden="true">
         {t.hero.metaSecondary}
       </span>

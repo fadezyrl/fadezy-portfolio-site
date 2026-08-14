@@ -18,7 +18,6 @@ export type Dictionary = {
     statementOverlap: string;
     sub: string;
     ctaProject: string;
-    metaPrimary: string;
     metaSecondary: string;
     edgeMeta: string;
     imageAlt: string;
@@ -119,7 +118,6 @@ export const en: Dictionary = {
     statementOverlap: "barbershops.",
     sub: "Websites, brand and growth for shops that already take their craft seriously.",
     ctaProject: "Start a project →",
-    metaPrimary: "Fadezy / 001",
     metaSecondary: "The digital studio",
     edgeMeta: "Web / Brand / Content / Growth",
     imageAlt:

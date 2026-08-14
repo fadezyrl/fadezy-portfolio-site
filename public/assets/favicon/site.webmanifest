@@ -1,6 +1,9 @@
 {
   "name": "Fadezy",
   "short_name": "Fadezy",
+  "description": "Premium websites and digital identities for barbershops and beauty salons.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/assets/favicon/web-app-manifest-192x192.png",

@@ -22,7 +22,7 @@ export const Work = (): ReactElement => {
           const href = project.url;
 
           return (
-            <article className="project reveal" key={project.id}>
+            <article className="project" key={project.id}>
               <div className="project-meta">
                 <div className="pm-left">
                   <h3 className="project-title">{project.title}</h3>

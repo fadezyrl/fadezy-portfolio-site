@@ -345,11 +345,6 @@ header.nav .cta-link {
   transform: none;
 }
 
-.hero-meta-primary {
-  top: 92px;
-  left: 6vw;
-}
-
 .hero-meta-secondary {
   top: 92px;
   right: 6vw;
@@ -428,18 +423,39 @@ header.nav .cta-link {
   letter-spacing: -0.025em;
   text-transform: uppercase;
   color: var(--ink);
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 1s var(--ease) 0.4s, transform 1s var(--ease) 0.4s;
-}
-
-.hero.is-ready .hero-statement {
-  opacity: 1;
-  transform: none;
 }
 
 .hero-statement-line {
   display: block;
+  opacity: 0;
+  transform: translate3d(0, 0.85em, 0);
+  transition:
+    opacity 0.95s var(--ease),
+    transform 0.95s var(--ease);
+}
+
+.hero.is-ready .hero-statement-line:nth-child(1) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.32s;
+}
+
+.hero.is-ready .hero-statement-line:nth-child(2) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.44s;
+}
+
+.hero.is-ready .hero-statement-line:nth-child(3) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.56s;
+}
+
+.hero.is-ready .hero-statement-line:nth-child(4) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.68s;
 }
 
 .hero-statement-line.is-overlap {
@@ -503,6 +519,8 @@ header.nav .cta-link {
   height: 100%;
   overflow: hidden;
   background: var(--black-2);
+  clip-path: inset(10% 8% 10% 8%);
+  transition: clip-path 1.55s var(--ease) 0.45s;
 }
 
 .hero-portrait-img {
@@ -511,12 +529,16 @@ header.nav .cta-link {
   height: 100%;
   object-fit: cover;
   object-position: 50% 28%;
-  transform: scale(1.04);
-  transition: transform 4.5s var(--ease);
+  transform: scale(1.06);
+  transition: transform 4.8s var(--ease) 0.45s;
 }
 
 .hero-portrait-video {
   pointer-events: none;
+}
+
+.hero.is-ready .hero-portrait {
+  clip-path: inset(0 0 0 0);
 }
 
 .hero.is-ready .hero-portrait-img {
@@ -582,12 +604,15 @@ header.nav .cta-link {
   .hero-edge-meta,
   .hero-greeting,
   .hero-statement,
+  .hero-statement-line,
   .hero-sub,
   .hero-ctas,
   .hero-stage,
+  .hero-portrait,
   .hero-portrait-img {
     opacity: 1;
     transform: none;
+    clip-path: none;
     transition: none;
   }
 }
@@ -2040,12 +2065,48 @@ footer.site-footer .tagline {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
+  /* Legacy hook — editorial motion is section-owned via GSAP */
 }
 
-.reveal.is-in {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+html.motion-reduced .hero-statement-line,
+html.motion-reduced .hero-meta,
+html.motion-reduced .hero-edge-meta,
+html.motion-reduced .hero-sub,
+html.motion-reduced .hero-ctas,
+html.motion-reduced .hero-stage,
+html.motion-reduced .hero-portrait,
+html.motion-reduced .hero-portrait-img,
+html.motion-reduced .service-row,
+html.motion-reduced .service-num,
+html.motion-reduced .service-title,
+html.motion-reduced .service-desc,
+html.motion-reduced .work-head .eyebrow,
+html.motion-reduced .work-head h2,
+html.motion-reduced .work-head p,
+html.motion-reduced .project-meta,
+html.motion-reduced .project-lower,
+html.motion-reduced .project-visual,
+html.motion-reduced .project-visual-img,
+html.motion-reduced .t-head .eyebrow,
+html.motion-reduced .t-head h2,
+html.motion-reduced .t-head p,
+html.motion-reduced .slider,
+html.motion-reduced .t-labels,
+html.motion-reduced .testi-head .eyebrow,
+html.motion-reduced .testi-head h2,
+html.motion-reduced .testi blockquote,
+html.motion-reduced .testi-quote,
+html.motion-reduced .testi .attrib,
+html.motion-reduced .testi-nav,
+html.motion-reduced .final-cta h2,
+html.motion-reduced .final-cta h2 em,
+html.motion-reduced .final-cta .sub,
+html.motion-reduced .final-cta .ctas,
+html.motion-reduced .final-cta .services-line,
+html.motion-reduced .final-cta-video,
+html.motion-reduced .clients {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  transition: none !important;
 }

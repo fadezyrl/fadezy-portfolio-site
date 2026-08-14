@@ -43,8 +43,8 @@ export const Testimonials = (): ReactElement => {
         </div>
         <div className="testi-track" ref={trackRef}>
           {t.testimonials.items.map((item, i) => (
-            <div className="testi" key={i}>
-              <blockquote>{item.quote}</blockquote>
+            <div className={`testi${i === 0 ? " is-primary" : ""}`} key={i}>
+              <blockquote className="testi-quote">{item.quote}</blockquote>
               <div className="attrib">
                 <span>{item.name}</span>
                 <span>{item.meta}</span>
