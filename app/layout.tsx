@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { LocaleProvider } from "@/context/LocaleProvider";
 import {
@@ -11,6 +12,8 @@ import {
 } from "@/data/site";
 import { structuredDataJson } from "@/lib/structured-data";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = "G-Q45PESRZP7";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -97,6 +100,18 @@ const RootLayout = ({
       className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: structuredDataJson }}
