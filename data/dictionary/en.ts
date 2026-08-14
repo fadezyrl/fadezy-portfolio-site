@@ -114,7 +114,7 @@ export const en: Dictionary = {
   hero: {
     greeting: "Welcome to ",
     greetingEm: "Fadezy.",
-    statement: ["Digital", "presence", "for premium"],
+    statement: ["Premium", "websites for"],
     statementOverlap: "barbershops & beauty salons.",
     sub: "Websites, brand and growth for shops that already take their craft seriously.",
     ctaProject: "Start a project →",
@@ -127,34 +127,34 @@ export const en: Dictionary = {
     ariaLabel: "Selected work",
   },
   services: {
-    headline: "Everything your shop needs online. Nothing it doesn't.",
+    headline: "Website, brand & growth for barbershops and beauty salons.",
     count: "01 — 04",
     items: [
       {
         num: "01",
-        title: "The website",
+        title: "Barbershop & beauty salon website design",
         desc: "Built around how people actually book you — not a template with your logo dropped in.",
       },
       {
         num: "02",
-        title: "The brand",
+        title: "Brand identity",
         desc: "The same feeling from Instagram to the site to the chair.",
       },
       {
         num: "03",
-        title: "The content",
+        title: "Content",
         desc: "Photos and stories that look like your work. Not stock.",
       },
       {
         num: "04",
-        title: "The growth",
+        title: "Growth & local visibility",
         desc: "Show up when someone nearby searches for a cut, a color, a chair.",
       },
     ],
   },
   work: {
     eyebrow: "Selected Work",
-    headline: "Sites that belong next to the chair — not in a template gallery.",
+    headline: "Barbershop & beauty salon websites, built around the business.",
     sub: "Two real studios. No mockups.",
     viewProject: "View Project",
     placeholderHint: "(replace with real screenshot)",
@@ -165,10 +165,10 @@ export const en: Dictionary = {
         location: "Dubai, UAE",
         visualClass: "sb",
         frameLabel: "Site capture — Success Barbershop",
-        heroAlt:
-          "Success Barbershop homepage hero with studio interior and headline",
-        fullPageAlt: "Full Success Barbershop homepage",
-        services: ["Web Design", "Development", "Brand"],
+        heroAlt: "Success Barbershop website design homepage in Dubai",
+        fullPageAlt:
+          "Full Success Barbershop website design homepage in Dubai",
+        services: ["Barbershop Website Design", "Development", "Brand"],
         desc: "A great barbershop shouldn’t look average online. For Success Barbershop, we built a premium digital presence that reflects the quality of their work and gives new clients a reason to book.",
         url: "https://www.successbarbershop.com/",
       },
@@ -178,9 +178,10 @@ export const en: Dictionary = {
         location: "Austin, Texas",
         visualClass: "mr",
         frameLabel: "Site capture — Mane Rumor",
-        heroAlt: "Mane Rumor homepage hero with salon photography and headline",
-        fullPageAlt: "Full Mane Rumor homepage from hero through footer",
-        services: ["Web Design", "Development", "Design System"],
+        heroAlt: "Mane Rumor beauty salon website design homepage in Austin",
+        fullPageAlt:
+          "Full Mane Rumor beauty salon website design homepage in Austin",
+        services: ["Beauty Salon Website Design", "Development", "Design System"],
         desc: "A one-woman hair studio, built as a custom system — locked palette, three-font hierarchy, and a stitched motif through every scroll.",
         url: "https://mane-rumor.vercel.app/",
       },
@@ -189,11 +190,11 @@ export const en: Dictionary = {
   transformation: {
     eyebrow: "The first impression",
     headline: "Same shop. Different first click.",
-    sub: "Drag to compare a typical salon site with a Fadezy-built presence.",
+    sub: "See the difference a custom website can make for a barbershop or beauty salon.",
     before: "Before",
     after: "After",
-    beforeAlt: "Typical salon website before a Fadezy redesign",
-    afterAlt: "Salon website after a Fadezy redesign",
+    beforeAlt: "Typical barbershop or beauty salon website before a redesign",
+    afterAlt: "Custom barbershop and beauty salon website after a Fadezy redesign",
     labels: [
       "How it feels",
       "How they book",
@@ -203,7 +204,7 @@ export const en: Dictionary = {
   },
   testimonials: {
     eyebrow: "From the chair",
-    headline: "What owners say once the site feels like the shop.",
+    headline: "What barbershop and beauty salon owners say about working with Fadezy.",
     prev: "← Prev",
     next: "Next →",
     items: [
@@ -217,7 +218,7 @@ export const en: Dictionary = {
         quote:
           '"It looks great! I loved the verbiage and everything. I’m really happy with how it all came together."',
         name: "— Mane Rumor",
-        meta: "Austin, Texas",
+        meta: "Mane Rumor · Austin, Texas",
       },
       {
         quote:
@@ -241,17 +242,17 @@ export const en: Dictionary = {
     headlineLine2: "with this industry.",
     headlineEm: "That's the point.",
     p1: "If you care about the cut, the space, and the person in the chair, your site shouldn't look like everyone else's.",
-    p2: "Fadezy is a remote studio for barbershops, salons and grooming brands — anywhere the craft is taken seriously.",
+    p2: "Fadezy is a remote web design studio for barbershops, beauty salons and grooming brands — anywhere the craft is taken seriously.",
     cta: "Tell us about your shop",
     imageAlt:
-      "Mood board of barbershop interiors, grooming portraits, typography samples, and fabric swatches on a stone table",
+      "Fadezy mood board featuring barbershop and beauty salon interiors, grooming portraits, typography and material samples",
   },
   finalCta: {
     headlineBefore: "Your shop deserves to be ",
     headlineEm: "remembered.",
-    sub: "Tell us about the chair. We'll take care of the rest.",
+    sub: "Tell us about your barbershop or beauty salon. We'll take care of the rest.",
     ctaPrimary: "Start a project →",
-    servicesLine: "Websites / Brand / Content / Growth",
+    servicesLine: "Website Design / Brand / Content / Growth",
   },
   footer: {
     tagline:
