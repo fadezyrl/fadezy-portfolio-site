@@ -1,20 +1,32 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import type { ReactElement } from "react";
+import { BWD_PATH } from "@/data/barbershop-web-design";
 import { CONTACT } from "@/data/contact";
+import { SWD_PATH } from "@/data/salon-website-design";
 import { useLocale } from "@/hooks/useLocale";
 
 const LOGO_SRC = "/assets/logo/fadezy-logo.png";
 
 export const Footer = (): ReactElement => {
   const { t } = useLocale();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const isServicePage = pathname === BWD_PATH || pathname === SWD_PATH;
+
+  const homeHref = isHome ? "#" : "/";
+  const workHref = isHome ? "#work" : "/#work";
+  const servicesHref = isHome ? "#services" : "/#services";
+  const aboutHref = isHome ? "#about" : "/#about";
+  const contactHref = isServicePage ? "#contact" : isHome ? "#contact" : "/#contact";
 
   return (
     <footer className="site-footer">
       <div className="wrap">
         <div className="footer-top">
           <div>
-            <a href="#" className="mark" aria-label={t.brand}>
+            <a href={homeHref} className="mark" aria-label={t.brand}>
               <img
                 src={LOGO_SRC}
                 alt={t.brand}
@@ -27,10 +39,12 @@ export const Footer = (): ReactElement => {
           </div>
           <div className="footer-cols">
             <div className="footer-col">
-              <a href="#work">{t.footer.work}</a>
-              <a href="#services">{t.footer.services}</a>
-              <a href="#about">{t.footer.about}</a>
-              <a href="#contact">{t.footer.contact}</a>
+              <a href={workHref}>{t.footer.work}</a>
+              <a href={servicesHref}>{t.footer.services}</a>
+              <a href={BWD_PATH}>{t.footer.barbershopWebDesign}</a>
+              <a href={SWD_PATH}>{t.footer.salonWebsiteDesign}</a>
+              <a href={aboutHref}>{t.footer.about}</a>
+              <a href={contactHref}>{t.footer.contact}</a>
             </div>
             <div className="footer-col">
               <a

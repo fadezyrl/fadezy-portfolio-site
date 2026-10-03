@@ -826,6 +826,16 @@ header.nav .cta-link {
   color: var(--ink);
 }
 
+.service-title a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s var(--ease);
+}
+
+.service-title a:hover {
+  border-color: currentColor;
+}
+
 .service-desc {
   font-size: 16px;
   color: var(--ink-60);

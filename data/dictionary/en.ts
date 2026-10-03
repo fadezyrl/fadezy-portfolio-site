@@ -1,3 +1,12 @@
+import {
+  barbershopWebDesign,
+  type BarbershopWebDesignDict,
+} from "./barbershop-web-design";
+import {
+  salonWebsiteDesign,
+  type SalonWebsiteDesignDict,
+} from "./salon-website-design";
+
 export type LocaleCode = "EN" | "UR";
 
 export type Dictionary = {
@@ -10,6 +19,8 @@ export type Dictionary = {
     menu: string;
     close: string;
     worldwide: string;
+    barbershopWebDesign: string;
+    salonWebsiteDesign: string;
   };
   hero: {
     greeting: string;
@@ -91,6 +102,8 @@ export type Dictionary = {
     services: string;
     about: string;
     contact: string;
+    barbershopWebDesign: string;
+    salonWebsiteDesign: string;
     instagram: string;
     whatsapp: string;
     linkedin: string;
@@ -98,6 +111,8 @@ export type Dictionary = {
     worldwide: string;
     copyright: string;
   };
+  barbershopWebDesign: BarbershopWebDesignDict;
+  salonWebsiteDesign: SalonWebsiteDesignDict;
 };
 
 export const en: Dictionary = {
@@ -110,6 +125,8 @@ export const en: Dictionary = {
     menu: "Menu",
     close: "Close",
     worldwide: "Worldwide / Remote-First",
+    barbershopWebDesign: "Barbershop Web Design",
+    salonWebsiteDesign: "Salon Website Design",
   },
   hero: {
     greeting: "Welcome to ",
@@ -261,6 +278,8 @@ export const en: Dictionary = {
     services: "Services",
     about: "About",
     contact: "Contact",
+    barbershopWebDesign: "Barbershop Web Design",
+    salonWebsiteDesign: "Salon Website Design",
     instagram: "Instagram",
     whatsapp: "WhatsApp",
     linkedin: "LinkedIn",
@@ -268,4 +287,6 @@ export const en: Dictionary = {
     worldwide: "Worldwide / Remote-First",
     copyright: "© 2026 Fadezy",
   },
+  barbershopWebDesign,
+  salonWebsiteDesign,
 };
