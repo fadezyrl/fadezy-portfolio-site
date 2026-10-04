@@ -13,27 +13,51 @@ export const SwdImpression = (): ReactElement => {
       className="swd-impression reveal"
       aria-labelledby="swd-impression-label"
     >
-      <div className="swd-impression-copy">
-        <span className="swd-meta on-dark" id="swd-impression-label">
-          {copy.label}
-        </span>
-        <h2 className="swd-impression-display">
-          <span>{copy.line1}</span>
-          <span>{copy.line2}</span>
-          <span>{copy.line3}</span>
-          <span className="is-soft">{copy.line4}</span>
-          <span className="is-em">{copy.line5}</span>
-        </h2>
-        <p>{copy.body}</p>
-      </div>
+      <div className="swd-impression-pin">
+        <div className="swd-impression-media">
+          <img
+            src={SWD_ASSETS.impressionImage}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <div className="swd-impression-veil" aria-hidden="true" />
+        </div>
 
-      <figure className="swd-impression-media">
-        <img
-          src={SWD_ASSETS.impressionImage}
-          alt={copy.imageAlt}
-          loading="lazy"
-        />
-      </figure>
+        <div className="swd-wrap swd-impression-content">
+          <header className="swd-impression-head">
+            <span className="swd-meta on-dark" id="swd-impression-label">
+              {copy.label}
+            </span>
+            <h2>{copy.headline}</h2>
+            <p>{copy.body}</p>
+          </header>
+
+          <ol className="swd-impression-stages">
+            {copy.stages.map((stage, index) => (
+              <li key={stage.title} className="swd-impression-stage">
+                <span className="swd-impression-stage-title">{stage.title}</span>
+                <span className="swd-impression-stage-detail">{stage.detail}</span>
+                {index < copy.stages.length - 1 ? (
+                  <span className="swd-impression-arrow" aria-hidden="true">
+                    →
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+
+          <ol className="swd-impression-path">
+            {copy.path.map((step) => (
+              <li key={`${step.from}-${step.to}`} className="swd-impression-path-item">
+                <span>{step.from}</span>
+                <span className="swd-impression-path-line" aria-hidden="true" />
+                <span>{step.to}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
     </section>
   );
 };

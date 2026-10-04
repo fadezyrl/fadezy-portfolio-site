@@ -29,43 +29,39 @@ export const BwdHero = (): ReactElement => {
   }, []);
 
   return (
-    <section className="bwd-hero" aria-label={copy.titleLine1}>
-      <div className="bwd-hero-copy">
-        <span className="bwd-meta" aria-hidden="true">
-          {copy.label}
-        </span>
-
-        <h1 className="bwd-hero-title">
-          <span className="bwd-hero-title-line">{copy.titleLine1}</span>
-          <span className="bwd-hero-title-line is-serif">
-            {copy.titleLine2}
-          </span>
-        </h1>
-
-        <p className="bwd-hero-statement">{copy.statement}</p>
-
-        <div className="bwd-hero-ctas">
-          <a
-            href={CONTACT.whatsappUrl}
-            className="btn solid"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {copy.ctaPrimary}
-          </a>
-          <a href={BWD_ASSETS.workPath} className="btn-text">
-            {copy.ctaSecondary}
-          </a>
+    <section className="bwd-hero" aria-labelledby="bwd-hero-title">
+      <div className="bwd-hero-stage">
+        <div className="bwd-hero-copy">
+          <span className="bwd-meta">{copy.label}</span>
+          <h1 id="bwd-hero-title" className="bwd-hero-title">
+            {copy.title}
+          </h1>
+          <p className="bwd-hero-statement">{copy.statement}</p>
+          <div className="bwd-hero-ctas">
+            <a href="#work" className="btn-text">
+              {copy.ctaPrimary}
+            </a>
+            <a
+              href={CONTACT.whatsappUrl}
+              className="btn solid"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {copy.ctaSecondary}
+            </a>
+          </div>
         </div>
-      </div>
 
-      <figure className="bwd-hero-media">
-        <img
-          src={BWD_ASSETS.heroImage}
-          alt={copy.imageAlt}
-          className="bwd-hero-img"
-        />
-      </figure>
+        <figure className="bwd-hero-preview">
+          <div className="bwd-hero-frame">
+            <img
+              src={BWD_ASSETS.heroPreview}
+              alt={copy.previewAlt}
+              className="bwd-hero-img"
+            />
+          </div>
+        </figure>
+      </div>
     </section>
   );
 };

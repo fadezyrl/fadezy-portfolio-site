@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactElement } from "react";
 import { CONTACT } from "@/data/contact";
+import { CTA_BACKGROUND_VIDEO } from "@/data/final-cta";
 import { SWD_ASSETS } from "@/data/salon-website-design";
 import { useLocale } from "@/hooks/useLocale";
 
@@ -26,12 +27,12 @@ export const SwdCta = (): ReactElement => {
   }, []);
 
   return (
-    <section className="swd-cta" id="contact">
+    <section className="swd-cta" id="contact" aria-labelledby="swd-cta-title">
       <div className="swd-cta-media" aria-hidden="true">
         <video
           ref={videoRef}
           className="swd-cta-video"
-          src={SWD_ASSETS.ctaVideo}
+          src={CTA_BACKGROUND_VIDEO}
           autoPlay
           muted
           loop
@@ -41,26 +42,23 @@ export const SwdCta = (): ReactElement => {
         <div className="swd-cta-overlay" />
       </div>
 
-      <div className="swd-wrap swd-cta-content">
-        <h2>
-          <span>{copy.line1}</span>
-          <span>{copy.line2}</span>
-          <em>{copy.line3}</em>
-        </h2>
-        <div className="swd-cta-actions">
-          <a
-            href={CONTACT.whatsappUrl}
-            className="btn solid"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {copy.button}
-          </a>
-          <a href={SWD_ASSETS.workPath} className="btn-text on-dark">
-            {copy.secondary}
-          </a>
-        </div>
-        <p className="swd-cta-services">{copy.servicesLine}</p>
+      <div className="swd-wrap swd-cta-inner">
+        <h2 id="swd-cta-title">{copy.headline}</h2>
+        <p>{copy.body}</p>
+        <a
+          href={CONTACT.whatsappUrl}
+          className="btn solid"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {copy.button}
+        </a>
+        <nav className="swd-cta-links" aria-label="Related">
+          <a href={SWD_ASSETS.homePath}>{t.brand}</a>
+          <a href={SWD_ASSETS.workPath}>{t.nav.work}</a>
+          <a href={SWD_ASSETS.aboutPath}>{t.nav.about}</a>
+          <a href={SWD_ASSETS.barbershopPath}>{t.nav.barbershopWebDesign}</a>
+        </nav>
       </div>
     </section>
   );

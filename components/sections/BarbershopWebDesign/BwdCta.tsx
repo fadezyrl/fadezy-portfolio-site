@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, type ReactElement } from "react";
-import { CONTACT } from "@/data/contact";
 import { BWD_ASSETS } from "@/data/barbershop-web-design";
+import { CONTACT } from "@/data/contact";
+import { CTA_BACKGROUND_VIDEO } from "@/data/final-cta";
 import { useLocale } from "@/hooks/useLocale";
 
 export const BwdCta = (): ReactElement => {
@@ -26,12 +27,12 @@ export const BwdCta = (): ReactElement => {
   }, []);
 
   return (
-    <section className="bwd-cta" id="contact">
+    <section className="bwd-cta" id="contact" aria-labelledby="bwd-cta-title">
       <div className="bwd-cta-media" aria-hidden="true">
         <video
           ref={videoRef}
           className="bwd-cta-video"
-          src={BWD_ASSETS.ctaVideo}
+          src={CTA_BACKGROUND_VIDEO}
           autoPlay
           muted
           loop
@@ -41,12 +42,9 @@ export const BwdCta = (): ReactElement => {
         <div className="bwd-cta-overlay" />
       </div>
 
-      <div className="bwd-wrap bwd-cta-content">
-        <h2>
-          <span>{copy.line1}</span>
-          <span>{copy.line2}</span>
-          <em>{copy.line3}</em>
-        </h2>
+      <div className="bwd-wrap bwd-cta-inner">
+        <h2 id="bwd-cta-title">{copy.headline}</h2>
+        <p>{copy.body}</p>
         <a
           href={CONTACT.whatsappUrl}
           className="btn solid"
@@ -55,7 +53,12 @@ export const BwdCta = (): ReactElement => {
         >
           {copy.button}
         </a>
-        <p className="bwd-cta-services">{copy.servicesLine}</p>
+        <nav className="bwd-cta-links" aria-label="Related">
+          <a href={BWD_ASSETS.homePath}>{t.brand}</a>
+          <a href={BWD_ASSETS.workPath}>{t.nav.work}</a>
+          <a href={BWD_ASSETS.aboutPath}>{t.nav.about}</a>
+          <a href={BWD_ASSETS.salonPath}>{t.nav.salonWebsiteDesign}</a>
+        </nav>
       </div>
     </section>
   );

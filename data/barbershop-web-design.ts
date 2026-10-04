@@ -1,13 +1,14 @@
 export const BWD_ASSETS = {
-  heroImage: "/assets/images/about.jpeg",
-  experienceImage: "/assets/images/success-barber-hero.png",
+  heroPreview: "/assets/images/success-barber-hero.png",
+  successHero: "/assets/images/success-barber-hero.png",
+  maneHero: "/assets/images/mane-rumorhero.png",
   beforeImage: "/assets/images/before.jpeg",
   afterImage: "/assets/images/after.jpeg",
-  approachImage: "/assets/images/why-fadezy.jpeg",
-  ctaVideo: "/assets/videos/background-cta.mp4",
   workPath: "/#work",
   homePath: "/",
-  contactWhatsApp: true,
+  aboutPath: "/#about",
+  contactPath: "#contact",
+  salonPath: "/salon-website-design",
 } as const;
 
 export const BWD_PATH = "/barbershop-web-design";

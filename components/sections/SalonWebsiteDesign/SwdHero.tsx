@@ -29,44 +29,32 @@ export const SwdHero = (): ReactElement => {
   }, []);
 
   return (
-    <section className="swd-hero" aria-label={copy.titleLine1}>
-      <figure className="swd-hero-media">
+    <section className="swd-hero" aria-labelledby="swd-hero-title">
+      <div className="swd-hero-visual" aria-hidden="false">
         <img
-          src={SWD_ASSETS.heroImage}
-          alt={copy.imageAlt}
+          src={SWD_ASSETS.heroPreview}
+          alt={copy.previewAlt}
           className="swd-hero-img"
         />
-      </figure>
+        <div className="swd-hero-veil" aria-hidden="true" />
+      </div>
 
-      <div className="swd-hero-copy">
-        <span className="swd-meta" aria-hidden="true">
-          {copy.label}
-        </span>
-
-        <h1 className="swd-hero-title">
-          <span className="swd-hero-line">{copy.titleLine1}</span>
-          <span className="swd-hero-line is-serif">{copy.titleLine2}</span>
-          <span className="swd-hero-line">{copy.titleLine3}</span>
+      <div className="swd-hero-content">
+        <span className="swd-meta swd-hero-label">{copy.label}</span>
+        <h1 id="swd-hero-title" className="swd-hero-title">
+          {copy.title}
         </h1>
-
-        <p className="swd-hero-pull">
-          {copy.pull.split("\n").map((line) => (
-            <span key={line}>{line}</span>
-          ))}
-        </p>
-
         <p className="swd-hero-statement">{copy.statement}</p>
-
         <div className="swd-hero-ctas">
+          <a href="#work" className="btn-text swd-hero-link">
+            {copy.ctaPrimary}
+          </a>
           <a
             href={CONTACT.whatsappUrl}
-            className="btn solid"
+            className="btn solid swd-hero-btn"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {copy.ctaPrimary}
-          </a>
-          <a href={SWD_ASSETS.workPath} className="btn-text">
             {copy.ctaSecondary}
           </a>
         </div>

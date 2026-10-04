@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, type ReactElement } from "react";
+import { useEffect, useState, type ReactElement } from "react";
 import { BWD_PATH } from "@/data/barbershop-web-design";
 import { CONTACT } from "@/data/contact";
 import { SWD_PATH } from "@/data/salon-website-design";
@@ -18,6 +18,13 @@ export const HeaderNav = (): ReactElement => {
   const closeMenu = (): void => {
     setMenuOpen(false);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   const homeHref = isHome ? "#" : "/";
   const workHref = isHome ? "#work" : "/#work";
@@ -64,9 +71,10 @@ export const HeaderNav = (): ReactElement => {
         className={`mobile-menu${menuOpen ? " open" : ""}`}
         id="mobileMenu"
         aria-hidden={!menuOpen}
+        inert={menuOpen ? undefined : true}
       >
         <div className="top">
-          <span className="mark">
+          <a href={homeHref} className="mark" aria-label={t.brand} onClick={closeMenu}>
             <img
               src={LOGO_SRC}
               alt={t.brand}
@@ -74,36 +82,48 @@ export const HeaderNav = (): ReactElement => {
               width={160}
               height={40}
             />
-          </span>
+          </a>
           <button type="button" className="close" onClick={closeMenu}>
             {t.nav.close}
           </button>
         </div>
-        <div className="links">
-          <a href={workHref} onClick={closeMenu}>
-            {t.nav.work}
-          </a>
-          <a href={servicesHref} onClick={closeMenu}>
-            {t.nav.services}
-          </a>
-          <a href={BWD_PATH} onClick={closeMenu}>
-            {t.nav.barbershopWebDesign}
-          </a>
-          <a href={SWD_PATH} onClick={closeMenu}>
-            {t.nav.salonWebsiteDesign}
-          </a>
-          <a href={aboutHref} onClick={closeMenu}>
-            {t.nav.about}
-          </a>
+
+        <nav className="mobile-menu-body" aria-label="Mobile">
+          <div className="mobile-menu-primary">
+            <a href={workHref} onClick={closeMenu}>
+              <span className="mobile-menu-index">01</span>
+              <span>{t.nav.work}</span>
+            </a>
+            <a href={servicesHref} onClick={closeMenu}>
+              <span className="mobile-menu-index">02</span>
+              <span>{t.nav.services}</span>
+            </a>
+            <a href={aboutHref} onClick={closeMenu}>
+              <span className="mobile-menu-index">03</span>
+              <span>{t.nav.about}</span>
+            </a>
+          </div>
+
+          <div className="mobile-menu-services">
+            <a href={BWD_PATH} onClick={closeMenu}>
+              {t.nav.barbershopWebDesign}
+            </a>
+            <a href={SWD_PATH} onClick={closeMenu}>
+              {t.nav.salonWebsiteDesign}
+            </a>
+          </div>
+
           <a
             href={CONTACT.whatsappUrl}
+            className="mobile-menu-cta"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
           >
-            {t.nav.startProject}
+            {t.nav.startProject} <span aria-hidden="true">→</span>
           </a>
-        </div>
+        </nav>
+
         <div className="foot">{t.nav.worldwide}</div>
       </div>
     </>

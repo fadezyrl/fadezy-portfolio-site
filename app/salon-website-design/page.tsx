@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import type { ReactElement } from "react";
-import { Footer } from "@/components/Footer/Footer";
-import { HeaderNav } from "@/components/HeaderNav/HeaderNav";
-import { SwdApproach } from "@/components/sections/SalonWebsiteDesign/SwdApproach";
-import { SwdBooking } from "@/components/sections/SalonWebsiteDesign/SwdBooking";
-import { SwdCommunicate } from "@/components/sections/SalonWebsiteDesign/SwdCommunicate";
 import { SwdCta } from "@/components/sections/SalonWebsiteDesign/SwdCta";
 import { SwdEffects } from "@/components/sections/SalonWebsiteDesign/SwdEffects";
 import { SwdExperience } from "@/components/sections/SalonWebsiteDesign/SwdExperience";
 import { SwdFaq } from "@/components/sections/SalonWebsiteDesign/SwdFaq";
+import { SwdFooter } from "@/components/sections/SalonWebsiteDesign/SwdFooter";
 import { SwdHero } from "@/components/sections/SalonWebsiteDesign/SwdHero";
 import { SwdImpression } from "@/components/sections/SalonWebsiteDesign/SwdImpression";
+import { SwdNav } from "@/components/sections/SalonWebsiteDesign/SwdNav";
+import { SwdProcess } from "@/components/sections/SalonWebsiteDesign/SwdProcess";
+import { SwdStatement } from "@/components/sections/SalonWebsiteDesign/SwdStatement";
 import { SwdTransform } from "@/components/sections/SalonWebsiteDesign/SwdTransform";
+import { SwdWork } from "@/components/sections/SalonWebsiteDesign/SwdWork";
 import { salonWebsiteDesign } from "@/data/dictionary/salon-website-design";
 import { SWD_CANONICAL } from "@/data/salon-website-design";
 import { OG_IMAGE_ALT, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "@/data/site";
@@ -58,7 +58,7 @@ const faqStructuredData = {
   "@type": "FAQPage",
   mainEntity: pageCopy.faq.items.map((item) => ({
     "@type": "Question",
-    name: item.qLines.join(" "),
+    name: item.q,
     acceptedAnswer: {
       "@type": "Answer",
       text: item.a,
@@ -81,35 +81,61 @@ const serviceStructuredData = {
   description: pageCopy.meta.description,
 };
 
+const webPageStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageCopy.meta.title,
+  description: pageCopy.meta.description,
+  url: SWD_CANONICAL,
+  isPartOf: {
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+  about: {
+    "@type": "Service",
+    name: "Salon Website Design",
+  },
+};
+
+const toJsonLd = (data: object): string =>
+  JSON.stringify(data).replace(/</g, "\\u003c");
+
 const SalonWebsiteDesignPage = (): ReactElement => {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqStructuredData),
+          __html: toJsonLd(webPageStructuredData),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceStructuredData),
+          __html: toJsonLd(faqStructuredData),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: toJsonLd(serviceStructuredData),
         }}
       />
       <div className="swd-page">
-        <HeaderNav />
+        <SwdNav />
         <main aria-label={pageCopy.navAria}>
           <SwdHero />
-          <SwdImpression />
+          <SwdStatement />
+          <SwdWork />
           <SwdExperience />
-          <SwdCommunicate />
-          <SwdBooking />
+          <SwdImpression />
           <SwdTransform />
-          <SwdApproach />
+          <SwdProcess />
           <SwdFaq />
           <SwdCta />
         </main>
-        <Footer />
+        <SwdFooter />
         <SwdEffects />
       </div>
     </>

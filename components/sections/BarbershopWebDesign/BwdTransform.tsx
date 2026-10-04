@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactElement } from "react";
-import { SWD_ASSETS } from "@/data/salon-website-design";
+import { BWD_ASSETS } from "@/data/barbershop-web-design";
 import { useLocale } from "@/hooks/useLocale";
 
-export const SwdTransform = (): ReactElement => {
+export const BwdTransform = (): ReactElement => {
   const { t } = useLocale();
-  const copy = t.salonWebsiteDesign.transform;
+  const copy = t.barbershopWebDesign.transform;
   const sliderRef = useRef<HTMLDivElement>(null);
   const afterRef = useRef<HTMLDivElement>(null);
   const handleRef = useRef<HTMLDivElement>(null);
@@ -70,12 +70,12 @@ export const SwdTransform = (): ReactElement => {
 
   return (
     <section
-      className="swd-transform reveal"
-      aria-labelledby="swd-transform-label"
+      className="bwd-transform reveal"
+      aria-labelledby="bwd-transform-label"
     >
-      <div className="swd-wrap">
-        <header className="swd-transform-head">
-          <span className="swd-meta" id="swd-transform-label">
+      <div className="bwd-wrap">
+        <header className="bwd-transform-head">
+          <span className="bwd-meta" id="bwd-transform-label">
             {copy.label}
           </span>
           <h2>{copy.headline}</h2>
@@ -83,7 +83,7 @@ export const SwdTransform = (): ReactElement => {
         </header>
 
         <div
-          className="swd-ba"
+          className="bwd-ba"
           ref={sliderRef}
           role="slider"
           tabIndex={0}
@@ -93,24 +93,24 @@ export const SwdTransform = (): ReactElement => {
           aria-label={copy.dragHint}
         >
           <img
-            src={SWD_ASSETS.beforeImage}
+            src={BWD_ASSETS.beforeImage}
             alt={copy.beforeAlt}
-            className="swd-ba-img"
+            className="bwd-ba-img"
             draggable={false}
           />
-          <div className="swd-ba-after" ref={afterRef}>
+          <div className="bwd-ba-after" ref={afterRef}>
             <img
-              src={SWD_ASSETS.afterImage}
+              src={BWD_ASSETS.afterImage}
               alt={copy.afterAlt}
-              className="swd-ba-img"
+              className="bwd-ba-img"
               draggable={false}
             />
           </div>
-          <div className="swd-ba-handle" ref={handleRef}>
+          <div className="bwd-ba-handle" ref={handleRef}>
             <span />
           </div>
-          <span className="swd-ba-tag is-before">{copy.before}</span>
-          <span className="swd-ba-tag is-after">{copy.after}</span>
+          <span className="bwd-ba-tag is-before">{copy.before}</span>
+          <span className="bwd-ba-tag is-after">{copy.after}</span>
         </div>
       </div>
     </section>

@@ -25,15 +25,15 @@ export const BwdEffects = (): ReactElement | null => {
       gsap.utils.toArray<HTMLElement>(".bwd-page .reveal").forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0, y: 36 },
+          { opacity: 0, y: 28 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.95,
+            duration: 0.9,
             ease: EASE,
             scrollTrigger: {
               trigger: section,
-              start: "top 78%",
+              start: "top 80%",
               once: true,
             },
           },
@@ -41,11 +41,11 @@ export const BwdEffects = (): ReactElement | null => {
       });
 
       gsap.utils
-        .toArray<HTMLElement>(".bwd-page .bwd-experience-step")
-        .forEach((step, i) => {
+        .toArray<HTMLElement>(".bwd-page .bwd-principle")
+        .forEach((item, i) => {
           gsap.fromTo(
-            step,
-            { opacity: 0, y: 18 },
+            item,
+            { opacity: 0, y: 20 },
             {
               opacity: 1,
               y: 0,
@@ -53,7 +53,7 @@ export const BwdEffects = (): ReactElement | null => {
               delay: i * 0.08,
               ease: EASE,
               scrollTrigger: {
-                trigger: ".bwd-experience",
+                trigger: ".bwd-principles",
                 start: "top 70%",
                 once: true,
               },
@@ -62,41 +62,20 @@ export const BwdEffects = (): ReactElement | null => {
         });
 
       gsap.utils
-        .toArray<HTMLElement>(".bwd-page .bwd-spec-row")
-        .forEach((row, i) => {
+        .toArray<HTMLElement>(".bwd-page .bwd-process-step")
+        .forEach((step, i) => {
           gsap.fromTo(
-            row,
-            { opacity: 0, y: 14 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.65,
-              delay: i * 0.06,
-              ease: EASE,
-              scrollTrigger: {
-                trigger: ".bwd-spec",
-                start: "top 72%",
-                once: true,
-              },
-            },
-          );
-        });
-
-      gsap.utils
-        .toArray<HTMLElement>(".bwd-page .bwd-journey-stage")
-        .forEach((stage, i) => {
-          gsap.fromTo(
-            stage,
-            { opacity: 0, x: 24 },
+            step,
+            { opacity: 0, x: 20 },
             {
               opacity: 1,
               x: 0,
               duration: 0.7,
-              delay: i * 0.07,
+              delay: i * 0.08,
               ease: EASE,
               scrollTrigger: {
-                trigger: ".bwd-journey-rail",
-                start: "top 80%",
+                trigger: ".bwd-process-rail",
+                start: "top 78%",
                 once: true,
               },
             },
@@ -104,20 +83,20 @@ export const BwdEffects = (): ReactElement | null => {
         });
 
       gsap.utils
-        .toArray<HTMLElement>(".bwd-page .bwd-faq-item")
-        .forEach((item, i) => {
+        .toArray<HTMLElement>(".bwd-page .bwd-project")
+        .forEach((project) => {
+          const img = project.querySelector("img");
+          if (!img) return;
           gsap.fromTo(
-            item,
-            { opacity: 0, y: 16 },
+            img,
+            { scale: 1.06 },
             {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              delay: i * 0.05,
+              scale: 1,
+              duration: 1.2,
               ease: EASE,
               scrollTrigger: {
-                trigger: ".bwd-faq",
-                start: "top 72%",
+                trigger: project,
+                start: "top 75%",
                 once: true,
               },
             },

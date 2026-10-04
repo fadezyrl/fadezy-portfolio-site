@@ -4,45 +4,52 @@ export type SalonWebsiteDesignDict = {
     description: string;
   };
   navAria: string;
+  nav: {
+    work: string;
+    about: string;
+    start: string;
+    menu: string;
+    close: string;
+    home: string;
+  };
   hero: {
     label: string;
-    titleLine1: string;
-    titleLine2: string;
-    titleLine3: string;
-    pull: string;
+    title: string;
     statement: string;
     ctaPrimary: string;
     ctaSecondary: string;
-    imageAlt: string;
+    previewAlt: string;
   };
-  impression: {
-    label: string;
+  statement: {
     line1: string;
     line2: string;
-    line3: string;
-    line4: string;
-    line5: string;
     body: string;
-    imageAlt: string;
+  };
+  work: {
+    label: string;
+    headline: string;
+    viewProject: string;
+    projects: Array<{
+      id: string;
+      title: string;
+      location: string;
+      meta: string;
+      desc: string;
+      imageAlt: string;
+      url?: string;
+    }>;
   };
   experience: {
     label: string;
     headline: string;
-    sub: string;
-    chapters: Array<{ title: string; body: string }>;
-    imageAlt: string;
+    items: Array<{ num: string; title: string; body: string }>;
   };
-  communicate: {
+  impression: {
     label: string;
     headline: string;
-    sub: string;
-    items: Array<{ num: string; title: string; desc: string }>;
-  };
-  booking: {
-    label: string;
-    headline: string;
-    sub: string;
+    body: string;
     stages: Array<{ title: string; detail: string }>;
+    path: Array<{ from: string; to: string }>;
   };
   transform: {
     label: string;
@@ -52,203 +59,211 @@ export type SalonWebsiteDesignDict = {
     after: string;
     beforeAlt: string;
     afterAlt: string;
-    body: string;
-    workLink: string;
+    dragHint: string;
   };
-  approach: {
+  process: {
     label: string;
     headline: string;
-    headlineEm: string;
-    body: string;
-    imageAlt: string;
+    steps: Array<{ num: string; title: string; body: string }>;
   };
   faq: {
     label: string;
     headline: string;
-    items: Array<{ qLines: string[]; a: string }>;
+    items: Array<{ q: string; a: string }>;
   };
   cta: {
-    line1: string;
-    line2: string;
-    line3: string;
+    headline: string;
+    body: string;
     button: string;
-    secondary: string;
-    servicesLine: string;
+  };
+  footer: {
+    brand: string;
+    statement: string;
+    contact: string;
+    home: string;
+    work: string;
+    about: string;
+    barbershop: string;
+    copyright: string;
   };
 };
 
 export const salonWebsiteDesign: SalonWebsiteDesignDict = {
   meta: {
-    title: "Salon Website Design — Fadezy",
+    title: "Salon Website Design | Premium Websites — Fadezy",
     description:
-      "Premium salon website design built around your brand, your clients and the experience you create. Fadezy designs modern websites for salons worldwide.",
+      "Premium beauty salon website design by Fadezy. High-end websites built around your brand, services, clients and customer experience.",
   },
   navAria: "Salon website design",
+  nav: {
+    work: "Work",
+    about: "About",
+    start: "Start a Project",
+    menu: "Menu",
+    close: "Close",
+    home: "Fadezy",
+  },
   hero: {
-    label: "Fadezy / Services / 02",
-    titleLine1: "Salon",
-    titleLine2: "Website",
-    titleLine3: "Design",
-    pull: "Your salon has a feeling.\nYour website should carry it through.",
+    label: "Fadezy / Salon Website Design",
+    title: "Salon Website Design",
     statement:
-      "Fadezy creates premium salon websites that reflect the atmosphere, quality and personality of the studio — while making it easy for visitors to discover services and book.",
-    ctaPrimary: "Start a project",
-    ctaSecondary: "See our work",
-    imageAlt:
-      "Luxury beauty salon interior with soft light, mirrors and refined materials",
+      "Premium digital experiences built around the brand, atmosphere and experience of modern beauty salons.",
+    ctaPrimary: "View Our Work",
+    ctaSecondary: "Start a Project",
+    previewAlt:
+      "Beauty N Blendz salon website design — premium beauty salon digital experience by Fadezy",
   },
-  impression: {
-    label: "The digital first impression",
-    line1: "The first",
-    line2: "appointment",
-    line3: "happens",
-    line4: "before",
-    line5: "the chair.",
-    body: "Before they book a chair, they meet your salon online. Clients arrive from Instagram, Google or a recommendation — then decide, quietly, whether the space feels right for them. Salon website design should carry quality, atmosphere, professionalism, expertise and trust in that first scroll.",
-    imageAlt: "Editorial salon detail — texture, light and craft",
+  statement: {
+    line1: "Your salon is an experience.",
+    line2: "Your website should feel like one.",
+    body: "Fadezy creates beauty salon website design around identity, services, atmosphere, clients and the booking journey — so the first visit online feels as considered as the room itself. Not a template. A digital presence made for salons.",
   },
-  experience: {
-    label: "The salon experience",
-    headline: "A website should translate the room — not just list the menu.",
-    sub: "The digital presence becomes an extension of the visit.",
-    chapters: [
+  work: {
+    label: "Selected salon work",
+    headline: "Proof that Fadezy understands beauty brands.",
+    viewProject: "View project",
+    projects: [
       {
-        title: "The space",
-        body: "How the salon feels — paced, lit, and composed — before a single service is named.",
+        id: "beauty-n-blendz",
+        title: "Beauty N Blendz",
+        location: "Fort Stockton, Texas",
+        meta: "Beauty salon website design / Content / Development",
+        desc: "A cinematic salon website built around atmosphere, services and real client voices — beauty salon web design that feels like the studio, not a template.",
+        imageAlt:
+          "Beauty N Blendz homepage — beauty salon website design by Fadezy",
       },
       {
-        title: "The work",
-        body: "What the team creates, shown with the same care as the finished look in the chair.",
-      },
-      {
-        title: "The people",
-        body: "Who clients are trusting with their time, their hair, and their first impression.",
-      },
-      {
-        title: "The details",
-        body: "The small signals that separate a considered studio from a generic booking page.",
-      },
-      {
-        title: "The booking",
-        body: "How effortlessly someone can take the next step when the feeling is already right.",
+        id: "mane-rumor",
+        title: "Mane Rumor",
+        location: "Austin, Texas",
+        meta: "Salon website / Design system / Development",
+        desc: "A custom system for a one-chair beauty studio — locked palette, editorial typography and a website for salons that matches the craft.",
+        imageAlt: "Mane Rumor homepage — salon website designer work by Fadezy",
+        url: "https://mane-rumor.vercel.app/",
       },
     ],
-    imageAlt: "Beauty salon website design homepage with editorial photography",
   },
-  communicate: {
-    label: "What the website needs to communicate",
-    headline: "A design index for salons that take their presence seriously.",
-    sub: "Not a package list — the layers we build around your studio.",
+  experience: {
+    label: "The salon digital experience",
+    headline: "Designed around the experience your clients expect.",
     items: [
       {
         num: "01",
-        title: "Positioning",
-        desc: "A website built around what makes your salon different — not a template waiting for a logo.",
+        title: "Identity",
+        body: "Your website should feel unmistakably yours.",
       },
       {
         num: "02",
-        title: "Art direction",
-        desc: "A visual language consistent with the salon itself: tone, photography, typography, pace.",
+        title: "Experience",
+        body: "Translate the atmosphere of your salon into the digital space.",
       },
       {
         num: "03",
-        title: "Services",
-        desc: "Clear, considered presentation of treatments — easy to scan, never noisy.",
+        title: "Discovery",
+        body: "Make your services, work and story easy to explore.",
       },
       {
         num: "04",
-        title: "Team",
-        desc: "Introduce the people behind the work and give clients a reason to trust the chair.",
-      },
-      {
-        num: "05",
-        title: "Mobile experience",
-        desc: "Designed around how clients actually browse and book — thumb-first, not desktop-shrunk.",
-      },
-      {
-        num: "06",
         title: "Booking",
-        desc: "A clear path from interest to appointment, connected to how you take bookings.",
-      },
-      {
-        num: "07",
-        title: "SEO foundation",
-        desc: "Structure and metadata so the right people can find the salon through search.",
-      },
-      {
-        num: "08",
-        title: "Launch",
-        desc: "A polished site ready for real clients — finished the day it goes live.",
+        body: "Turn interest into a simple, confident next step.",
       },
     ],
   },
-  booking: {
-    label: "The booking journey",
-    headline: "A premium website should make booking feel natural.",
-    sub: "Quiet steps. No pressure. A clear next move.",
+  impression: {
+    label: "The first impression",
+    headline: "Before they book, they experience your brand online.",
+    body: "Salon website design sits at the center of how modern clients move from discovery to trust — Instagram and Google lead them in; a refined beauty salon website carries them through services, portfolio and booking.",
     stages: [
-      { title: "Discover", detail: "They find the salon." },
-      { title: "Explore", detail: "They understand atmosphere and services." },
-      { title: "Trust", detail: "They see the work, team and experience." },
-      { title: "Choose", detail: "They find the right service." },
+      { title: "Discover", detail: "They find you." },
+      { title: "Explore", detail: "They feel the atmosphere." },
+      { title: "Trust", detail: "They recognize the standard." },
       { title: "Book", detail: "They take the next step." },
+    ],
+    path: [
+      { from: "Instagram / Google", to: "Website" },
+      { from: "Website", to: "Services" },
+      { from: "Services", to: "Portfolio" },
+      { from: "Portfolio", to: "Booking" },
     ],
   },
   transform: {
-    label: "Visual transformation",
+    label: "Transformation",
     headline: "Same salon. Different first impression.",
-    sub: "The goal isn’t to make every salon look the same. It’s to make the digital experience feel unmistakably theirs.",
+    sub: "Drag to see how salon web design changes perceived quality — typography, imagery, layout, mobile experience, booking flow and brand consistency.",
     before: "Before",
     after: "After",
-    beforeAlt: "Typical salon website before a custom redesign",
-    afterAlt: "Premium salon website after a Fadezy redesign",
-    body: "We rebuild the first impression so it matches the craft — then connect that presence to real work in the portfolio.",
-    workLink: "View selected work",
+    beforeAlt: "Typical beauty salon website before a Fadezy redesign",
+    afterAlt: "Premium beauty salon website after Fadezy salon website design",
+    dragHint: "Drag to compare",
   },
-  approach: {
-    label: "The Fadezy approach",
-    headline: "We don’t start with a template.",
-    headlineEm: "We start with the salon.",
-    body: "Every salon has a different atmosphere, clientele, positioning and standard of work. Salon website design at Fadezy is built around those details — not forced into a pre-existing layout.",
-    imageAlt:
-      "Fadezy art direction board with salon photography, typography and material references",
+  process: {
+    label: "Process",
+    headline: "How we build websites for beauty salons.",
+    steps: [
+      {
+        num: "01",
+        title: "Discover",
+        body: "Understand the salon, brand and clientele.",
+      },
+      {
+        num: "02",
+        title: "Define",
+        body: "Establish the visual and digital direction.",
+      },
+      {
+        num: "03",
+        title: "Design",
+        body: "Create the complete experience.",
+      },
+      {
+        num: "04",
+        title: "Develop",
+        body: "Build and optimize the website.",
+      },
+      {
+        num: "05",
+        title: "Launch",
+        body: "Test, refine and bring it live.",
+      },
+    ],
   },
   faq: {
-    label: "Questions",
-    headline: "Straight answers for owners building a serious digital presence.",
+    label: "FAQ",
+    headline: "Answers for salons ready to get serious online.",
     items: [
       {
-        qLines: ["What should", "a salon website", "include?"],
-        a: "A strong first impression, clear services, the team, location, hours and a direct path to book. Everything else supports those essentials.",
+        q: "What does salon website design include?",
+        a: "Strategy, art direction, custom beauty salon website design, development, mobile experience and a clear booking path — built around your salon, not a theme. Website design for salons that care about atmosphere as much as conversion.",
       },
       {
-        qLines: ["How much does", "salon website design", "cost?"],
-        a: "It depends on scope — pages, booking, content and how custom the art direction needs to be. We price after understanding the salon, not from a one-size list.",
+        q: "Can the website be designed around my existing salon brand?",
+        a: "Yes. We start from your atmosphere and identity, then extend that into a salon website that feels unmistakably yours — the same standard clients expect in the chair.",
       },
       {
-        qLines: ["Can you connect", "our salon booking", "system?"],
-        a: "Yes. We design the experience first, then connect the booking tools you already use — or set a clean path for online booking.",
+        q: "Can Fadezy integrate my booking system?",
+        a: "Yes. We design the experience first, then connect the booking tools you already use — or set a clean path for online booking on your beauty salon website.",
       },
       {
-        qLines: ["Will the website", "work well", "on mobile?"],
-        a: "Mobile is the primary surface. Layouts, type and booking are composed for the phone first, then refined for desktop.",
-      },
-      {
-        qLines: ["Can you design", "around our existing", "salon brand?"],
-        a: "Yes. We work from your atmosphere and identity — extending what already feels true, not replacing it with a generic look.",
-      },
-      {
-        qLines: ["Can Fadezy help", "with salon", "SEO?"],
-        a: "We build a solid foundation — structure, metadata, performance and local clarity — so search can work without keyword theatre.",
+        q: "Why does a professional website matter for a beauty salon?",
+        a: "Clients discover you online, then decide whether the salon feels right. A weak site undercuts a strong brand. Premium salon website design closes that gap between the room and the screen.",
       },
     ],
   },
   cta: {
-    line1: "Your salon already has",
-    line2: "a point of view.",
-    line3: "Your website should too.",
-    button: "Start a project",
-    secondary: "View our work",
-    servicesLine: "Salon Website Design / Brand / Booking / Launch",
+    headline:
+      "Your salon deserves a digital experience that feels as refined as the real one.",
+    body: "Let's build a digital presence that turns your brand, atmosphere and work into an experience clients can discover online.",
+    button: "Start a Project",
+  },
+  footer: {
+    brand: "Fadezy",
+    statement:
+      "A niche digital studio for beauty salons and barbershops — premium websites, brand and growth.",
+    contact: "Start a Project",
+    home: "Home",
+    work: "Work",
+    about: "About",
+    barbershop: "Barbershop Web Design",
+    copyright: "© 2026 Fadezy",
   },
 };
