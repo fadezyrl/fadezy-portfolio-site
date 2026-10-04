@@ -2,7 +2,13 @@
 
 import type { ReactElement } from "react";
 import { BWD_PATH } from "@/data/barbershop-web-design";
+import { SWD_PATH } from "@/data/salon-website-design";
 import { useLocale } from "@/hooks/useLocale";
+
+const SERVICE_HREFS: Record<string, string> = {
+  "01": BWD_PATH,
+  "02": SWD_PATH,
+};
 
 export const Services = (): ReactElement => {
   const { t } = useLocale();
@@ -15,18 +21,14 @@ export const Services = (): ReactElement => {
           <span className="eyebrow">{t.services.count}</span>
         </div>
         {t.services.items.map((item) => {
-          const isBarbershop = item.num === "01";
+          const href = SERVICE_HREFS[item.num];
 
           return (
             <div className="service-row" key={item.num}>
               <span className="service-num">{item.num}</span>
-              {isBarbershop ? (
-                <h3 className="service-title">
-                  <a href={BWD_PATH}>{item.title}</a>
-                </h3>
-              ) : (
-                <h3 className="service-title">{item.title}</h3>
-              )}
+              <h3 className="service-title">
+                {href ? <a href={href}>{item.title}</a> : item.title}
+              </h3>
               <p className="service-desc">{item.desc}</p>
             </div>
           );

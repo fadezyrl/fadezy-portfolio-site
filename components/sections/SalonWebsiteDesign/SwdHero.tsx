@@ -30,34 +30,37 @@ export const SwdHero = (): ReactElement => {
 
   return (
     <section className="swd-hero" aria-labelledby="swd-hero-title">
-      <div className="swd-hero-visual" aria-hidden="false">
-        <img
-          src={SWD_ASSETS.heroPreview}
-          alt={copy.previewAlt}
-          className="swd-hero-img"
-        />
-        <div className="swd-hero-veil" aria-hidden="true" />
-      </div>
-
-      <div className="swd-hero-content">
-        <span className="swd-meta swd-hero-label">{copy.label}</span>
-        <h1 id="swd-hero-title" className="swd-hero-title">
-          {copy.title}
-        </h1>
-        <p className="swd-hero-statement">{copy.statement}</p>
-        <div className="swd-hero-ctas">
-          <a href="#work" className="btn-text swd-hero-link">
-            {copy.ctaPrimary}
-          </a>
-          <a
-            href={CONTACT.whatsappUrl}
-            className="btn solid swd-hero-btn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {copy.ctaSecondary}
-          </a>
+      <div className="swd-hero-stage">
+        <div className="swd-hero-copy">
+          <span className="swd-meta">{copy.label}</span>
+          <h1 id="swd-hero-title" className="swd-hero-title">
+            {copy.title}
+          </h1>
+          <p className="swd-hero-statement">{copy.statement}</p>
+          <div className="swd-hero-ctas">
+            <a href="#work" className="btn-text">
+              {copy.ctaPrimary}
+            </a>
+            <a
+              href={CONTACT.whatsappUrl}
+              className="btn solid"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {copy.ctaSecondary}
+            </a>
+          </div>
         </div>
+
+        <figure className="swd-hero-preview">
+          <div className="swd-hero-frame">
+            <img
+              src={SWD_ASSETS.heroPreview}
+              alt={copy.previewAlt}
+              className="swd-hero-img"
+            />
+          </div>
+        </figure>
       </div>
     </section>
   );

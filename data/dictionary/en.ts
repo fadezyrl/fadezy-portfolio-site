@@ -60,16 +60,6 @@ export type Dictionary = {
       url?: string;
     }>;
   };
-  transformation: {
-    eyebrow: string;
-    headline: string;
-    sub: string;
-    before: string;
-    after: string;
-    beforeAlt: string;
-    afterAlt: string;
-    labels: string[];
-  };
   testimonials: {
     eyebrow: string;
     headline: string;
@@ -145,25 +135,30 @@ export const en: Dictionary = {
   },
   services: {
     headline: "Website, brand & growth for barbershops and beauty salons.",
-    count: "01 — 04",
+    count: "01 — 05",
     items: [
       {
         num: "01",
-        title: "Barbershop & beauty salon website design",
-        desc: "Built around how people actually book you — not a template with your logo dropped in.",
+        title: "Barbershop web design",
+        desc: "Premium barbershop websites built around brand, craft and booking — not a template with your logo dropped in.",
       },
       {
         num: "02",
+        title: "Salon website design",
+        desc: "Beauty salon website design built around atmosphere, services and the way clients discover and book.",
+      },
+      {
+        num: "03",
         title: "Brand identity",
         desc: "The same feeling from Instagram to the site to the chair.",
       },
       {
-        num: "03",
+        num: "04",
         title: "Content",
         desc: "Photos and stories that look like your work. Not stock.",
       },
       {
-        num: "04",
+        num: "05",
         title: "Growth & local visibility",
         desc: "Show up when someone nearby searches for a cut, a color, a chair.",
       },
@@ -202,21 +197,6 @@ export const en: Dictionary = {
         desc: "A one-woman hair studio, built as a custom system — locked palette, three-font hierarchy, and a stitched motif through every scroll.",
         url: "https://mane-rumor.vercel.app/",
       },
-    ],
-  },
-  transformation: {
-    eyebrow: "The first impression",
-    headline: "Same shop. Different first click.",
-    sub: "See the difference a custom website can make for a barbershop or beauty salon.",
-    before: "Before",
-    after: "After",
-    beforeAlt: "Typical barbershop or beauty salon website before a redesign",
-    afterAlt: "Custom barbershop and beauty salon website after a Fadezy redesign",
-    labels: [
-      "How it feels",
-      "How they book",
-      "How it looks on a phone",
-      "How fast it loads",
     ],
   },
   testimonials: {

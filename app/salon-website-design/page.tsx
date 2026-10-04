@@ -6,11 +6,9 @@ import { SwdExperience } from "@/components/sections/SalonWebsiteDesign/SwdExper
 import { SwdFaq } from "@/components/sections/SalonWebsiteDesign/SwdFaq";
 import { SwdFooter } from "@/components/sections/SalonWebsiteDesign/SwdFooter";
 import { SwdHero } from "@/components/sections/SalonWebsiteDesign/SwdHero";
-import { SwdImpression } from "@/components/sections/SalonWebsiteDesign/SwdImpression";
 import { SwdNav } from "@/components/sections/SalonWebsiteDesign/SwdNav";
 import { SwdProcess } from "@/components/sections/SalonWebsiteDesign/SwdProcess";
 import { SwdStatement } from "@/components/sections/SalonWebsiteDesign/SwdStatement";
-import { SwdTransform } from "@/components/sections/SalonWebsiteDesign/SwdTransform";
 import { SwdWork } from "@/components/sections/SalonWebsiteDesign/SwdWork";
 import { salonWebsiteDesign } from "@/data/dictionary/salon-website-design";
 import { SWD_CANONICAL } from "@/data/salon-website-design";
@@ -129,8 +127,6 @@ const SalonWebsiteDesignPage = (): ReactElement => {
           <SwdStatement />
           <SwdWork />
           <SwdExperience />
-          <SwdImpression />
-          <SwdTransform />
           <SwdProcess />
           <SwdFaq />
           <SwdCta />

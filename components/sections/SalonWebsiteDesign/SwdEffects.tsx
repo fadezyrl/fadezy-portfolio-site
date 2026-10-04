@@ -102,65 +102,6 @@ export const SwdEffects = (): ReactElement | null => {
             },
           );
         });
-
-      const impression = document.querySelector(".swd-impression-media img");
-      if (impression) {
-        gsap.fromTo(
-          impression,
-          { scale: 1.12 },
-          {
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".swd-impression",
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          },
-        );
-      }
-
-      gsap.utils
-        .toArray<HTMLElement>(".swd-page .swd-impression-stage")
-        .forEach((stage, i) => {
-          gsap.fromTo(
-            stage,
-            { opacity: 0.28 },
-            {
-              opacity: 1,
-              duration: 0.5,
-              delay: i * 0.08,
-              ease: EASE,
-              scrollTrigger: {
-                trigger: ".swd-impression-stages",
-                start: "top 75%",
-                once: true,
-              },
-            },
-          );
-        });
-
-      gsap.utils
-        .toArray<HTMLElement>(".swd-page .swd-impression-path-item")
-        .forEach((item, i) => {
-          gsap.fromTo(
-            item,
-            { opacity: 0, y: 16 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              delay: i * 0.1,
-              ease: EASE,
-              scrollTrigger: {
-                trigger: ".swd-impression-path",
-                start: "top 80%",
-                once: true,
-              },
-            },
-          );
-        });
     });
 
     return () => ctx.revert();

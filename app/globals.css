@@ -156,7 +156,9 @@ header.nav .mark {
 
 header.nav nav {
   display: flex;
-  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 18px 28px;
   align-items: center;
 }
 
@@ -1200,149 +1202,6 @@ header.nav .cta-link {
   }
 }
 
-/* ============ TRANSFORMATION ============ */
-.transformation {
-  background: var(--cream);
-  padding: 170px 0;
-}
-
-.t-head {
-  max-width: 760px;
-  margin-bottom: 70px;
-}
-
-.t-head h2 {
-  font-family: var(--serif);
-  font-size: clamp(32px, 6vw, 66px);
-  line-height: 1.05;
-}
-
-.t-head p {
-  margin-top: 22px;
-  color: var(--ink-60);
-  font-size: 17px;
-  max-width: 520px;
-}
-
-.slider {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  cursor: ew-resize;
-  background: var(--ink);
-  user-select: none;
-  touch-action: none;
-}
-
-.slider .pane {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.slider .before {
-  z-index: 1;
-  background: var(--ink);
-}
-
-.slider .after {
-  z-index: 2;
-  background: var(--ink);
-  clip-path: inset(0 0 0 50%);
-}
-
-.slider-img {
-  object-fit: cover;
-  object-position: top center;
-  pointer-events: none;
-}
-
-.slider .pane .tag {
-  position: absolute;
-  top: 18px;
-  z-index: 1;
-  padding: 6px 10px;
-  background: rgba(41, 41, 40, 0.72);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--paper-on-black);
-  transition: opacity 0.2s ease;
-  pointer-events: none;
-}
-
-.slider .tag-before {
-  left: 20px;
-}
-
-.slider .tag-after {
-  right: 20px;
-}
-
-.slider-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateX(-50%);
-}
-
-.slider-handle::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 1px;
-  background: var(--paper-on-black);
-}
-
-.slider-handle .grip {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--paper-on-black);
-  background: var(--black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: var(--paper-on-black);
-  font-size: 12px;
-}
-
-.t-labels {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin-top: 44px;
-}
-
-.t-labels span {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-60);
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--line);
-}
-
-@media (max-width: 720px) {
-  .transformation {
-    padding: 120px 0;
-  }
-}
-
 /* ============ PRINCIPLES ============ */
 .principles {
   background: var(--cream);
@@ -2173,11 +2032,6 @@ html.motion-reduced .project-meta,
 html.motion-reduced .project-lower,
 html.motion-reduced .project-visual,
 html.motion-reduced .project-visual-img,
-html.motion-reduced .t-head .eyebrow,
-html.motion-reduced .t-head h2,
-html.motion-reduced .t-head p,
-html.motion-reduced .slider,
-html.motion-reduced .t-labels,
 html.motion-reduced .testi-head .eyebrow,
 html.motion-reduced .testi-head h2,
 html.motion-reduced .testi blockquote,

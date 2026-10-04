@@ -181,48 +181,6 @@ export const FadezyEffects = (): ReactElement | null => {
         });
       }
 
-      /* ——— Transformation: head then frame reveal ——— */
-      const transformation = document.querySelector(".transformation");
-      if (transformation) {
-        const eyebrow = transformation.querySelector(".t-head .eyebrow");
-        const headline = transformation.querySelector(".t-head h2");
-        const sub = transformation.querySelector(".t-head p");
-        const slider = transformation.querySelector(".slider");
-        const labels = transformation.querySelector(".t-labels");
-
-        gsap.set([eyebrow, sub], { opacity: 0, y: 10 });
-        gsap.set(headline, { clipPath: "inset(100% 0 0 0)" });
-        gsap.set(slider, { clipPath: "inset(8% 4% 8% 4%)", opacity: 0.92 });
-        gsap.set(labels, { opacity: 0, y: 12 });
-
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: transformation,
-              start: "top 70%",
-              once: true,
-            },
-            defaults: { ease: EASE },
-          })
-          .to(eyebrow, { opacity: 1, y: 0, duration: 0.65 }, 0)
-          .to(
-            headline,
-            { clipPath: "inset(0% 0 0 0)", duration: 1.15 },
-            0.1,
-          )
-          .to(sub, { opacity: 1, y: 0, duration: 0.75 }, 0.4)
-          .to(
-            slider,
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              opacity: 1,
-              duration: 1.3,
-            },
-            0.35,
-          )
-          .to(labels, { opacity: 1, y: 0, duration: 0.7 }, 0.85);
-      }
-
       /* ——— Testimonials: quiet quote unveil ——— */
       const testimonials = document.querySelector(".testimonials");
       if (testimonials) {

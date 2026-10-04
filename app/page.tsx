@@ -8,7 +8,6 @@ import { FinalCta } from "@/components/sections/FinalCta/FinalCta";
 import { Hero } from "@/components/sections/Hero/Hero";
 import { Services } from "@/components/sections/Services/Services";
 import { Testimonials } from "@/components/sections/Testimonials/Testimonials";
-import { Transformation } from "@/components/sections/Transformation/Transformation";
 import { Work } from "@/components/sections/Work/Work";
 
 const Home = (): ReactElement => {
@@ -20,7 +19,6 @@ const Home = (): ReactElement => {
         <Clients />
         <Services />
         <Work />
-        <Transformation />
         <Testimonials />
         <About />
         <FinalCta />

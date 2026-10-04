@@ -44,23 +44,6 @@ export type SalonWebsiteDesignDict = {
     headline: string;
     items: Array<{ num: string; title: string; body: string }>;
   };
-  impression: {
-    label: string;
-    headline: string;
-    body: string;
-    stages: Array<{ title: string; detail: string }>;
-    path: Array<{ from: string; to: string }>;
-  };
-  transform: {
-    label: string;
-    headline: string;
-    sub: string;
-    before: string;
-    after: string;
-    beforeAlt: string;
-    afterAlt: string;
-    dragHint: string;
-  };
   process: {
     label: string;
     headline: string;
@@ -168,33 +151,6 @@ export const salonWebsiteDesign: SalonWebsiteDesignDict = {
         body: "Turn interest into a simple, confident next step.",
       },
     ],
-  },
-  impression: {
-    label: "The first impression",
-    headline: "Before they book, they experience your brand online.",
-    body: "Salon website design sits at the center of how modern clients move from discovery to trust — Instagram and Google lead them in; a refined beauty salon website carries them through services, portfolio and booking.",
-    stages: [
-      { title: "Discover", detail: "They find you." },
-      { title: "Explore", detail: "They feel the atmosphere." },
-      { title: "Trust", detail: "They recognize the standard." },
-      { title: "Book", detail: "They take the next step." },
-    ],
-    path: [
-      { from: "Instagram / Google", to: "Website" },
-      { from: "Website", to: "Services" },
-      { from: "Services", to: "Portfolio" },
-      { from: "Portfolio", to: "Booking" },
-    ],
-  },
-  transform: {
-    label: "Transformation",
-    headline: "Same salon. Different first impression.",
-    sub: "Drag to see how salon web design changes perceived quality — typography, imagery, layout, mobile experience, booking flow and brand consistency.",
-    before: "Before",
-    after: "After",
-    beforeAlt: "Typical beauty salon website before a Fadezy redesign",
-    afterAlt: "Premium beauty salon website after Fadezy salon website design",
-    dragHint: "Drag to compare",
   },
   process: {
     label: "Process",

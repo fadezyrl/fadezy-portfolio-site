@@ -46,6 +46,8 @@ export const HeaderNav = (): ReactElement => {
         <nav className="links" aria-label="Primary">
           <a href={workHref}>{t.nav.work}</a>
           <a href={servicesHref}>{t.nav.services}</a>
+          <a href={BWD_PATH}>{t.nav.barbershopWebDesign}</a>
+          <a href={SWD_PATH}>{t.nav.salonWebsiteDesign}</a>
           <a href={aboutHref}>{t.nav.about}</a>
           <a
             href={CONTACT.whatsappUrl}
