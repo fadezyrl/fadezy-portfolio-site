@@ -1,5 +1,5 @@
 export const SWD_ASSETS = {
-  heroPreview: "/assets/images/beauty-n-blend-hero.png",
+  heroPreview: "/assets/beauty-salon/salon-hero.jpg",
   beautyHero: "/assets/images/beauty-n-blend-hero.png",
   beautyFull: "/assets/images/full-page-beautynblend.png",
   maneHero: "/assets/images/mane-rumorhero.png",

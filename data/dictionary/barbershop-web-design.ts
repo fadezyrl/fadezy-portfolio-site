@@ -78,7 +78,7 @@ export const barbershopWebDesign: BarbershopWebDesignDict = {
     ctaPrimary: "View Our Work",
     ctaSecondary: "Start a Project",
     previewAlt:
-      "Success Barbershop website design — premium digital presence for a Dubai barbershop",
+      "Premium barbershop interior — barber cutting a client's hair in a modern shop",
   },
   statement: {
     line1: "Your barbershop already has a personality.",

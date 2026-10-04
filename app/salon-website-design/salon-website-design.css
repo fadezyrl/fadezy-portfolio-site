@@ -54,14 +54,28 @@
   transition:
     background 0.45s var(--ease),
     border-color 0.45s var(--ease),
-    backdrop-filter 0.45s var(--ease);
+    backdrop-filter 0.45s var(--ease),
+    transform 0.45s var(--ease);
   border-bottom: 1px solid transparent;
+  will-change: transform;
 }
 
 .swd-nav.is-scrolled {
   background: color-mix(in srgb, var(--swd-paper) 92%, transparent);
   border-bottom-color: var(--swd-line);
   backdrop-filter: blur(10px);
+}
+
+.swd-nav.is-nav-hidden {
+  transform: translateY(-110%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swd-nav.is-nav-hidden {
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 .swd-nav-logo {
@@ -327,7 +341,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left top;
+  object-position: center;
   transform: scale(1.04);
   transition: transform 4.5s var(--ease);
 }

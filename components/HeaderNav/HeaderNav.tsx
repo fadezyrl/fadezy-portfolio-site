@@ -5,6 +5,7 @@ import { useEffect, useState, type ReactElement } from "react";
 import { BWD_PATH } from "@/data/barbershop-web-design";
 import { CONTACT } from "@/data/contact";
 import { SWD_PATH } from "@/data/salon-website-design";
+import { useHideOnScroll } from "@/hooks/useHideOnScroll";
 import { useLocale } from "@/hooks/useLocale";
 
 const LOGO_SRC = "/assets/logo/fadezy-logo.png";
@@ -14,6 +15,7 @@ export const HeaderNav = (): ReactElement => {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
+  const navHidden = useHideOnScroll(!menuOpen);
 
   const closeMenu = (): void => {
     setMenuOpen(false);
@@ -33,7 +35,7 @@ export const HeaderNav = (): ReactElement => {
 
   return (
     <>
-      <header className="nav">
+      <header className={`nav${navHidden ? " is-nav-hidden" : ""}`}>
         <a href={homeHref} className="mark" aria-label={t.brand}>
           <img
             src={LOGO_SRC}

@@ -94,7 +94,7 @@ export const salonWebsiteDesign: SalonWebsiteDesignDict = {
     ctaPrimary: "View Our Work",
     ctaSecondary: "Start a Project",
     previewAlt:
-      "Beauty N Blendz salon website design — premium beauty salon digital experience by Fadezy",
+      "Premium beauty salon interior — stylist blow-drying a client in a modern salon space",
   },
   statement: {
     line1: "Your salon is an experience.",

@@ -132,6 +132,24 @@ header.nav {
   align-items: center;
   justify-content: space-between;
   mix-blend-mode: difference;
+  transition: transform 0.45s var(--ease);
+  will-change: transform;
+}
+
+header.nav.is-nav-hidden {
+  transform: translateY(-110%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.nav {
+    transition: none;
+  }
+
+  header.nav.is-nav-hidden {
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 header.nav .mark {

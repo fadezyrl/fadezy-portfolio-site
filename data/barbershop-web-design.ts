@@ -1,5 +1,5 @@
 export const BWD_ASSETS = {
-  heroPreview: "/assets/images/success-barber-hero.png",
+  heroPreview: "/assets/barbershop/barbershop-hero.jpg",
   successHero: "/assets/images/success-barber-hero.png",
   maneHero: "/assets/images/mane-rumorhero.png",
   beforeImage: "/assets/images/before.jpeg",

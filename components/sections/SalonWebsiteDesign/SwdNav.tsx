@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactElement } from "react";
 import { CONTACT } from "@/data/contact";
 import { SWD_ASSETS } from "@/data/salon-website-design";
+import { useHideOnScroll } from "@/hooks/useHideOnScroll";
 import { useLocale } from "@/hooks/useLocale";
 
 const LOGO_SRC = "/assets/logo/fadezy-logo.png";
@@ -12,6 +13,7 @@ export const SwdNav = (): ReactElement => {
   const copy = t.salonWebsiteDesign.nav;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navHidden = useHideOnScroll(!menuOpen);
 
   useEffect(() => {
     const onScroll = (): void => {
@@ -35,7 +37,9 @@ export const SwdNav = (): ReactElement => {
 
   return (
     <>
-      <header className={`swd-nav${scrolled ? " is-scrolled" : ""}`}>
+      <header
+        className={`swd-nav${scrolled ? " is-scrolled" : ""}${navHidden ? " is-nav-hidden" : ""}`}
+      >
         <a href={SWD_ASSETS.homePath} className="swd-nav-mark" aria-label={copy.home}>
           <img
             src={LOGO_SRC}
