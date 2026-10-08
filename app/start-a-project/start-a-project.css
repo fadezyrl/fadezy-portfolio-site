@@ -436,8 +436,12 @@
   display: flex;
   gap: 14px;
   overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
   padding: 0 5vw 8px;
   scrollbar-width: none;
 }

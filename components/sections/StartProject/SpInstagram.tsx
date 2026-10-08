@@ -19,21 +19,28 @@ export const SpInstagram = (): ReactElement => {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    if (reduceMotion) return;
+    // Desktop-only auto-drift. On phones, continuous scrollLeft fights
+    // native touch and makes the strip vibrate while page scroll fails.
+    const canAutoScroll = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
+
+    if (reduceMotion || !canAutoScroll) return;
 
     let frame = 0;
     let last = performance.now();
     let paused = false;
 
-    const onEnter = (): void => {
+    const pause = (): void => {
       paused = true;
     };
-    const onLeave = (): void => {
+    const resume = (): void => {
       paused = false;
     };
 
-    track.addEventListener("pointerenter", onEnter);
-    track.addEventListener("pointerleave", onLeave);
+    track.addEventListener("pointerenter", pause);
+    track.addEventListener("pointerleave", resume);
+    track.addEventListener("pointerdown", pause);
 
     const tick = (now: number): void => {
       const delta = now - last;
@@ -51,8 +58,9 @@ export const SpInstagram = (): ReactElement => {
 
     return () => {
       cancelAnimationFrame(frame);
-      track.removeEventListener("pointerenter", onEnter);
-      track.removeEventListener("pointerleave", onLeave);
+      track.removeEventListener("pointerenter", pause);
+      track.removeEventListener("pointerleave", resume);
+      track.removeEventListener("pointerdown", pause);
     };
   }, []);
 
