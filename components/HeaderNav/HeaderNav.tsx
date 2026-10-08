@@ -34,7 +34,7 @@ export const HeaderNav = (): ReactElement => {
   const { t } = useLocale();
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const scrolled = useNavScrolled();
+  const { scrolled, hidden } = useNavScrolled();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesPanelId = useId();
@@ -141,7 +141,7 @@ export const HeaderNav = (): ReactElement => {
   return (
     <>
       <header
-        className={`nav${scrolled ? " is-scrolled" : ""}${menuOpen ? " is-menu-open" : ""}${servicesOpen ? " is-services-open" : ""}`}
+        className={`nav${scrolled ? " is-scrolled" : ""}${hidden && !menuOpen && !servicesOpen ? " is-hidden" : ""}${menuOpen ? " is-menu-open" : ""}${servicesOpen ? " is-services-open" : ""}`}
       >
         <a href={homeHref} className="mark" aria-label={t.brand}>
           <img

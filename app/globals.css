@@ -138,14 +138,21 @@ header.nav {
   justify-content: space-between;
   background: transparent;
   border-bottom: 1px solid transparent;
+  transform: translateY(0);
   transition:
     background-color 280ms var(--ease),
-    border-color 280ms var(--ease);
+    border-color 280ms var(--ease),
+    transform 320ms var(--ease);
 }
 
 header.nav.is-scrolled {
   background: rgba(250, 248, 242, 0.92);
   border-bottom-color: rgba(41, 41, 40, 0.1);
+}
+
+header.nav.is-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
 header.nav.is-services-open {
@@ -516,7 +523,7 @@ header.nav nav.links {
 }
 
 .nav-logo-menu {
-  height: 32px;
+  height: 100px;
   max-width: 150px;
 }
 
