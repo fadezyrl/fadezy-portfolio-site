@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef, type ReactElement } from "react";
+import { BMS_PATH } from "@/data/barbershop-marketing-seo";
+import { BSW_PATH } from "@/data/barbershop-software";
 import { BWD_ASSETS } from "@/data/barbershop-web-design";
-import { CONTACT } from "@/data/contact";
 import { CTA_BACKGROUND_VIDEO } from "@/data/final-cta";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const BwdCta = (): ReactElement => {
@@ -45,12 +47,7 @@ export const BwdCta = (): ReactElement => {
       <div className="bwd-wrap bwd-cta-inner">
         <h2 id="bwd-cta-title">{copy.headline}</h2>
         <p>{copy.body}</p>
-        <a
-          href={CONTACT.whatsappUrl}
-          className="btn solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={START_PROJECT_PATH} className="btn solid">
           {copy.button}
         </a>
         <nav className="bwd-cta-links" aria-label="Related">
@@ -58,6 +55,8 @@ export const BwdCta = (): ReactElement => {
           <a href={BWD_ASSETS.workPath}>{t.nav.work}</a>
           <a href={BWD_ASSETS.aboutPath}>{t.nav.about}</a>
           <a href={BWD_ASSETS.salonPath}>{t.nav.salonWebsiteDesign}</a>
+          <a href={BSW_PATH}>{t.nav.barbershopSoftware}</a>
+          <a href={BMS_PATH}>{t.nav.barbershopMarketingSeo}</a>
         </nav>
       </div>
     </section>

@@ -6,7 +6,7 @@ export const BWD_ASSETS = {
   afterImage: "/assets/images/after.jpeg",
   workPath: "/#work",
   homePath: "/",
-  aboutPath: "/#about",
+  aboutPath: "/about",
   contactPath: "#contact",
   salonPath: "/salon-website-design",
 } as const;

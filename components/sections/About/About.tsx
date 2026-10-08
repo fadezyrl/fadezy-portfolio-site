@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, type ReactElement } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ABOUT_IMAGE } from "@/data/about";
+import { ABOUT_IMAGE, ABOUT_PATH } from "@/data/about";
 import { useLocale } from "@/hooks/useLocale";
 
 export const About = (): ReactElement => {
@@ -13,9 +13,7 @@ export const About = (): ReactElement => {
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) {
-      return;
-    }
+    if (!section) return;
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -29,52 +27,42 @@ export const About = (): ReactElement => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      const spineRule = section.querySelector(".about-spine-rule");
-      const spineMeta = section.querySelector(".about-spine-meta");
-      const visualFrame = section.querySelector(".about-visual-frame");
-      const imageMeta = section.querySelector(".about-image-meta");
-      const issue = section.querySelector(".about-issue");
-      const lines = section.querySelectorAll(
-        ".about-headline-line, .about-headline-em",
-      );
+      const lines = section.querySelectorAll(".about-statement-line");
       const body = section.querySelector(".about-body");
       const cta = section.querySelector(".about-cta");
+      const visual = section.querySelector(".about-visual-frame");
+      const meta = section.querySelector(".about-image-meta");
+      const eyebrow = section.querySelector(".about-eyebrow");
 
-      gsap.set(spineRule, { scaleY: 0, transformOrigin: "top center" });
-      gsap.set(spineMeta, { opacity: 0 });
-      gsap.set(visualFrame, { clipPath: "inset(12% 8% 12% 8%)" });
-      gsap.set(imageMeta, { opacity: 0, y: 8 });
-      gsap.set(issue, { opacity: 0, y: 10 });
-      gsap.set(lines, { opacity: 0, y: 28 });
-      gsap.set(body, { opacity: 0, y: 16 });
+      gsap.set(eyebrow, { opacity: 0, y: 8 });
+      gsap.set(lines, { opacity: 0, y: 24 });
+      gsap.set(body, { opacity: 0, y: 14 });
       gsap.set(cta, { opacity: 0, y: 10 });
+      gsap.set(visual, { clipPath: "inset(12% 10% 12% 10%)" });
+      gsap.set(meta, { opacity: 0 });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 72%",
-          once: true,
-        },
-        defaults: { ease: "power3.out" },
-      });
-
-      tl.to(issue, { opacity: 1, y: 0, duration: 0.7 }, 0)
-        .to(spineRule, { scaleY: 1, duration: 1.05 }, 0.1)
-        .to(spineMeta, { opacity: 1, duration: 0.7 }, 0.4)
-        .to(visualFrame, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.25 }, 0.15)
-        .to(imageMeta, { opacity: 1, y: 0, duration: 0.65 }, 0.7)
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 72%",
+            once: true,
+          },
+          defaults: { ease: "power3.out" },
+        })
+        .to(eyebrow, { opacity: 1, y: 0, duration: 0.65 }, 0)
         .to(
           lines,
-          { opacity: 1, y: 0, duration: 0.85, stagger: 0.12 },
-          0.4,
+          { opacity: 1, y: 0, duration: 0.9, stagger: 0.1 },
+          0.15,
         )
-        .to(body, { opacity: 1, y: 0, duration: 0.8 }, 0.8)
-        .to(cta, { opacity: 1, y: 0, duration: 0.65 }, 1);
+        .to(visual, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3 }, 0.2)
+        .to(meta, { opacity: 1, duration: 0.6 }, 0.7)
+        .to(body, { opacity: 1, y: 0, duration: 0.8 }, 0.55)
+        .to(cta, { opacity: 1, y: 0, duration: 0.65 }, 0.8);
     }, section);
 
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -84,17 +72,15 @@ export const About = (): ReactElement => {
       ref={sectionRef}
       aria-labelledby="about-heading"
     >
-      <div className="wrap about-spread">
-        <header className="about-issue">
-          <span className="about-issue-id">{t.about.issueId}</span>
-          <span className="about-issue-rule" aria-hidden="true" />
-        </header>
-
+      <div className="about-layout wrap">
         <div className="about-copy">
-          <h2 id="about-heading" className="about-headline">
-            <span className="about-headline-line">{t.about.headlineLine1}</span>
-            <span className="about-headline-line">{t.about.headlineLine2}</span>
-            <span className="about-headline-em">{t.about.headlineEm}</span>
+          <span className="about-eyebrow">{t.about.eyebrow}</span>
+          <h2 id="about-heading" className="about-statement">
+            {t.about.statement.map((line) => (
+              <span className="about-statement-line" key={line}>
+                {line}
+              </span>
+            ))}
           </h2>
 
           <div className="about-body">
@@ -102,14 +88,9 @@ export const About = (): ReactElement => {
             <p>{t.about.p2}</p>
           </div>
 
-          <a href="#contact" className="btn-text about-cta">
-            {t.about.cta} <span className="arrow">→</span>
+          <a href={ABOUT_PATH} className="about-cta">
+            {t.about.cta} <span aria-hidden="true">→</span>
           </a>
-        </div>
-
-        <div className="about-spine" aria-hidden="true">
-          <span className="about-spine-rule" />
-          <span className="about-spine-meta">{t.about.spineMeta}</span>
         </div>
 
         <figure className="about-visual">
@@ -118,7 +99,7 @@ export const About = (): ReactElement => {
               src={ABOUT_IMAGE}
               alt={t.about.imageAlt}
               fill
-              sizes="(max-width: 880px) 92vw, 48vw"
+              sizes="(max-width: 880px) 92vw, 42vw"
               className="about-visual-img"
             />
           </div>

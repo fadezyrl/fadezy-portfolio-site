@@ -27,40 +27,34 @@ export const FadezyEffects = (): ReactElement | null => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      /* ——— Clients: soft settle into continuous marquee ——— */
       const clients = document.querySelector(".clients");
       if (clients) {
         gsap.fromTo(
           clients,
-          { opacity: 0 },
+          { opacity: 0, y: 12 },
           {
             opacity: 1,
-            duration: 1.1,
+            y: 0,
+            duration: 0.7,
             ease: EASE_SOFT,
-            scrollTrigger: { trigger: clients, start: "top 90%", once: true },
+            scrollTrigger: { trigger: clients, start: "top 92%", once: true },
           },
         );
       }
 
-      /* ——— Services: metadata → headline clip → row cascade ——— */
       const services = document.querySelector(".services");
       if (services) {
-        const eyebrow = services.querySelector(".services-head .eyebrow");
-        const headline = services.querySelector(".services-head h2");
-        const rows = gsap.utils.toArray<HTMLElement>(
-          services.querySelectorAll(".service-row"),
+        const eyebrow = services.querySelector(".services-eyebrow");
+        const count = services.querySelector(".services-count");
+        const headline = services.querySelector(".services-headline");
+        const entries = gsap.utils.toArray<HTMLElement>(
+          services.querySelectorAll(".service-entry"),
         );
 
-        gsap.set(eyebrow, { opacity: 0, y: 8 });
+        gsap.set([eyebrow, count], { opacity: 0, y: 8 });
         gsap.set(headline, { clipPath: "inset(100% 0 0 0)" });
-        rows.forEach((row) => {
-          gsap.set(row, { opacity: 0 });
-          gsap.set(row.querySelector(".service-num"), { opacity: 0, y: 10 });
-          gsap.set(row.querySelector(".service-title"), {
-            opacity: 0,
-            y: 16,
-          });
-          gsap.set(row.querySelector(".service-desc"), { opacity: 0, y: 12 });
+        entries.forEach((entry) => {
+          gsap.set(entry, { opacity: 0, y: 18 });
         });
 
         const servicesTl = gsap.timeline({
@@ -73,41 +67,27 @@ export const FadezyEffects = (): ReactElement | null => {
         });
 
         servicesTl
-          .to(eyebrow, { opacity: 1, y: 0, duration: 0.7 }, 0)
+          .to([eyebrow, count], { opacity: 1, y: 0, duration: 0.7 }, 0)
           .to(
             headline,
             { clipPath: "inset(0% 0 0 0)", duration: 1.15 },
-            0.15,
+            0.12,
           );
 
-        rows.forEach((row, i) => {
-          const at = 0.45 + i * 0.18;
-          servicesTl
-            .to(row, { opacity: 1, duration: 0.01 }, at)
-            .to(
-              row.querySelector(".service-num"),
-              { opacity: 1, y: 0, duration: 0.55 },
-              at,
-            )
-            .to(
-              row.querySelector(".service-title"),
-              { opacity: 1, y: 0, duration: 0.75 },
-              at + 0.08,
-            )
-            .to(
-              row.querySelector(".service-desc"),
-              { opacity: 1, y: 0, duration: 0.7 },
-              at + 0.16,
-            );
+        entries.forEach((entry, i) => {
+          servicesTl.to(
+            entry,
+            { opacity: 1, y: 0, duration: 0.75 },
+            0.4 + i * 0.1,
+          );
         });
       }
 
-      /* ——— Work: editorial head + per-project clip image ——— */
       const work = document.querySelector(".work");
       if (work) {
-        const eyebrow = work.querySelector(".work-head .eyebrow");
-        const headline = work.querySelector(".work-head h2");
-        const sub = work.querySelector(".work-head p");
+        const eyebrow = work.querySelector(".work-eyebrow");
+        const headline = work.querySelector(".work-headline");
+        const sub = work.querySelector(".work-sub");
         const projects = gsap.utils.toArray<HTMLElement>(
           work.querySelectorAll(".project"),
         );
@@ -135,12 +115,10 @@ export const FadezyEffects = (): ReactElement | null => {
         projects.forEach((project) => {
           const visual = project.querySelector(".project-visual");
           const img = project.querySelector(".project-visual-img");
-          const meta = project.querySelector(".project-meta");
-          const lower = project.querySelector(".project-lower");
+          const rail = project.querySelector(".project-rail");
+          const note = project.querySelector(".project-note");
 
-          gsap.set(project, { opacity: 1 });
-          gsap.set(meta, { opacity: 0, y: 14 });
-          gsap.set(lower, { opacity: 0, y: 16 });
+          gsap.set([rail, note], { opacity: 0, y: 14 });
           if (visual) {
             gsap.set(visual, { clipPath: "inset(10% 8% 10% 8%)" });
           }
@@ -157,14 +135,14 @@ export const FadezyEffects = (): ReactElement | null => {
               },
               defaults: { ease: EASE },
             })
+            .to(rail, { opacity: 1, y: 0, duration: 0.75 }, 0)
             .to(
               visual,
               { clipPath: "inset(0% 0% 0% 0%)", duration: 1.35 },
-              0,
+              0.1,
             )
-            .to(img, { scale: 1, duration: 1.6, clearProps: "scale" }, 0)
-            .to(meta, { opacity: 1, y: 0, duration: 0.8 }, 0.35)
-            .to(lower, { opacity: 1, y: 0, duration: 0.85 }, 0.55);
+            .to(img, { scale: 1, duration: 1.6, clearProps: "scale" }, 0.1)
+            .to(note, { opacity: 1, y: 0, duration: 0.8 }, 0.45);
 
           if (img) {
             gsap.to(img, {
@@ -181,20 +159,15 @@ export const FadezyEffects = (): ReactElement | null => {
         });
       }
 
-      /* ——— Testimonials: quiet quote unveil ——— */
       const testimonials = document.querySelector(".testimonials");
       if (testimonials) {
-        const eyebrow = testimonials.querySelector(".testi-head .eyebrow");
-        const headline = testimonials.querySelector(".testi-head h2");
-        const quote = testimonials.querySelector(".testi.is-primary .testi-quote");
-        const attrib = testimonials.querySelector(".testi.is-primary .attrib");
-        const nav = testimonials.querySelector(".testi-nav");
+        const eyebrow = testimonials.querySelector(".testi-eyebrow");
+        const quote = testimonials.querySelector(".testi-quote");
+        const foot = testimonials.querySelector(".testi-foot");
 
         gsap.set(eyebrow, { opacity: 0, y: 8 });
-        gsap.set(headline, { clipPath: "inset(100% 0 0 0)" });
-        gsap.set(quote, { clipPath: "inset(0 0 100% 0)", opacity: 1 });
-        gsap.set(attrib, { opacity: 0, y: 10 });
-        gsap.set(nav, { opacity: 0 });
+        gsap.set(quote, { opacity: 0, y: 16 });
+        gsap.set(foot, { opacity: 0, y: 10 });
 
         gsap
           .timeline({
@@ -206,34 +179,21 @@ export const FadezyEffects = (): ReactElement | null => {
             defaults: { ease: EASE },
           })
           .to(eyebrow, { opacity: 1, y: 0, duration: 0.65 }, 0)
-          .to(
-            headline,
-            { clipPath: "inset(0% 0 0 0)", duration: 1.1 },
-            0.12,
-          )
-          .to(
-            quote,
-            { clipPath: "inset(0% 0 0% 0)", duration: 1.2 },
-            0.35,
-          )
-          .to(attrib, { opacity: 1, y: 0, duration: 0.7 }, 0.75)
-          .to(nav, { opacity: 1, duration: 0.6 }, 1);
+          .to(quote, { opacity: 1, y: 0, duration: 1 }, 0.2)
+          .to(foot, { opacity: 1, y: 0, duration: 0.7 }, 0.55);
       }
 
-      /* ——— Final CTA: media drift + staged copy ——— */
       const finalCta = document.querySelector(".final-cta");
       if (finalCta) {
-        const media = finalCta.querySelector(".final-cta-media");
-        const video = finalCta.querySelector(".final-cta-video");
-        const h2 = finalCta.querySelector("h2");
-        const em = finalCta.querySelector("h2 em");
-        const sub = finalCta.querySelector(".sub");
-        const ctas = finalCta.querySelector(".ctas");
-        const servicesLine = finalCta.querySelector(".services-line");
+        const meta = finalCta.querySelector(".final-cta-meta");
+        const lines = gsap.utils.toArray<HTMLElement>(
+          finalCta.querySelectorAll(".final-cta-line"),
+        );
+        const action = finalCta.querySelector(".final-cta-action");
 
-        gsap.set([h2, sub, ctas, servicesLine], { opacity: 0, y: 18 });
-        if (em) gsap.set(em, { opacity: 0.35 });
-        if (video) gsap.set(video, { scale: 1.08 });
+        gsap.set(meta, { opacity: 0, y: 8 });
+        gsap.set(lines, { opacity: 0, y: 22 });
+        gsap.set(action, { opacity: 0, y: 12 });
 
         gsap
           .timeline({
@@ -244,28 +204,14 @@ export const FadezyEffects = (): ReactElement | null => {
             },
             defaults: { ease: EASE },
           })
-          .to(video, { scale: 1, duration: 2.2, ease: EASE_SOFT }, 0)
-          .to(h2, { opacity: 1, y: 0, duration: 1 }, 0.2)
-          .to(em, { opacity: 1, duration: 0.9 }, 0.45)
-          .to(sub, { opacity: 1, y: 0, duration: 0.8 }, 0.55)
-          .to(ctas, { opacity: 1, y: 0, duration: 0.7 }, 0.75)
-          .to(servicesLine, { opacity: 1, y: 0, duration: 0.65 }, 0.95);
-
-        if (media) {
-          gsap.to(media, {
-            yPercent: 6,
-            ease: "none",
-            scrollTrigger: {
-              trigger: finalCta,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          });
-        }
+          .to(meta, { opacity: 1, y: 0, duration: 0.65 }, 0)
+          .to(
+            lines,
+            { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 },
+            0.15,
+          )
+          .to(action, { opacity: 1, y: 0, duration: 0.7 }, 0.65);
       }
-
-      /* Hero entrance stays CSS-owned; scroll parallax reserved for work + CTA */
     });
 
     return () => {

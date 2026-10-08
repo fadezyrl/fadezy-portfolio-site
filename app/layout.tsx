@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import {
+  Bodoni_Moda,
+  Fraunces,
+  Instrument_Sans,
+  Inter,
+  JetBrains_Mono,
+} from "next/font/google";
 import { LocaleProvider } from "@/context/LocaleProvider";
 import {
   OG_IMAGE_ALT,
@@ -22,8 +28,21 @@ const fraunces = Fraunces({
   weight: ["300", "400", "500", "600"],
 });
 
+const bodoniModa = Bodoni_Moda({
+  variable: "--font-bodoni",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
+});
+
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -97,7 +116,7 @@ const RootLayout = ({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${fraunces.variable} ${bodoniModa.variable} ${inter.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <Script

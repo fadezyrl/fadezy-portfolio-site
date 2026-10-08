@@ -1,79 +1,57 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ReactElement } from "react";
+import { useCallback, useState, type ReactElement } from "react";
 import { useLocale } from "@/hooks/useLocale";
 
 export const Testimonials = (): ReactElement => {
   const { t } = useLocale();
-  const trackRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
   const count = t.testimonials.items.length;
+  const item = t.testimonials.items[current];
 
   const goTo = useCallback(
     (i: number): void => {
-      const next = Math.max(0, Math.min(count - 1, i));
+      const next = ((i % count) + count) % count;
       setCurrent(next);
-      const track = trackRef.current;
-      if (track) {
-        track.scrollTo({ left: track.clientWidth * next, behavior: "smooth" });
-      }
     },
     [count],
   );
 
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const onScroll = (): void => {
-      const idx = Math.round(track.scrollLeft / track.clientWidth);
-      setCurrent(idx);
-    };
-
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => track.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <section className="testimonials" id="testimonials">
-      <div className="wrap">
-        <div className="testi-head">
-          <span className="eyebrow">{t.testimonials.eyebrow}</span>
-          <h2>{t.testimonials.headline}</h2>
-        </div>
-        <div className="testi-track" ref={trackRef}>
-          {t.testimonials.items.map((item, i) => (
-            <div className={`testi${i === 0 ? " is-primary" : ""}`} key={i}>
-              <blockquote className="testi-quote">{item.quote}</blockquote>
-              <div className="attrib">
-                <span>{item.name}</span>
-                <span>{item.meta}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="testi-nav">
-          <div
-            className="testi-dots"
-            role="tablist"
-            aria-label={t.testimonials.eyebrow}
-          >
-            {t.testimonials.items.map((_, i) => (
-              <button
-                type="button"
-                key={i}
-                className={i === current ? "active" : undefined}
-                aria-label={`Go to testimonial ${i + 1}`}
-                aria-selected={i === current}
-                onClick={() => goTo(i)}
-              />
-            ))}
+    <section className="testimonials" id="testimonials" aria-live="polite">
+      <div className="wrap testi-frame">
+        <span className="testi-eyebrow">{t.testimonials.eyebrow}</span>
+
+        <blockquote className="testi-quote" key={current}>
+          {item.quote}
+        </blockquote>
+
+        <div className="testi-foot">
+          <div className="testi-attrib">
+            <span className="testi-name">{item.name}</span>
+            <span className="testi-meta">{item.meta}</span>
           </div>
-          <div className="testi-arrows">
-            <button type="button" onClick={() => goTo(current - 1)}>
+
+          <div className="testi-controls">
+            <button
+              type="button"
+              className="testi-control"
+              onClick={() => goTo(current - 1)}
+              aria-label={t.testimonials.prev}
+            >
               {t.testimonials.prev}
             </button>
-            <button type="button" onClick={() => goTo(current + 1)}>
+            <span className="testi-count" aria-hidden="true">
+              {String(current + 1).padStart(2, "0")}
+              <span> / </span>
+              {String(count).padStart(2, "0")}
+            </span>
+            <button
+              type="button"
+              className="testi-control"
+              onClick={() => goTo(current + 1)}
+              aria-label={t.testimonials.next}
+            >
               {t.testimonials.next}
             </button>
           </div>

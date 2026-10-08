@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, type ReactElement } from "react";
-import { CONTACT } from "@/data/contact";
 import { BWD_ASSETS } from "@/data/barbershop-web-design";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const BwdHero = (): ReactElement => {
@@ -41,12 +41,7 @@ export const BwdHero = (): ReactElement => {
             <a href="#work" className="btn-text">
               {copy.ctaPrimary}
             </a>
-            <a
-              href={CONTACT.whatsappUrl}
-              className="btn solid"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={START_PROJECT_PATH} className="btn solid">
               {copy.ctaSecondary}
             </a>
           </div>

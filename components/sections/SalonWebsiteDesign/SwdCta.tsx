@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef, type ReactElement } from "react";
-import { CONTACT } from "@/data/contact";
 import { CTA_BACKGROUND_VIDEO } from "@/data/final-cta";
+import { SMS_PATH } from "@/data/salon-marketing-seo";
+import { SSW_PATH } from "@/data/salon-software";
 import { SWD_ASSETS } from "@/data/salon-website-design";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const SwdCta = (): ReactElement => {
@@ -45,12 +47,7 @@ export const SwdCta = (): ReactElement => {
       <div className="swd-wrap swd-cta-inner">
         <h2 id="swd-cta-title">{copy.headline}</h2>
         <p>{copy.body}</p>
-        <a
-          href={CONTACT.whatsappUrl}
-          className="btn solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={START_PROJECT_PATH} className="btn solid">
           {copy.button}
         </a>
         <nav className="swd-cta-links" aria-label="Related">
@@ -58,6 +55,8 @@ export const SwdCta = (): ReactElement => {
           <a href={SWD_ASSETS.workPath}>{t.nav.work}</a>
           <a href={SWD_ASSETS.aboutPath}>{t.nav.about}</a>
           <a href={SWD_ASSETS.barbershopPath}>{t.nav.barbershopWebDesign}</a>
+          <a href={SSW_PATH}>{t.nav.salonSoftware}</a>
+          <a href={SMS_PATH}>{t.nav.salonMarketingSeo}</a>
         </nav>
       </div>
     </section>

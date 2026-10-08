@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import type { ReactElement } from "react";
+import { Footer } from "@/components/Footer/Footer";
+import { HeaderNav } from "@/components/HeaderNav/HeaderNav";
 import { SwdCta } from "@/components/sections/SalonWebsiteDesign/SwdCta";
 import { SwdEffects } from "@/components/sections/SalonWebsiteDesign/SwdEffects";
 import { SwdExperience } from "@/components/sections/SalonWebsiteDesign/SwdExperience";
 import { SwdFaq } from "@/components/sections/SalonWebsiteDesign/SwdFaq";
-import { SwdFooter } from "@/components/sections/SalonWebsiteDesign/SwdFooter";
 import { SwdHero } from "@/components/sections/SalonWebsiteDesign/SwdHero";
-import { SwdNav } from "@/components/sections/SalonWebsiteDesign/SwdNav";
 import { SwdProcess } from "@/components/sections/SalonWebsiteDesign/SwdProcess";
 import { SwdStatement } from "@/components/sections/SalonWebsiteDesign/SwdStatement";
 import { SwdWork } from "@/components/sections/SalonWebsiteDesign/SwdWork";
@@ -121,7 +121,7 @@ const SalonWebsiteDesignPage = (): ReactElement => {
         }}
       />
       <div className="swd-page">
-        <SwdNav />
+        <HeaderNav />
         <main aria-label={pageCopy.navAria}>
           <SwdHero />
           <SwdStatement />
@@ -131,7 +131,7 @@ const SalonWebsiteDesignPage = (): ReactElement => {
           <SwdFaq />
           <SwdCta />
         </main>
-        <SwdFooter />
+        <Footer />
         <SwdEffects />
       </div>
     </>

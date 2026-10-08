@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, type ReactElement } from "react";
-import { CONTACT } from "@/data/contact";
 import { CTA_BACKGROUND_VIDEO } from "@/data/final-cta";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const FinalCta = (): ReactElement => {
@@ -40,23 +40,20 @@ export const FinalCta = (): ReactElement => {
         <div className="final-cta-overlay" />
       </div>
 
-      <div className="wrap final-cta-content">
-        <h2>
-          {t.finalCta.headlineBefore}
-          <em>{t.finalCta.headlineEm}</em>
+      <div className="wrap final-cta-frame">
+        <p className="final-cta-meta">{t.finalCta.meta}</p>
+
+        <h2 className="final-cta-headline">
+          {t.finalCta.lines.map((line) => (
+            <span className="final-cta-line" key={line}>
+              {line}
+            </span>
+          ))}
         </h2>
-        <p className="sub">{t.finalCta.sub}</p>
-        <div className="ctas">
-          <a
-            href={CONTACT.whatsappUrl}
-            className="btn solid"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t.finalCta.ctaPrimary}
-          </a>
-        </div>
-        <div className="services-line">{t.finalCta.servicesLine}</div>
+
+        <a href={START_PROJECT_PATH} className="final-cta-action">
+          {t.finalCta.ctaPrimary}
+        </a>
       </div>
     </section>
   );

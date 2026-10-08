@@ -10,89 +10,86 @@ export const Work = (): ReactElement => {
 
   return (
     <section className="work" id="work">
-      <div className="wrap">
-        <div className="work-head">
-          <span className="eyebrow">{t.work.eyebrow}</span>
-          <h2>{t.work.headline}</h2>
-          <p>{t.work.sub}</p>
-        </div>
+      <div className="work-intro wrap">
+        <span className="work-eyebrow">{t.work.eyebrow}</span>
+        <h2 className="work-headline">{t.work.headline}</h2>
+        <p className="work-sub">{t.work.sub}</p>
+      </div>
 
-        {t.work.projects.map((project) => {
-          const visuals = WORK_VISUALS[project.id];
-          const href = project.url;
+      {t.work.projects.map((project, i) => {
+        const visuals = WORK_VISUALS[project.id];
+        const href = project.url;
+        const isAlt = i % 2 === 1;
 
-          return (
-            <article className="project" key={project.id}>
-              <div className="project-meta">
-                <div className="pm-left">
-                  <h3 className="project-title">{project.title}</h3>
-                  <span className="project-loc">{project.location}</span>
-                </div>
-                {href ? (
+        return (
+          <article
+            className={`project${isAlt ? " is-alt" : ""}`}
+            key={project.id}
+          >
+            <div className="project-rail wrap">
+              <span className="project-index">{project.index}</span>
+              <div className="project-identity">
+                <h3 className="project-title">{project.title}</h3>
+                <span className="project-loc">{project.location}</span>
+              </div>
+              {href ? (
+                <a
+                  href={href}
+                  className="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t.work.viewProject} <span aria-hidden="true">→</span>
+                </a>
+              ) : null}
+            </div>
+
+            <div className={`project-visual ${project.visualClass}`}>
+              {visuals?.hero ? (
+                href ? (
                   <a
                     href={href}
-                    className="btn-text"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="project-visual-link"
+                    aria-label={`${t.work.viewProject}: ${project.title}`}
                   >
-                    {t.work.viewProject} <span className="arrow">→</span>
-                  </a>
-                ) : (
-                  <span className="btn-text">
-                    {t.work.viewProject} <span className="arrow">→</span>
-                  </span>
-                )}
-              </div>
-              <div className={`project-visual ${project.visualClass}`}>
-                {visuals?.hero ? (
-                  href ? (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-visual-link"
-                      aria-label={`${t.work.viewProject}: ${project.title}`}
-                    >
-                      <Image
-                        src={visuals.hero}
-                        alt={project.heroAlt}
-                        fill
-                        sizes="(max-width: 1440px) 88vw, 1440px"
-                        className="project-visual-img"
-                        priority={project.id === "success-barbershop"}
-                      />
-                    </a>
-                  ) : (
                     <Image
                       src={visuals.hero}
                       alt={project.heroAlt}
                       fill
-                      sizes="(max-width: 1440px) 88vw, 1440px"
+                      sizes="100vw"
                       className="project-visual-img"
+                      priority={project.id === "success-barbershop"}
                     />
-                  )
+                  </a>
                 ) : (
-                  <div className="frame-label">
-                    {project.frameLabel}
-                    <br />
-                    <span style={{ opacity: 0.6 }}>{t.work.placeholderHint}</span>
-                  </div>
-                )}
-              </div>
-              <div className="project-lower">
-                <div className="project-services">
-                  {project.services.map((service) => (
-                    <span key={service}>{service}</span>
-                  ))}
+                  <Image
+                    src={visuals.hero}
+                    alt={project.heroAlt}
+                    fill
+                    sizes="100vw"
+                    className="project-visual-img"
+                  />
+                )
+              ) : (
+                <div className="frame-label">
+                  {project.frameLabel}
+                  <br />
+                  <span>{t.work.placeholderHint}</span>
                 </div>
-                <div>
-                  <p className="project-desc">{project.desc}</p>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
+              )}
+            </div>
+
+            <div className="project-note wrap">
+              <p className="project-services">
+                {project.services.join(" / ")}
+              </p>
+              <p className="project-desc">{project.desc}</p>
+            </div>
+          </article>
+        );
+      })}
     </section>
   );
 };

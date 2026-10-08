@@ -2,9 +2,15 @@
 
 import { usePathname } from "next/navigation";
 import type { ReactElement } from "react";
+import { ABOUT_PATH } from "@/data/about";
+import { BMS_PATH } from "@/data/barbershop-marketing-seo";
+import { BSW_PATH } from "@/data/barbershop-software";
 import { BWD_PATH } from "@/data/barbershop-web-design";
 import { CONTACT } from "@/data/contact";
+import { SMS_PATH } from "@/data/salon-marketing-seo";
+import { SSW_PATH } from "@/data/salon-software";
 import { SWD_PATH } from "@/data/salon-website-design";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 const LOGO_SRC = "/assets/logo/fadezy-logo.png";
@@ -13,13 +19,12 @@ export const Footer = (): ReactElement => {
   const { t } = useLocale();
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isServicePage = pathname === BWD_PATH || pathname === SWD_PATH;
 
   const homeHref = isHome ? "#" : "/";
   const workHref = isHome ? "#work" : "/#work";
   const servicesHref = isHome ? "#services" : "/#services";
-  const aboutHref = isHome ? "#about" : "/#about";
-  const contactHref = isServicePage ? "#contact" : isHome ? "#contact" : "/#contact";
+  const aboutHref = ABOUT_PATH;
+  const contactHref = START_PROJECT_PATH;
 
   return (
     <footer className="site-footer">
@@ -43,6 +48,10 @@ export const Footer = (): ReactElement => {
               <a href={servicesHref}>{t.footer.services}</a>
               <a href={BWD_PATH}>{t.footer.barbershopWebDesign}</a>
               <a href={SWD_PATH}>{t.footer.salonWebsiteDesign}</a>
+              <a href={BSW_PATH}>{t.footer.barbershopSoftware}</a>
+              <a href={SSW_PATH}>{t.footer.salonSoftware}</a>
+              <a href={BMS_PATH}>{t.footer.barbershopMarketingSeo}</a>
+              <a href={SMS_PATH}>{t.footer.salonMarketingSeo}</a>
               <a href={aboutHref}>{t.footer.about}</a>
               <a href={contactHref}>{t.footer.contact}</a>
             </div>

@@ -1,7 +1,25 @@
+import { aboutPage, type AboutPageDict } from "./about-page";
+import {
+  barbershopMarketingSeo,
+  type BarbershopMarketingSeoDict,
+} from "./barbershop-marketing-seo";
+import { startProject, type StartProjectDict } from "./start-project";
+import {
+  barbershopSoftware,
+  type BarbershopSoftwareDict,
+} from "./barbershop-software";
 import {
   barbershopWebDesign,
   type BarbershopWebDesignDict,
 } from "./barbershop-web-design";
+import {
+  salonMarketingSeo,
+  type SalonMarketingSeoDict,
+} from "./salon-marketing-seo";
+import {
+  salonSoftware,
+  type SalonSoftwareDict,
+} from "./salon-software";
 import {
   salonWebsiteDesign,
   type SalonWebsiteDesignDict,
@@ -15,18 +33,28 @@ export type Dictionary = {
     work: string;
     services: string;
     about: string;
+    contact: string;
     startProject: string;
     menu: string;
     close: string;
     worldwide: string;
     barbershopWebDesign: string;
     salonWebsiteDesign: string;
+    barbershopSoftware: string;
+    salonSoftware: string;
+    barbershopMarketingSeo: string;
+    salonMarketingSeo: string;
+    barbershops: string;
+    beautySalons: string;
+    servicesMenu: {
+      barbershops: string;
+      salons: string;
+    };
   };
   hero: {
     greeting: string;
     greetingEm: string;
     statement: string[];
-    statementOverlap: string;
     sub: string;
     ctaProject: string;
     metaSecondary: string;
@@ -35,8 +63,10 @@ export type Dictionary = {
   };
   clients: {
     ariaLabel: string;
+    label: string;
   };
   services: {
+    eyebrow: string;
     headline: string;
     count: string;
     items: Array<{ num: string; title: string; desc: string }>;
@@ -47,8 +77,10 @@ export type Dictionary = {
     sub: string;
     viewProject: string;
     placeholderHint: string;
+    indexLabel: string;
     projects: Array<{
       id: string;
+      index: string;
       title: string;
       location: string;
       visualClass: string;
@@ -62,29 +94,23 @@ export type Dictionary = {
   };
   testimonials: {
     eyebrow: string;
-    headline: string;
     prev: string;
     next: string;
     items: Array<{ quote: string; name: string; meta: string }>;
   };
   about: {
-    issueId: string;
-    spineMeta: string;
-    imageMeta: string;
-    headlineLine1: string;
-    headlineLine2: string;
-    headlineEm: string;
+    eyebrow: string;
+    statement: string[];
     p1: string;
     p2: string;
     cta: string;
     imageAlt: string;
+    imageMeta: string;
   };
   finalCta: {
-    headlineBefore: string;
-    headlineEm: string;
-    sub: string;
+    lines: string[];
     ctaPrimary: string;
-    servicesLine: string;
+    meta: string;
   };
   footer: {
     tagline: string;
@@ -94,6 +120,10 @@ export type Dictionary = {
     contact: string;
     barbershopWebDesign: string;
     salonWebsiteDesign: string;
+    barbershopSoftware: string;
+    salonSoftware: string;
+    barbershopMarketingSeo: string;
+    salonMarketingSeo: string;
     instagram: string;
     whatsapp: string;
     linkedin: string;
@@ -103,6 +133,12 @@ export type Dictionary = {
   };
   barbershopWebDesign: BarbershopWebDesignDict;
   salonWebsiteDesign: SalonWebsiteDesignDict;
+  barbershopSoftware: BarbershopSoftwareDict;
+  salonSoftware: SalonSoftwareDict;
+  barbershopMarketingSeo: BarbershopMarketingSeoDict;
+  salonMarketingSeo: SalonMarketingSeoDict;
+  aboutPage: AboutPageDict;
+  startProject: StartProjectDict;
 };
 
 export const en: Dictionary = {
@@ -111,31 +147,48 @@ export const en: Dictionary = {
     work: "Work",
     services: "Services",
     about: "About",
-    startProject: "Start a Project",
+    contact: "Contact",
+    startProject: "Start a project",
     menu: "Menu",
     close: "Close",
     worldwide: "Worldwide / Remote-First",
     barbershopWebDesign: "Barbershop Web Design",
     salonWebsiteDesign: "Salon Website Design",
+    barbershopSoftware: "Barbershop Software",
+    salonSoftware: "Salon Software",
+    barbershopMarketingSeo: "Barbershop Marketing & SEO",
+    salonMarketingSeo: "Salon Marketing & SEO",
+    barbershops: "Barbershops",
+    beautySalons: "Beauty salons",
+    servicesMenu: {
+      barbershops: "Barbershops",
+      salons: "Salons",
+    },
   },
   hero: {
     greeting: "Welcome to ",
     greetingEm: "Fadezy.",
-    statement: ["Premium", "websites for"],
-    statementOverlap: "barbershops & beauty salons.",
+    statement: [
+      "Premium",
+      "websites for",
+      "barbershops &",
+      "beauty salons.",
+    ],
     sub: "Websites, brand and growth for shops that already take their craft seriously.",
-    ctaProject: "Start a project →",
-    metaSecondary: "The digital studio",
+    ctaProject: "Start a project",
+    metaSecondary: "Fadezy  /  Digital House",
     edgeMeta: "Web / Brand / Content / Growth",
     imageAlt:
-      "Fadezy studio still — a barber at work, the world we build for",
+      "Luxury beauty salon — a stylist shaping hair in soft natural light",
   },
   clients: {
     ariaLabel: "Selected work",
+    label: "Selected Work",
   },
   services: {
-    headline: "Website, brand & growth for barbershops and beauty salons.",
-    count: "01 — 05",
+    eyebrow: "Expertise",
+    headline: "Websites, systems & growth.",
+    count: "01 — 06",
     items: [
       {
         num: "01",
@@ -149,30 +202,37 @@ export const en: Dictionary = {
       },
       {
         num: "03",
-        title: "Brand identity",
-        desc: "The same feeling from Instagram to the site to the chair.",
+        title: "Barbershop software",
+        desc: "Digital systems for bookings, clients and operations — designed around how modern barbershops actually work.",
       },
       {
         num: "04",
-        title: "Content",
-        desc: "Photos and stories that look like your work. Not stock.",
+        title: "Salon software",
+        desc: "Salon management and booking systems designed around stylists, services and the client experience.",
       },
       {
         num: "05",
-        title: "Growth & local visibility",
-        desc: "Show up when someone nearby searches for a cut, a color, a chair.",
+        title: "Barbershop marketing & SEO",
+        desc: "Local search, content and digital visibility so the right people discover your shop and book.",
+      },
+      {
+        num: "06",
+        title: "Salon marketing & SEO",
+        desc: "Search, content and digital growth that help salons get discovered, trusted and chosen.",
       },
     ],
   },
   work: {
-    eyebrow: "Selected Work",
-    headline: "Barbershop & beauty salon websites, built around the business.",
-    sub: "Two real studios. No mockups.",
-    viewProject: "View Project",
+    eyebrow: "Selected work",
+    headline: "Studios, not templates.",
+    sub: "Two real businesses. Built as campaigns.",
+    viewProject: "View project",
     placeholderHint: "(replace with real screenshot)",
+    indexLabel: "Project",
     projects: [
       {
         id: "success-barbershop",
+        index: "01",
         title: "Success Barbershop",
         location: "Dubai, UAE",
         visualClass: "sb",
@@ -180,12 +240,13 @@ export const en: Dictionary = {
         heroAlt: "Success Barbershop website design homepage in Dubai",
         fullPageAlt:
           "Full Success Barbershop website design homepage in Dubai",
-        services: ["Barbershop Website Design", "Development", "Brand"],
+        services: ["Barbershop website design", "Development", "Brand"],
         desc: "A great barbershop shouldn’t look average online. For Success Barbershop, we built a premium digital presence that reflects the quality of their work and gives new clients a reason to book.",
         url: "https://www.successbarbershop.com/",
       },
       {
         id: "mane-rumor",
+        index: "02",
         title: "Mane Rumor",
         location: "Austin, Texas",
         visualClass: "mr",
@@ -193,7 +254,7 @@ export const en: Dictionary = {
         heroAlt: "Mane Rumor beauty salon website design homepage in Austin",
         fullPageAlt:
           "Full Mane Rumor beauty salon website design homepage in Austin",
-        services: ["Beauty Salon Website Design", "Development", "Design System"],
+        services: ["Salon website design", "Development", "Design system"],
         desc: "A one-woman hair studio, built as a custom system — locked palette, three-font hierarchy, and a stitched motif through every scroll.",
         url: "https://mane-rumor.vercel.app/",
       },
@@ -201,65 +262,72 @@ export const en: Dictionary = {
   },
   testimonials: {
     eyebrow: "From the chair",
-    headline: "What barbershop and beauty salon owners say about working with Fadezy.",
-    prev: "← Prev",
-    next: "Next →",
+    prev: "Prev",
+    next: "Next",
     items: [
       {
         quote:
-          '"Fadezy did an amazing job with our website. They understood our brand, were easy to work with, and brought everything together in a way that feels premium and professional. Really happy with the final result."',
-        name: "— Jawani",
+          "Fadezy did an amazing job with our website. They understood our brand, were easy to work with, and brought everything together in a way that feels premium and professional.",
+        name: "Jawani",
         meta: "Success Barbershop",
       },
       {
         quote:
-          '"It looks great! I loved the verbiage and everything. I’m really happy with how it all came together."',
-        name: "— Mane Rumor",
-        meta: "Mane Rumor · Austin, Texas",
+          "It looks great. I loved the verbiage and everything. I’m really happy with how it all came together.",
+        name: "Mane Rumor",
+        meta: "Austin, Texas",
       },
       {
         quote:
-          '"Absolutely love my website! Fadezy understood my brand so well and made everything feel so much more professional while still feeling like me. The whole process was so easy and I’m obsessed with how it turned out!"',
-        name: "— Kelsey",
+          "Absolutely love my website. Fadezy understood my brand so well and made everything feel so much more professional while still feeling like me.",
+        name: "Kelsey",
         meta: "Khill Beauty",
       },
       {
         quote:
-          '"Fadezy really captured the vision I had for Vegan & Boujee. I loved seeing my brand brought to life in a completely new way, and they were so open to my feedback throughout the process."',
-        name: "— Chantel Justene",
+          "Fadezy really captured the vision I had for Vegan & Boujee. I loved seeing my brand brought to life in a completely new way.",
+        name: "Chantel Justene",
         meta: "Vegan & Boujee",
       },
     ],
   },
   about: {
-    issueId: "Why Fadezy",
-    spineMeta: "Barbers / Beauty / Grooming",
-    imageMeta: "Fadezy / Field Notes",
-    headlineLine1: "We only work",
-    headlineLine2: "with this industry.",
-    headlineEm: "That's the point.",
-    p1: "If you care about the cut, the space, and the person in the chair, your site shouldn't look like everyone else's.",
-    p2: "Fadezy is a remote web design studio for barbershops, beauty salons and grooming brands — anywhere the craft is taken seriously.",
-    cta: "Tell us about your shop",
+    eyebrow: "About Fadezy",
+    statement: [
+      "Fadezy is the digital partner",
+      "built exclusively for",
+      "barbershops & beauty salons.",
+    ],
+    p1: "We build premium websites, shape digital brands, create content and help modern barbershops and beauty salons get discovered, trusted and booked.",
+    p2: "If you care about the cut, the space, and the person in the chair, your digital presence should feel just as considered.",
+    cta: "Explore Fadezy",
     imageAlt:
-      "Fadezy mood board featuring barbershop and beauty salon interiors, grooming portraits, typography and material samples",
+      "Editorial study of craft — barbershop and beauty salon atmosphere",
+    imageMeta: "Fadezy / Field notes",
   },
   finalCta: {
-    headlineBefore: "Your shop deserves to be ",
-    headlineEm: "remembered.",
-    sub: "Tell us about your barbershop or beauty salon. We'll take care of the rest.",
+    lines: [
+      "Your business",
+      "deserves a digital",
+      "presence that feels",
+      "as good as the work.",
+    ],
     ctaPrimary: "Start a project →",
-    servicesLine: "Website Design / Brand / Content / Growth",
+    meta: "Website / Brand / Content / Growth",
   },
   footer: {
     tagline:
-      "A digital studio for barbershops, beauty salons and grooming brands.",
+      "The digital partner built exclusively for barbershops and beauty salons.",
     work: "Work",
     services: "Services",
     about: "About",
     contact: "Contact",
     barbershopWebDesign: "Barbershop Web Design",
     salonWebsiteDesign: "Salon Website Design",
+    barbershopSoftware: "Barbershop Software",
+    salonSoftware: "Salon Software",
+    barbershopMarketingSeo: "Barbershop Marketing & SEO",
+    salonMarketingSeo: "Salon Marketing & SEO",
     instagram: "Instagram",
     whatsapp: "WhatsApp",
     linkedin: "LinkedIn",
@@ -269,4 +337,10 @@ export const en: Dictionary = {
   },
   barbershopWebDesign,
   salonWebsiteDesign,
+  barbershopSoftware,
+  salonSoftware,
+  barbershopMarketingSeo,
+  salonMarketingSeo,
+  aboutPage,
+  startProject,
 };

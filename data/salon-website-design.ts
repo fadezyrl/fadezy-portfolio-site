@@ -6,7 +6,7 @@ export const SWD_ASSETS = {
   maneFull: "/assets/images/full-page-mane-rumor.png",
   workPath: "/#work",
   homePath: "/",
-  aboutPath: "/#about",
+  aboutPath: "/about",
   contactPath: "#contact",
   barbershopPath: "/barbershop-web-design",
 } as const;

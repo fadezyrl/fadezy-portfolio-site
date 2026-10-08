@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, type ReactElement } from "react";
-import { CONTACT } from "@/data/contact";
 import { HERO_VIDEO, HERO_VIDEO_POSTER } from "@/data/hero";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const Hero = (): ReactElement => {
@@ -38,56 +38,52 @@ export const Hero = (): ReactElement => {
     <section className="hero" aria-label="Welcome">
       <div className="hero-bg" aria-hidden="true" />
 
-      <span className="hero-meta hero-meta-secondary" aria-hidden="true">
+      <p className="hero-meta" aria-hidden="true">
         {t.hero.metaSecondary}
-      </span>
+      </p>
+
       <span className="hero-edge-meta" aria-hidden="true">
         {t.hero.edgeMeta}
       </span>
 
-      <div className="hero-grid">
-        <div className="hero-copy">
-          <h1 className="hero-statement">
-            {t.hero.statement.map((line) => (
-              <span className="hero-statement-line" key={line}>
-                {line}
-              </span>
-            ))}
-            <span className="hero-statement-line is-overlap">
-              {t.hero.statementOverlap}
-            </span>
-          </h1>
+      <figure className="hero-visual">
+        <video
+          ref={videoRef}
+          className="hero-visual-img hero-visual-video"
+          src={HERO_VIDEO}
+          poster={HERO_VIDEO_POSTER}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label={t.hero.imageAlt}
+        />
+        <div className="hero-visual-veil" aria-hidden="true" />
+      </figure>
 
-          <p className="hero-sub">{t.hero.sub}</p>
-
-          <div className="hero-ctas">
-            <a
-              href={CONTACT.whatsappUrl}
-              className="btn solid"
-              target="_blank"
-              rel="noopener noreferrer"
+      <div className="hero-content">
+        <h1 className="hero-statement">
+          {t.hero.statement.map((line, index) => (
+            <span
+              className={`hero-statement-line${index >= 2 ? " is-overlap" : ""}`}
+              key={line}
             >
-              {t.hero.ctaProject}
-            </a>
-          </div>
-        </div>
+              <span className="hero-statement-inner">{line}</span>
+            </span>
+          ))}
+        </h1>
+      </div>
 
-        <div className="hero-stage">
-          <figure className="hero-portrait">
-            <video
-              ref={videoRef}
-              className="hero-portrait-img hero-portrait-video"
-              src={HERO_VIDEO}
-              poster={HERO_VIDEO_POSTER}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label={t.hero.imageAlt}
-            />
-          </figure>
-        </div>
+      <div className="hero-support">
+        <p className="hero-sub">{t.hero.sub}</p>
+
+        <a href={START_PROJECT_PATH} className="hero-cta">
+          <span className="hero-cta-label">{t.hero.ctaProject}</span>
+          <span className="hero-cta-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
       </div>
     </section>
   );
