@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   useEffect,
@@ -33,7 +34,6 @@ const SERVICE_PATHS = [
 export const HeaderNav = (): ReactElement => {
   const { t } = useLocale();
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const { scrolled, hidden } = useNavScrolled();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -118,7 +118,6 @@ export const HeaderNav = (): ReactElement => {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
-  const homeHref = isHome ? "#" : "/";
   const aboutHref = ABOUT_PATH;
   const projectHref = START_PROJECT_PATH;
   const isAboutPage = pathname === ABOUT_PATH;
@@ -143,7 +142,7 @@ export const HeaderNav = (): ReactElement => {
       <header
         className={`nav${scrolled ? " is-scrolled" : ""}${hidden && !menuOpen && !servicesOpen ? " is-hidden" : ""}${menuOpen ? " is-menu-open" : ""}${servicesOpen ? " is-services-open" : ""}`}
       >
-        <a href={homeHref} className="mark" aria-label={t.brand}>
+        <Link href="/" className="mark" aria-label={t.brand}>
           <img
             src={LOGO_SRC}
             alt={t.brand}
@@ -151,7 +150,7 @@ export const HeaderNav = (): ReactElement => {
             width={160}
             height={40}
           />
-        </a>
+        </Link>
 
         <nav className="links" aria-label="Primary">
           <div
@@ -187,7 +186,7 @@ export const HeaderNav = (): ReactElement => {
                   <ul className="nav-services-list">
                     {barbershopServices.map((item) => (
                       <li key={item.href}>
-                        <a
+                        <Link
                           href={item.href}
                           className={`nav-services-link${pathname === item.href ? " is-active" : ""}`}
                           aria-current={
@@ -196,7 +195,7 @@ export const HeaderNav = (): ReactElement => {
                         >
                           <span className="nav-services-num">{item.num}</span>
                           <span className="nav-services-name">{item.label}</span>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -207,7 +206,7 @@ export const HeaderNav = (): ReactElement => {
                   <ul className="nav-services-list">
                     {salonServices.map((item) => (
                       <li key={item.href}>
-                        <a
+                        <Link
                           href={item.href}
                           className={`nav-services-link${pathname === item.href ? " is-active" : ""}`}
                           aria-current={
@@ -216,7 +215,7 @@ export const HeaderNav = (): ReactElement => {
                         >
                           <span className="nav-services-num">{item.num}</span>
                           <span className="nav-services-name">{item.label}</span>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -225,15 +224,15 @@ export const HeaderNav = (): ReactElement => {
             </div>
           </div>
 
-          <a
+          <Link
             href={aboutHref}
             className={`nav-link${isAboutPage ? " is-active" : ""}`}
             aria-current={isAboutPage ? "page" : undefined}
           >
             {t.nav.about}
-          </a>
+          </Link>
 
-          <a
+          <Link
             href={projectHref}
             className={`nav-link nav-cta${isProjectPage ? " is-active" : ""}`}
             aria-current={isProjectPage ? "page" : undefined}
@@ -242,7 +241,7 @@ export const HeaderNav = (): ReactElement => {
             <span className="nav-cta-arrow" aria-hidden="true">
               ↗
             </span>
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -263,8 +262,8 @@ export const HeaderNav = (): ReactElement => {
         inert={menuOpen ? undefined : true}
       >
         <div className="mobile-menu-top">
-          <a
-            href={homeHref}
+          <Link
+            href="/"
             className="mark"
             aria-label={t.brand}
             onClick={closeMenu}
@@ -276,7 +275,7 @@ export const HeaderNav = (): ReactElement => {
               width={160}
               height={40}
             />
-          </a>
+          </Link>
           <button
             type="button"
             className="mobile-menu-close"
@@ -293,44 +292,44 @@ export const HeaderNav = (): ReactElement => {
             <div className="mobile-menu-group">
               <p className="mobile-menu-group-label">{sm.barbershops}</p>
               {barbershopServices.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   className="mobile-menu-service"
                   onClick={closeMenu}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
 
             <div className="mobile-menu-group">
               <p className="mobile-menu-group-label">{sm.salons}</p>
               {salonServices.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   className="mobile-menu-service"
                   onClick={closeMenu}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
 
           <div className="mobile-menu-primary">
-            <a href={aboutHref} onClick={closeMenu}>
+            <Link href={aboutHref} onClick={closeMenu}>
               {t.nav.about}
-            </a>
-            <a
+            </Link>
+            <Link
               href={projectHref}
               className="mobile-menu-cta"
               onClick={closeMenu}
             >
               <span>{t.nav.startProject}</span>
               <span aria-hidden="true">↗</span>
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

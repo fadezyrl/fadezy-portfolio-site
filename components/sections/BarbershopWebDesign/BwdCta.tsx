@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { BMS_PATH } from "@/data/barbershop-marketing-seo";
 import { BSW_PATH } from "@/data/barbershop-software";
@@ -26,15 +27,15 @@ export const BwdCta = (): ReactElement => {
       <div className="bwd-wrap bwd-cta-inner">
         <h2 id="bwd-cta-title">{copy.headline}</h2>
         <p>{copy.body}</p>
-        <a href={START_PROJECT_PATH} className="bwd-link-secondary on-dark">
+        <Link href={START_PROJECT_PATH} className="bwd-link-secondary on-dark">
           {copy.button}
-        </a>
+        </Link>
         <nav className="bwd-cta-links" aria-label="Related">
-          <a href={BWD_ASSETS.homePath}>{t.brand}</a>
-          <a href={BWD_ASSETS.aboutPath}>{t.nav.about}</a>
-          <a href={BWD_ASSETS.salonPath}>{t.nav.salonWebsiteDesign}</a>
-          <a href={BSW_PATH}>{t.nav.barbershopSoftware}</a>
-          <a href={BMS_PATH}>{t.nav.barbershopMarketingSeo}</a>
+          <Link href={BWD_ASSETS.homePath}>{t.brand}</Link>
+          <Link href={BWD_ASSETS.aboutPath}>{t.nav.about}</Link>
+          <Link href={BWD_ASSETS.salonPath}>{t.nav.salonWebsiteDesign}</Link>
+          <Link href={BSW_PATH}>{t.nav.barbershopSoftware}</Link>
+          <Link href={BMS_PATH}>{t.nav.barbershopMarketingSeo}</Link>
         </nav>
       </div>
     </section>

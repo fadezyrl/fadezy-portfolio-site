@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   useEffect,
   useRef,
@@ -278,7 +279,7 @@ export const SwdWork = (): ReactElement => {
                 className={`swd-work-card is-${project.composition}`}
                 key={`${project.id}-${i}`}
               >
-                <a
+                <Link
                   href={project.href}
                   className={`swd-work-visual${
                     project.mobileImage &&
@@ -314,7 +315,7 @@ export const SwdWork = (): ReactElement => {
                       draggable={false}
                     />
                   ) : null}
-                </a>
+                </Link>
 
                 <div className="swd-work-meta">
                   <div className="swd-work-meta-main">
@@ -325,7 +326,7 @@ export const SwdWork = (): ReactElement => {
                       <p className="swd-work-status">{copy.conceptLabel}</p>
                     ) : null}
                   </div>
-                  <a
+                  <Link
                     href={project.href}
                     className="swd-work-link"
                     onClick={(event) => {
@@ -333,7 +334,7 @@ export const SwdWork = (): ReactElement => {
                     }}
                   >
                     {copy.viewProject}
-                  </a>
+                  </Link>
                 </div>
               </article>
             );

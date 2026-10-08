@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
@@ -17,9 +18,9 @@ export const SpClose = (): ReactElement => {
           ))}
         </h2>
         <p className="sp-close-body">{copy.body}</p>
-        <a href={`${START_PROJECT_PATH}#project-inquiry`} className="sp-close-cta">
+        <Link href={`${START_PROJECT_PATH}#project-inquiry`} className="sp-close-cta">
           {copy.cta}
-        </a>
+        </Link>
       </div>
     </section>
   );

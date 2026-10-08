@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { BMS_PATH } from "@/data/barbershop-marketing-seo";
 import { BSW_PATH } from "@/data/barbershop-software";
@@ -39,7 +40,7 @@ export const Services = (): ReactElement => {
                 <span className="service-num">{item.num}</span>
                 <div className="service-body">
                   <h3 className="service-title">
-                    {href ? <a href={href}>{item.title}</a> : item.title}
+                    {href ? <Link href={href}>{item.title}</Link> : item.title}
                   </h3>
                   <p className="service-desc">{item.desc}</p>
                 </div>

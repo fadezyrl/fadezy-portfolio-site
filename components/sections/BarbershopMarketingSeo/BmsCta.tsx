@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { BMS_ASSETS } from "@/data/barbershop-marketing-seo";
 import { SMS_PATH } from "@/data/salon-marketing-seo";
@@ -30,15 +31,15 @@ export const BmsCta = (): ReactElement => {
           ))}
         </h2>
         <p>{copy.body}</p>
-        <a href={START_PROJECT_PATH} className="bms-link-primary on-dark">
+        <Link href={START_PROJECT_PATH} className="bms-link-primary on-dark">
           {copy.primary}
-        </a>
+        </Link>
 
         <nav className="bms-related" aria-label={related.label}>
-          <a href={BMS_ASSETS.websitePath}>{related.website}</a>
-          <a href={BMS_ASSETS.softwarePath}>{related.software}</a>
-          <a href={SMS_PATH}>{related.salonMarketing}</a>
-          <a href={BMS_ASSETS.aboutPath}>{related.about}</a>
+          <Link href={BMS_ASSETS.websitePath}>{related.website}</Link>
+          <Link href={BMS_ASSETS.softwarePath}>{related.software}</Link>
+          <Link href={SMS_PATH}>{related.salonMarketing}</Link>
+          <Link href={BMS_ASSETS.aboutPath}>{related.about}</Link>
         </nav>
       </div>
     </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, type ReactElement } from "react";
 import { BSW_ASSETS } from "@/data/barbershop-software";
 import { CONTACT } from "@/data/contact";
@@ -57,9 +58,9 @@ export const BswHero = (): ReactElement => {
           >
             {copy.ctaPrimary}
           </a>
-          <a href="#capabilities" className="bsw-link-primary on-dark">
+          <Link href="#capabilities" className="bsw-link-primary on-dark">
             {copy.ctaSecondary}
-          </a>
+          </Link>
         </div>
       </div>
 

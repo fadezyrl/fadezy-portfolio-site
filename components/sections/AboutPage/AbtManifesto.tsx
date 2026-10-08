@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { ABOUT_ASSETS } from "@/data/about";
 import { START_PROJECT_PATH } from "@/data/start-project";
@@ -20,29 +21,29 @@ export const AbtManifesto = (): ReactElement => {
         </h2>
         <p className="abt-manifesto-support">{copy.support}</p>
         <div className="abt-manifesto-actions">
-          <a href={START_PROJECT_PATH} className="abt-cta-primary">
+          <Link href={START_PROJECT_PATH} className="abt-cta-primary">
             {copy.primary}
-          </a>
-          <a href={ABOUT_ASSETS.workPath} className="abt-cta-secondary">
+          </Link>
+          <Link href={ABOUT_ASSETS.workPath} className="abt-cta-secondary">
             {copy.secondary}
-          </a>
+          </Link>
         </div>
 
         <nav className="abt-related" aria-label={related.label}>
-          <a href={ABOUT_ASSETS.websiteBarbershop}>
+          <Link href={ABOUT_ASSETS.websiteBarbershop}>
             {related.websiteBarbershop}
-          </a>
-          <a href={ABOUT_ASSETS.websiteSalon}>{related.websiteSalon}</a>
-          <a href={ABOUT_ASSETS.softwareBarbershop}>
+          </Link>
+          <Link href={ABOUT_ASSETS.websiteSalon}>{related.websiteSalon}</Link>
+          <Link href={ABOUT_ASSETS.softwareBarbershop}>
             {related.softwareBarbershop}
-          </a>
-          <a href={ABOUT_ASSETS.softwareSalon}>{related.softwareSalon}</a>
-          <a href={ABOUT_ASSETS.marketingBarbershop}>
+          </Link>
+          <Link href={ABOUT_ASSETS.softwareSalon}>{related.softwareSalon}</Link>
+          <Link href={ABOUT_ASSETS.marketingBarbershop}>
             {related.marketingBarbershop}
-          </a>
-          <a href={ABOUT_ASSETS.marketingSalon}>{related.marketingSalon}</a>
-          <a href={ABOUT_ASSETS.workPath}>{related.work}</a>
-          <a href={ABOUT_ASSETS.servicesPath}>{related.services}</a>
+          </Link>
+          <Link href={ABOUT_ASSETS.marketingSalon}>{related.marketingSalon}</Link>
+          <Link href={ABOUT_ASSETS.workPath}>{related.work}</Link>
+          <Link href={ABOUT_ASSETS.servicesPath}>{related.services}</Link>
         </nav>
       </div>
     </section>

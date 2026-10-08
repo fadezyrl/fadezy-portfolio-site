@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { SMS_ASSETS } from "@/data/salon-marketing-seo";
 import { useLocale } from "@/hooks/useLocale";
@@ -31,9 +32,9 @@ export const SmsBooking = (): ReactElement => {
         </ol>
 
         <p className="sms-booking-note">{copy.note}</p>
-        <a href={SMS_ASSETS.websitePath} className="sms-link-secondary">
+        <Link href={SMS_ASSETS.websitePath} className="sms-link-secondary">
           {copy.websiteLink}
-        </a>
+        </Link>
       </div>
     </section>
   );

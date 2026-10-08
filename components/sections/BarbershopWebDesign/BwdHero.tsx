@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, type ReactElement } from "react";
 import { BWD_ASSETS } from "@/data/barbershop-web-design";
 import { START_PROJECT_PATH } from "@/data/start-project";
@@ -40,12 +41,12 @@ export const BwdHero = (): ReactElement => {
           </h1>
           <p className="bwd-hero-statement">{copy.statement}</p>
           <div className="bwd-hero-ctas">
-            <a href="#work" className="bwd-link-primary">
+            <Link href="#work" className="bwd-link-primary">
               {copy.ctaPrimary}
-            </a>
-            <a href={START_PROJECT_PATH} className="bwd-link-secondary">
+            </Link>
+            <Link href={START_PROJECT_PATH} className="bwd-link-secondary">
               {copy.ctaSecondary}
-            </a>
+            </Link>
           </div>
         </div>
 

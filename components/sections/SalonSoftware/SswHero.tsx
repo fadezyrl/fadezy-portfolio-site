@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, type ReactElement } from "react";
 import { CONTACT } from "@/data/contact";
 import { SSW_ASSETS } from "@/data/salon-software";
@@ -59,9 +60,9 @@ export const SswHero = (): ReactElement => {
             >
               {copy.ctaPrimary}
             </a>
-            <a href="#capabilities" className="ssw-link-primary on-dark">
+            <Link href="#capabilities" className="ssw-link-primary on-dark">
               {copy.ctaSecondary}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

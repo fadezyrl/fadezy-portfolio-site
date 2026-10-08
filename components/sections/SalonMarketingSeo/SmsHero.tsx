@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, type ReactElement } from "react";
 import { SMS_ASSETS } from "@/data/salon-marketing-seo";
 import { START_PROJECT_PATH } from "@/data/start-project";
@@ -40,12 +41,12 @@ export const SmsHero = (): ReactElement => {
           </h1>
           <p className="sms-hero-body">{copy.body}</p>
           <div className="sms-hero-ctas">
-            <a href={START_PROJECT_PATH} className="sms-link-primary">
+            <Link href={START_PROJECT_PATH} className="sms-link-primary">
               {copy.ctaPrimary}
-            </a>
-            <a href="#services" className="sms-link-secondary">
+            </Link>
+            <Link href="#services" className="sms-link-secondary">
               {copy.ctaSecondary}
-            </a>
+            </Link>
           </div>
         </div>
 

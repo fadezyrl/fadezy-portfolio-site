@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactElement } from "react";
 import type { SwdProject } from "@/data/salon-website-design";
 import { SWD_PATH } from "@/data/salon-website-design";
@@ -23,9 +24,9 @@ export const SwdProjectDetail = ({
     <article className="swd-project-page" aria-labelledby="swd-project-title">
       <div className="swd-wrap">
         <header className="swd-project-page-head">
-          <a href={`${SWD_PATH}#work`} className="swd-project-page-back">
+          <Link href={`${SWD_PATH}#work`} className="swd-project-page-back">
             {labels.back}
-          </a>
+          </Link>
           {project.status === "concept" ? (
             <p className="swd-project-page-status">{page.work.conceptLabel}</p>
           ) : null}
@@ -96,9 +97,9 @@ export const SwdProjectDetail = ({
             >
               {copy.visitSite}
             </a>
-            <a href={START_PROJECT_PATH} className="btn solid">
+            <Link href={START_PROJECT_PATH} className="btn solid">
               {labels.startProject}
-            </a>
+            </Link>
           </div>
         </footer>
       </div>

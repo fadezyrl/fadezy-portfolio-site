@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, type ReactElement } from "react";
 import { CTA_BACKGROUND_VIDEO } from "@/data/final-cta";
 import { START_PROJECT_PATH } from "@/data/start-project";
@@ -51,9 +52,9 @@ export const FinalCta = (): ReactElement => {
           ))}
         </h2>
 
-        <a href={START_PROJECT_PATH} className="final-cta-action">
+        <Link href={START_PROJECT_PATH} className="final-cta-action">
           {t.finalCta.ctaPrimary}
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, type ReactElement } from "react";
 import { CTA_BACKGROUND_VIDEO } from "@/data/final-cta";
 import { SMS_PATH } from "@/data/salon-marketing-seo";
@@ -47,16 +48,16 @@ export const SwdCta = (): ReactElement => {
       <div className="swd-wrap swd-cta-inner">
         <h2 id="swd-cta-title">{copy.headline}</h2>
         <p>{copy.body}</p>
-        <a href={START_PROJECT_PATH} className="btn solid">
+        <Link href={START_PROJECT_PATH} className="btn solid">
           {copy.button}
-        </a>
+        </Link>
         <nav className="swd-cta-links" aria-label="Related">
-          <a href={SWD_ASSETS.homePath}>{t.brand}</a>
-          <a href={SWD_ASSETS.workPath}>{t.nav.work}</a>
-          <a href={SWD_ASSETS.aboutPath}>{t.nav.about}</a>
-          <a href={SWD_ASSETS.barbershopPath}>{t.nav.barbershopWebDesign}</a>
-          <a href={SSW_PATH}>{t.nav.salonSoftware}</a>
-          <a href={SMS_PATH}>{t.nav.salonMarketingSeo}</a>
+          <Link href={SWD_ASSETS.homePath}>{t.brand}</Link>
+          <Link href={SWD_ASSETS.workPath}>{t.nav.work}</Link>
+          <Link href={SWD_ASSETS.aboutPath}>{t.nav.about}</Link>
+          <Link href={SWD_ASSETS.barbershopPath}>{t.nav.barbershopWebDesign}</Link>
+          <Link href={SSW_PATH}>{t.nav.salonSoftware}</Link>
+          <Link href={SMS_PATH}>{t.nav.salonMarketingSeo}</Link>
         </nav>
       </div>
     </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { ABOUT_ASSETS } from "@/data/about";
 import { useLocale } from "@/hooks/useLocale";
@@ -44,9 +45,9 @@ export const AbtWork = (): ReactElement => {
           ))}
         </div>
 
-        <a href={ABOUT_ASSETS.workPath} className="abt-work-explore">
+        <Link href={ABOUT_ASSETS.workPath} className="abt-work-explore">
           {copy.explore}
-        </a>
+        </Link>
       </div>
     </section>
   );

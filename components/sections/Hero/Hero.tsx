@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, type ReactElement } from "react";
 import { HERO_VIDEO, HERO_VIDEO_POSTER } from "@/data/hero";
 import { START_PROJECT_PATH } from "@/data/start-project";
@@ -78,12 +79,12 @@ export const Hero = (): ReactElement => {
       <div className="hero-support">
         <p className="hero-sub">{t.hero.sub}</p>
 
-        <a href={START_PROJECT_PATH} className="hero-cta">
+        <Link href={START_PROJECT_PATH} className="hero-cta">
           <span className="hero-cta-label">{t.hero.ctaProject}</span>
           <span className="hero-cta-arrow" aria-hidden="true">
             →
           </span>
-        </a>
+        </Link>
       </div>
     </section>
   );

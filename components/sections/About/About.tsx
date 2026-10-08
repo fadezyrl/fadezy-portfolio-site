@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, type ReactElement } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -88,9 +89,9 @@ export const About = (): ReactElement => {
             <p>{t.about.p2}</p>
           </div>
 
-          <a href={ABOUT_PATH} className="about-cta">
+          <Link href={ABOUT_PATH} className="about-cta">
             {t.about.cta} <span aria-hidden="true">→</span>
-          </a>
+          </Link>
         </div>
 
         <figure className="about-visual">

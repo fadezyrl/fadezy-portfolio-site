@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, type ReactElement } from "react";
 import { BMS_ASSETS } from "@/data/barbershop-marketing-seo";
 import { START_PROJECT_PATH } from "@/data/start-project";
@@ -40,12 +41,12 @@ export const BmsHero = (): ReactElement => {
           </h1>
           <p className="bms-hero-body">{copy.body}</p>
           <div className="bms-hero-ctas">
-            <a href={START_PROJECT_PATH} className="bms-link-primary">
+            <Link href={START_PROJECT_PATH} className="bms-link-primary">
               {copy.ctaPrimary}
-            </a>
-            <a href="#services" className="bms-link-secondary">
+            </Link>
+            <Link href="#services" className="bms-link-secondary">
               {copy.ctaSecondary}
-            </a>
+            </Link>
           </div>
         </div>
 

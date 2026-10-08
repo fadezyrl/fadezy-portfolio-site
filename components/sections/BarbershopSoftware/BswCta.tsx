@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { BMS_PATH } from "@/data/barbershop-marketing-seo";
 import { BSW_ASSETS } from "@/data/barbershop-software";
@@ -34,9 +35,9 @@ export const BswCta = (): ReactElement => {
         </h2>
         <p className="bsw-cta-body">{copy.body}</p>
         <div className="bsw-cta-actions">
-          <a href={START_PROJECT_PATH} className="bsw-link-secondary on-dark">
+          <Link href={START_PROJECT_PATH} className="bsw-link-secondary on-dark">
             {copy.primary}
-          </a>
+          </Link>
           <a
             href={CONTACT.whatsappUrl}
             className="bsw-link-primary on-dark"
@@ -48,14 +49,14 @@ export const BswCta = (): ReactElement => {
         </div>
 
         <nav className="bsw-related" aria-label={related.label}>
-          <a href={BSW_ASSETS.websitePath}>{related.website}</a>
-          <a href={BSW_ASSETS.salonWebsitePath}>{related.salonWebsite}</a>
-          <a href={SSW_PATH}>{t.nav.salonSoftware}</a>
-          <a href={BMS_PATH}>{t.nav.barbershopMarketingSeo}</a>
-          <a href={SMS_PATH}>{t.nav.salonMarketingSeo}</a>
-          <a href={BSW_ASSETS.servicesPath}>{related.services}</a>
-          <a href={BSW_ASSETS.workPath}>{related.work}</a>
-          <a href={BSW_ASSETS.aboutPath}>{related.about}</a>
+          <Link href={BSW_ASSETS.websitePath}>{related.website}</Link>
+          <Link href={BSW_ASSETS.salonWebsitePath}>{related.salonWebsite}</Link>
+          <Link href={SSW_PATH}>{t.nav.salonSoftware}</Link>
+          <Link href={BMS_PATH}>{t.nav.barbershopMarketingSeo}</Link>
+          <Link href={SMS_PATH}>{t.nav.salonMarketingSeo}</Link>
+          <Link href={BSW_ASSETS.servicesPath}>{related.services}</Link>
+          <Link href={BSW_ASSETS.workPath}>{related.work}</Link>
+          <Link href={BSW_ASSETS.aboutPath}>{related.about}</Link>
         </nav>
       </div>
 

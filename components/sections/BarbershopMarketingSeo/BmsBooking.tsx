@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { BMS_ASSETS } from "@/data/barbershop-marketing-seo";
 import { useLocale } from "@/hooks/useLocale";
@@ -31,9 +32,9 @@ export const BmsBooking = (): ReactElement => {
         </ol>
 
         <p className="bms-booking-note">{copy.note}</p>
-        <a href={BMS_ASSETS.websitePath} className="bms-link-secondary">
+        <Link href={BMS_ASSETS.websitePath} className="bms-link-secondary">
           {copy.websiteLink}
-        </a>
+        </Link>
       </div>
     </section>
   );

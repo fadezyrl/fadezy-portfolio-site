@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, type ReactElement } from "react";
 import { SWD_ASSETS } from "@/data/salon-website-design";
 import { START_PROJECT_PATH } from "@/data/start-project";
@@ -38,12 +39,12 @@ export const SwdHero = (): ReactElement => {
           </h1>
           <p className="swd-hero-statement">{copy.statement}</p>
           <div className="swd-hero-ctas">
-            <a href="#work" className="btn-text">
+            <Link href="#work" className="btn-text">
               {copy.ctaPrimary}
-            </a>
-            <a href={START_PROJECT_PATH} className="btn solid">
+            </Link>
+            <Link href={START_PROJECT_PATH} className="btn solid">
               {copy.ctaSecondary}
-            </a>
+            </Link>
           </div>
         </div>
 

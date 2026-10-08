@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { BMS_PATH } from "@/data/barbershop-marketing-seo";
 import { CONTACT } from "@/data/contact";
@@ -34,9 +35,9 @@ export const SswCta = (): ReactElement => {
           </h2>
           <p className="ssw-cta-body">{copy.body}</p>
           <div className="ssw-cta-actions">
-            <a href={START_PROJECT_PATH} className="ssw-link-secondary on-dark">
+            <Link href={START_PROJECT_PATH} className="ssw-link-secondary on-dark">
               {copy.primary}
-            </a>
+            </Link>
             <a
               href={CONTACT.whatsappUrl}
               className="ssw-link-primary on-dark"
@@ -49,18 +50,18 @@ export const SswCta = (): ReactElement => {
         </div>
 
         <nav className="ssw-related" aria-label={related.label}>
-          <a href={SSW_ASSETS.websitePath}>{related.website}</a>
-          <a href={SSW_ASSETS.barbershopWebsitePath}>
+          <Link href={SSW_ASSETS.websitePath}>{related.website}</Link>
+          <Link href={SSW_ASSETS.barbershopWebsitePath}>
             {related.barbershopWebsite}
-          </a>
-          <a href={SSW_ASSETS.barbershopSoftwarePath}>
+          </Link>
+          <Link href={SSW_ASSETS.barbershopSoftwarePath}>
             {related.barbershopSoftware}
-          </a>
-          <a href={BMS_PATH}>{t.nav.barbershopMarketingSeo}</a>
-          <a href={SMS_PATH}>{t.nav.salonMarketingSeo}</a>
-          <a href={SSW_ASSETS.servicesPath}>{related.services}</a>
-          <a href={SSW_ASSETS.workPath}>{related.work}</a>
-          <a href={SSW_ASSETS.aboutPath}>{related.about}</a>
+          </Link>
+          <Link href={BMS_PATH}>{t.nav.barbershopMarketingSeo}</Link>
+          <Link href={SMS_PATH}>{t.nav.salonMarketingSeo}</Link>
+          <Link href={SSW_ASSETS.servicesPath}>{related.services}</Link>
+          <Link href={SSW_ASSETS.workPath}>{related.work}</Link>
+          <Link href={SSW_ASSETS.aboutPath}>{related.about}</Link>
         </nav>
       </div>
 
