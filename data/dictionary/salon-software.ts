@@ -5,127 +5,48 @@ export type SalonSoftwareDict = {
   };
   navAria: string;
   hero: {
-    eyebrow: string;
+    label: string;
     h1: string;
-    title: string[];
     body: string;
     ctaPrimary: string;
     ctaSecondary: string;
     imageAlt: string;
-    uiLabel: string;
-    uiTime: string;
-    uiService: string;
-    uiStylist: string;
   };
-  intro: {
-    lines: string[];
-    body: string;
-    journey: string[];
-  };
-  clientFocus: {
-    eyebrow: string;
+  problem: {
     headline: string[];
     body: string;
-    items: string[];
-    imageAlt: string;
   };
-  system: {
-    eyebrow: string;
+  capabilities: {
+    label: string;
+    headline: string[];
+    items: Array<{ num: string; title: string; body: string }>;
+  };
+  connected: {
+    label: string;
     headline: string[];
     body: string;
-    areas: string[];
-    ui: {
-      title: string;
-      today: string;
-      overview: string;
-      appointments: string;
-      clients: string;
-      stylists: string;
-      nextUp: string;
-      slots: Array<{ time: string; name: string; service: string }>;
-      metrics: Array<{ label: string; value: string }>;
-    };
+    steps: string[];
   };
-  booking: {
-    eyebrow: string;
+  salons: {
+    label: string;
     headline: string[];
-    body: string;
-    steps: Array<{ num: string; title: string; body: string }>;
-    ui: {
-      title: string;
-      service: string;
-      stylist: string;
-      time: string;
-      confirm: string;
-    };
+    items: Array<{ title: string; body: string }>;
   };
-  client: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    ui: {
-      name: string;
-      meta: string;
-      preferred: string;
-      visits: string;
-      next: string;
-      notes: string;
-      history: Array<{ date: string; service: string; stylist: string }>;
-    };
-  };
-  services: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    rows: Array<{
-      service: string;
-      duration: string;
-      price: string;
-      stylist: string;
-    }>;
-  };
-  ops: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    items: string[];
-  };
-  brandFit: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    qualities: string[];
-    stack: string[];
-  };
-  ecosystem: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    layers: Array<{ label: string; title: string }>;
-  };
-  custom: {
-    headline: string[];
+  why: {
+    headline: string;
     body: string[];
-    around: string;
-    items: string[];
   };
-  audience: {
-    eyebrow: string;
-    headline: string[];
-    items: string[];
-  };
-  difference: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    pillars: string[];
-    statement: string;
+  faq: {
+    label: string;
+    headline: string;
+    items: Array<{ q: string; a: string }>;
   };
   cta: {
     headline: string[];
     body: string;
     primary: string;
     secondary: string;
+    imageAlt: string;
   };
   related: {
     label: string;
@@ -140,283 +61,158 @@ export type SalonSoftwareDict = {
 
 export const salonSoftware: SalonSoftwareDict = {
   meta: {
-    title: "Salon Software & Digital Systems | Fadezy",
+    title: "Salon Software, POS & Booking Systems | Fadezy",
     description:
-      "Salon software and digital systems by Fadezy — booking, client management and operations designed around how modern beauty salons actually work.",
+      "Salon software by Fadezy — POS, online booking, client management, stylist schedules, payments, inventory and salon management systems built around how beauty salons actually work.",
   },
   navAria: "Salon software",
   hero: {
-    eyebrow: "Fadezy / Salon Software",
+    label: "Fadezy / Salon Systems",
     h1: "Salon Software",
-    title: [
-      "Digital systems for",
-      "salons that care about",
-      "every detail.",
-    ],
-    body: "From appointments and client relationships to staff schedules and daily operations, Fadezy creates digital systems designed around how modern salons actually work.",
-    ctaPrimary: "Explore the system →",
-    ctaSecondary: "Talk to Fadezy →",
+    body: "Manage bookings, clients, stylists, payments and daily salon operations from one connected system.",
+    ctaPrimary: "Talk to us ↗",
+    ctaSecondary: "See what's possible",
     imageAlt:
-      "Luxury beauty salon — stylist working with a client in soft natural light",
-    uiLabel: "Next guest",
-    uiTime: "11:00",
-    uiService: "Cut + gloss",
-    uiStylist: "Amelia",
+      "Salon receptionist using a POS tablet at a luxury beauty salon reception desk",
   },
-  intro: {
-    lines: [
-      "Your salon is more than",
-      "appointments on a calendar.",
+  problem: {
+    headline: [
+      "Your salon is already running a system.",
+      "The question is whether your digital tools are helping it run better.",
     ],
-    body: "A client discovers the salon. They explore services. They choose a stylist. They book. They return. They build a relationship with the brand. Salon software should support that entire journey — not interrupt it.",
-    journey: [
-      "Discover",
-      "Explore services",
-      "Choose a stylist",
-      "Book",
-      "Return",
-      "Build a relationship",
-    ],
+    body: "Appointments, clients, staff, payments and daily operations should work together — not live in disconnected tools.",
   },
-  clientFocus: {
-    eyebrow: "The salon",
-    headline: ["Built around the client.", "Not around generic software."],
-    body: "The system should adapt to how your salon operates — the services you offer, the way your stylists work, and the experience guests expect when they sit down.",
+  capabilities: {
+    label: "Salon capabilities",
+    headline: ["Everything your salon needs.", "Nothing it doesn't."],
     items: [
-      "Appointments",
-      "Services",
-      "Stylists",
-      "Clients",
-      "Payments",
-      "Schedules",
-      "Customer history",
-    ],
-    imageAlt:
-      "Editorial salon atmosphere — craft, light and a considered guest experience",
-  },
-  system: {
-    eyebrow: "The system",
-    headline: ["Everything your salon needs.", "Designed beautifully."],
-    body: "A clear salon management software experience — appointments, clients, stylists and the daily overview — designed with the same restraint as a well-run floor.",
-    areas: [
-      "Appointments",
-      "Calendar",
-      "Clients",
-      "Services",
-      "Stylists",
-      "Payments",
-      "Client history",
-      "Business overview",
-    ],
-    ui: {
-      title: "Salon overview",
-      today: "Friday",
-      overview: "Overview",
-      appointments: "Appointments",
-      clients: "Clients",
-      stylists: "Stylists",
-      nextUp: "Next up",
-      slots: [
-        { time: "09:30", name: "Sofia M.", service: "Blowout" },
-        { time: "11:00", name: "Elena R.", service: "Cut + gloss" },
-        { time: "13:30", name: "Maya L.", service: "Balayage" },
-        { time: "16:00", name: "Nora K.", service: "Treatment" },
-      ],
-      metrics: [
-        { label: "Booked today", value: "22" },
-        { label: "Open chairs", value: "03" },
-        { label: "Returning", value: "68%" },
-      ],
-    },
-  },
-  booking: {
-    eyebrow: "Booking",
-    headline: ["From discovery", "to appointment."],
-    body: "Salon booking software should feel as considered as the service itself — simple for the guest, clear for the team, and connected to everything that happens after confirmation.",
-    steps: [
       {
         num: "01",
-        title: "Discover",
-        body: "Guest finds the salon online.",
+        title: "POS & payments",
+        body: "Take payments, manage transactions and keep checkout simple.",
       },
       {
         num: "02",
-        title: "Explore",
-        body: "Browses services and stylists.",
+        title: "Online booking",
+        body: "Let clients book services and appointments without unnecessary back-and-forth.",
       },
       {
         num: "03",
-        title: "Choose",
-        body: "Selects a stylist and time.",
+        title: "Client management",
+        body: "Keep client profiles, visit history, preferences and notes organised.",
       },
       {
         num: "04",
-        title: "Book",
-        body: "Confirms and receives details.",
-      },
-    ],
-    ui: {
-      title: "Book an appointment",
-      service: "Cut + gloss",
-      stylist: "Preferred stylist",
-      time: "Fri · 11:00",
-      confirm: "Confirm booking",
-    },
-  },
-  client: {
-    eyebrow: "Clients",
-    headline: ["Remember the client.", "Not just the appointment."],
-    body: "Salon client management is about knowing the person in the chair — preferences, history, and the relationship — so every visit feels personal rather than transactional.",
-    ui: {
-      name: "Elena Rivera",
-      meta: "Guest since 2022",
-      preferred: "Amelia",
-      visits: "19 visits",
-      next: "Fri · 11:00",
-      notes:
-        "Prefers soft layers. Gloss every other visit. Sensitive to strong fragrance. Usually books Friday mornings.",
-      history: [
-        { date: "14 Mar", service: "Cut + gloss", stylist: "Amelia" },
-        { date: "21 Feb", service: "Blowout", stylist: "Amelia" },
-        { date: "08 Jan", service: "Treatment", stylist: "Maya" },
-      ],
-    },
-  },
-  services: {
-    eyebrow: "Services & stylists",
-    headline: ["Every service.", "Every stylist.", "One clear system."],
-    body: "Services, pricing, duration, stylists and availability in one calm view — so the floor stays clear and the guest journey stays effortless.",
-    rows: [
-      {
-        service: "Cut + finish",
-        duration: "60 min",
-        price: "from 85",
-        stylist: "Amelia · Maya",
+        title: "Stylist & staff schedules",
+        body: "Manage stylists, working hours, availability and appointments.",
       },
       {
-        service: "Cut + gloss",
-        duration: "90 min",
-        price: "from 120",
-        stylist: "Amelia",
+        num: "05",
+        title: "Services & pricing",
+        body: "Manage services, durations, pricing and updates from one place.",
       },
       {
-        service: "Balayage",
-        duration: "180 min",
-        price: "from 220",
-        stylist: "Maya · Nora",
+        num: "06",
+        title: "Inventory",
+        body: "Track retail products, stock levels and product movement.",
       },
       {
-        service: "Treatment",
-        duration: "45 min",
-        price: "from 65",
-        stylist: "Nora",
+        num: "07",
+        title: "Reporting",
+        body: "Understand appointments, sales and business activity.",
+      },
+      {
+        num: "08",
+        title: "Memberships & loyalty",
+        body: "Support memberships, packages, loyalty programs or recurring client relationships where required.",
       },
     ],
   },
-  ops: {
-    eyebrow: "Operations",
-    headline: ["Less administration.", "More time creating."],
-    body: "When appointments, schedules, client records and payments sit in one clear system, the salon spends less energy managing the day — and more of it creating the work.",
-    items: [
-      "Appointments",
-      "Staff schedules",
-      "Client records",
-      "Services",
-      "Payments",
-      "Daily activity",
-    ],
-  },
-  brandFit: {
-    eyebrow: "Brand & system",
-    headline: ["Your software should feel", "like your salon."],
-    body: "Fadezy can design the digital experience around your salon's identity — so the website, booking flow and management system feel like one continuous presence.",
-    qualities: [
-      "Refined",
-      "Simple",
-      "On-brand",
-      "Easy to use",
-      "Consistent",
-      "Human",
-    ],
-    stack: [
-      "Salon identity",
-      "Website",
-      "Booking experience",
-      "Digital system",
-      "Client experience",
-    ],
-  },
-  ecosystem: {
-    eyebrow: "The full picture",
+  connected: {
+    label: "Connected experience",
     headline: [
-      "Your website is where",
-      "the relationship begins.",
-      "Your software is where",
-      "it continues.",
+      "Your website is where the relationship begins.",
+      "Your software is where it continues.",
     ],
-    body: "Fadezy can build the complete digital experience around a salon — from discovery to booking to the system that keeps the floor running.",
-    layers: [
-      { label: "Discover", title: "Website" },
-      { label: "Explore", title: "Services" },
-      { label: "Choose", title: "Stylist" },
-      { label: "Book", title: "Appointment" },
-      { label: "Manage", title: "Digital system" },
-      { label: "Return", title: "Client relationship" },
+    body: "Connect the customer-facing experience with the systems running your salon.",
+    steps: [
+      "Website",
+      "Booking",
+      "Client",
+      "Appointment",
+      "Stylist",
+      "Payment",
+      "Salon operations",
     ],
   },
-  custom: {
+  salons: {
+    label: "Built around your salon",
+    headline: [
+      "One system.",
+      "Built around how your salon actually works.",
+    ],
+    items: [
+      {
+        title: "Independent salons",
+        body: "Simple digital systems for a single salon and small team.",
+      },
+      {
+        title: "Premium beauty studios",
+        body: "Create a polished client journey from discovery to appointment and payment.",
+      },
+      {
+        title: "Growing salons",
+        body: "Connect staff, services, bookings and clients as the business grows.",
+      },
+      {
+        title: "Multi-location salons",
+        body: "Keep operations connected across multiple locations.",
+      },
+    ],
+  },
+  why: {
+    headline: "Software should feel like part of your salon.",
+    body: [
+      "Your booking, POS and digital systems should feel connected to the experience your salon has built — not like separate tools stitched together.",
+      "Fadezy designs digital systems around your business, your clients and the way your salon actually operates.",
+    ],
+  },
+  faq: {
+    label: "FAQ",
+    headline: "Practical questions from salon owners.",
+    items: [
+      {
+        q: "What software does a salon actually need?",
+        a: "Most salons need online booking, payments or POS, client records, stylist schedules and a clear daily overview. The right salon management software matches how your floor already runs — not a generic template.",
+      },
+      {
+        q: "Can Fadezy build or integrate a salon POS system?",
+        a: "Yes. We can design around salon POS and payment flows, or connect with platforms you already use — depending on what fits the business.",
+      },
+      {
+        q: "Can the software connect with my existing salon website?",
+        a: "Yes. Booking and salon systems can connect to your current site, or sit inside a new salon website built with Fadezy.",
+      },
+      {
+        q: "Can clients book appointments online?",
+        a: "Yes. Salon booking software can let clients choose services, times and stylists without calls or message threads.",
+      },
+      {
+        q: "Can Fadezy work with an existing booking or POS platform?",
+        a: "Often yes. If a booking or POS platform already works for part of the salon, we can integrate around it rather than forcing a full replacement.",
+      },
+    ],
+  },
+  cta: {
     headline: [
       "Your salon isn't generic.",
       "Your software shouldn't be either.",
     ],
-    body: [
-      "No unnecessary complexity.",
-      "No generic dashboards.",
-      "No software designed around someone else's workflow.",
-    ],
-    around: "Fadezy approaches digital systems around:",
-    items: [
-      "The salon",
-      "The team",
-      "The services",
-      "The client",
-      "The booking journey",
-      "The operational workflow",
-    ],
-  },
-  audience: {
-    eyebrow: "Who it's for",
-    headline: ["Built for salons", "ready to operate beautifully."],
-    items: [
-      "Independent salons",
-      "Premium beauty salons",
-      "Hair salons",
-      "Growing salons",
-      "Multi-stylist salons",
-      "Multi-location salon businesses",
-    ],
-  },
-  difference: {
-    eyebrow: "The Fadezy approach",
-    headline: ["Software is only one part", "of the digital experience."],
-    body: "Fadezy doesn't approach digital as disconnected services. Website, brand, content, SEO, social, marketing and digital systems should work together — as one experience for the salon and the guest.",
-    pillars: [
-      "Website",
-      "Brand",
-      "Content",
-      "SEO",
-      "Social",
-      "Marketing",
-      "Digital systems",
-    ],
-    statement:
-      "Fadezy is the digital partner built exclusively for barbershops and beauty salons.",
-  },
-  cta: {
-    headline: ["Let's build the digital", "system behind your salon."],
-    body: "Tell us how your salon works. We'll help you shape the digital experience around it.",
-    primary: "Start a project →",
-    secondary: "Talk to Fadezy →",
+    body: "Tell us how your salon works and what you need your system to handle.",
+    primary: "Build your system ↗",
+    secondary: "Talk to Fadezy ↗",
+    imageAlt:
+      "Stylist reviewing a schedule on a tablet at a luxury salon workstation",
   },
   related: {
     label: "Continue",

@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import { Footer } from "@/components/Footer/Footer";
 import { HeaderNav } from "@/components/HeaderNav/HeaderNav";
-import { SpBrand } from "@/components/sections/StartProject/SpBrand";
 import { SpClose } from "@/components/sections/StartProject/SpClose";
 import { SpEffects } from "@/components/sections/StartProject/SpEffects";
 import { SpForm } from "@/components/sections/StartProject/SpForm";
 import { SpHero } from "@/components/sections/StartProject/SpHero";
-import { SpInfo } from "@/components/sections/StartProject/SpInfo";
+import { SpInstagram } from "@/components/sections/StartProject/SpInstagram";
 import { startProject } from "@/data/dictionary/start-project";
 import { START_PROJECT_CANONICAL } from "@/data/start-project";
 import { OG_IMAGE_ALT, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "@/data/site";
@@ -77,8 +76,7 @@ const StartProjectPage = (): ReactElement => {
         <main aria-label={pageCopy.navAria}>
           <SpHero />
           <SpForm />
-          <SpInfo />
-          <SpBrand />
+          <SpInstagram />
           <SpClose />
         </main>
         <Footer />

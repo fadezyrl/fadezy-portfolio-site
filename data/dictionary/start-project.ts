@@ -11,8 +11,10 @@ export type StartProjectDict = {
     imageAlt: string;
   };
   intro: {
+    eyebrow: string;
     headline: string;
     body: string;
+    sideNote: string;
   };
   form: {
     nameLabel: string;
@@ -45,20 +47,16 @@ export type StartProjectDict = {
     body: string;
     again: string;
   };
-  remote: {
-    label: string;
+  instagram: {
+    eyebrow: string;
+    headline: string;
     body: string;
-  };
-  emailBlock: {
-    label: string;
-  };
-  brand: {
-    lines: string[];
+    cta: string;
   };
   close: {
-    mark: string;
-    line: string;
-    location: string;
+    headline: string[];
+    body: string;
+    cta: string;
   };
 };
 
@@ -66,7 +64,7 @@ export const startProject: StartProjectDict = {
   meta: {
     title: "Start a Project | Fadezy",
     description:
-      "Start a project with Fadezy — the digital partner for barbershops and beauty salons. Tell us about your business and what you need digitally.",
+      "Start a project with Fadezy. Tell us about your barbershop or salon and what you need digitally — websites, branding, marketing, content or systems.",
   },
   navAria: "Start a project",
   hero: {
@@ -75,18 +73,21 @@ export const startProject: StartProjectDict = {
     body: "Tell us where your business is today, what you're trying to build, and where you want it to go.",
     location: "Remote / Worldwide",
     imageAlt:
-      "Editorial barbershop and salon craft — materials, light and atmosphere",
+      "Creative studio workspace with brand materials, website concepts and design notes",
   },
   intro: {
+    eyebrow: "Project inquiry",
     headline: "Good work starts with understanding the business.",
     body: "Tell us a little about your business and what you need digitally. You don't need to have everything figured out yet.",
+    sideNote:
+      "Share the essentials. We'll review the project and respond with the next step.",
   },
   form: {
-    nameLabel: "Your name",
+    nameLabel: "01 — Your name",
     namePlaceholder: "Your name",
-    businessLabel: "Business name",
+    businessLabel: "02 — Business name",
     businessPlaceholder: "Your barbershop or salon",
-    needLabel: "What do you need?",
+    needLabel: "03 — What do you need?",
     needs: [
       { id: "website", label: "Website" },
       { id: "branding", label: "Branding" },
@@ -96,15 +97,15 @@ export const startProject: StartProjectDict = {
       { id: "multiple", label: "Multiple services" },
       { id: "other", label: "Something else" },
     ],
-    linkLabel: "Your website / Instagram",
+    linkLabel: "04 — Website / Instagram",
     linkPlaceholder: "Website or Instagram URL",
-    locationLabel: "Where is your business?",
+    locationLabel: "05 — Where is your business?",
     locationPlaceholder: "City / Country",
-    projectLabel: "Tell us about the project",
+    projectLabel: "06 — Tell us about the project",
     projectPlaceholder: "What are you looking to build, improve or change?",
-    emailLabel: "Email",
+    emailLabel: "07 — Email",
     emailPlaceholder: "Your email address",
-    submit: "Send project inquiry →",
+    submit: "Send project inquiry ↗",
     submitting: "Sending…",
     reassurance:
       "Once we receive your inquiry, we'll review the project and get back to you with the next step.",
@@ -119,25 +120,17 @@ export const startProject: StartProjectDict = {
   success: {
     title: "Project inquiry received.",
     body: "Thanks. We'll review the details and get back to you with the next step.",
-    again: "Send another inquiry →",
+    again: "Send another inquiry ↗",
   },
-  remote: {
-    label: "Remote / Worldwide",
-    body: "Fadezy works remotely with barbershops and beauty salons around the world.",
-  },
-  emailBlock: {
-    label: "Email",
-  },
-  brand: {
-    lines: [
-      "For barbershops and beauty salons",
-      "ready to look as good digitally",
-      "as they do in the real world.",
-    ],
+  instagram: {
+    eyebrow: "Fadezy on Instagram",
+    headline: "See what we're building.",
+    body: "The work, ideas and digital thinking behind Fadezy — shared with the barbershop and beauty industry.",
+    cta: "Follow Fadezy on Instagram ↗",
   },
   close: {
-    mark: "Fadezy",
-    line: "Digital experiences for barbershops + beauty salons",
-    location: "Remote / Worldwide",
+    headline: ["Your business.", "Your brand.", "Your next digital move."],
+    body: "Let's build something that feels like it belongs to you.",
+    cta: "Start the conversation ↗",
   },
 };

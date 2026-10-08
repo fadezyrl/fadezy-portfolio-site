@@ -9,7 +9,6 @@ import { BwdHero } from "@/components/sections/BarbershopWebDesign/BwdHero";
 import { BwdPrinciples } from "@/components/sections/BarbershopWebDesign/BwdPrinciples";
 import { BwdProcess } from "@/components/sections/BarbershopWebDesign/BwdProcess";
 import { BwdStatement } from "@/components/sections/BarbershopWebDesign/BwdStatement";
-import { BwdTransform } from "@/components/sections/BarbershopWebDesign/BwdTransform";
 import { BwdWork } from "@/components/sections/BarbershopWebDesign/BwdWork";
 import { BWD_CANONICAL } from "@/data/barbershop-web-design";
 import { barbershopWebDesign } from "@/data/dictionary/barbershop-web-design";
@@ -118,7 +117,6 @@ const BarbershopWebDesignPage = (): ReactElement => {
           <BwdStatement />
           <BwdWork />
           <BwdPrinciples />
-          <BwdTransform />
           <BwdProcess />
           <BwdFaq />
           <BwdCta />

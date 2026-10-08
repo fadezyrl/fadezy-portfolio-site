@@ -34,14 +34,16 @@ export const BwdHero = (): ReactElement => {
         <div className="bwd-hero-copy">
           <span className="bwd-meta">{copy.label}</span>
           <h1 id="bwd-hero-title" className="bwd-hero-title">
-            {copy.title}
+            {copy.title.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
           </h1>
           <p className="bwd-hero-statement">{copy.statement}</p>
           <div className="bwd-hero-ctas">
-            <a href="#work" className="btn-text">
+            <a href="#work" className="bwd-link-primary">
               {copy.ctaPrimary}
             </a>
-            <a href={START_PROJECT_PATH} className="btn solid">
+            <a href={START_PROJECT_PATH} className="bwd-link-secondary">
               {copy.ctaSecondary}
             </a>
           </div>
@@ -53,6 +55,9 @@ export const BwdHero = (): ReactElement => {
               src={BWD_ASSETS.heroPreview}
               alt={copy.previewAlt}
               className="bwd-hero-img"
+              width={1600}
+              height={1200}
+              fetchPriority="high"
             />
           </div>
         </figure>

@@ -41,20 +41,41 @@ export const BswEffects = (): ReactElement | null => {
       });
 
       gsap.utils
-        .toArray<HTMLElement>(".bsw-page .bsw-eco-flow > li")
+        .toArray<HTMLElement>(".bsw-page .bsw-flow > li")
         .forEach((item, i) => {
           gsap.fromTo(
             item,
-            { opacity: 0, y: 16 },
+            { opacity: 0, y: 14 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.65,
-              delay: i * 0.07,
+              duration: 0.55,
+              delay: i * 0.06,
               ease: EASE,
               scrollTrigger: {
-                trigger: ".bsw-eco-flow",
+                trigger: ".bsw-flow",
                 start: "top 78%",
+                once: true,
+              },
+            },
+          );
+        });
+
+      gsap.utils
+        .toArray<HTMLElement>(".bsw-page .bsw-cap-row")
+        .forEach((row, i) => {
+          gsap.fromTo(
+            row,
+            { opacity: 0, y: 18 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.55,
+              delay: Math.min(i * 0.04, 0.28),
+              ease: EASE,
+              scrollTrigger: {
+                trigger: row,
+                start: "top 88%",
                 once: true,
               },
             },
@@ -65,10 +86,10 @@ export const BswEffects = (): ReactElement | null => {
       if (heroImg) {
         gsap.fromTo(
           heroImg,
-          { scale: 1.08 },
+          { scale: 1.06 },
           {
             scale: 1,
-            duration: 1.4,
+            duration: 1.5,
             ease: EASE,
             scrollTrigger: {
               trigger: ".bsw-hero",

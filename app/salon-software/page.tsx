@@ -2,21 +2,15 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import { Footer } from "@/components/Footer/Footer";
 import { HeaderNav } from "@/components/HeaderNav/HeaderNav";
-import { SswAudience } from "@/components/sections/SalonSoftware/SswAudience";
-import { SswBooking } from "@/components/sections/SalonSoftware/SswBooking";
-import { SswBrandFit } from "@/components/sections/SalonSoftware/SswBrandFit";
-import { SswClient } from "@/components/sections/SalonSoftware/SswClient";
-import { SswClientFocus } from "@/components/sections/SalonSoftware/SswClientFocus";
+import { SswCapabilities } from "@/components/sections/SalonSoftware/SswCapabilities";
+import { SswConnected } from "@/components/sections/SalonSoftware/SswConnected";
 import { SswCta } from "@/components/sections/SalonSoftware/SswCta";
-import { SswCustom } from "@/components/sections/SalonSoftware/SswCustom";
-import { SswDifference } from "@/components/sections/SalonSoftware/SswDifference";
-import { SswEcosystem } from "@/components/sections/SalonSoftware/SswEcosystem";
 import { SswEffects } from "@/components/sections/SalonSoftware/SswEffects";
+import { SswFaq } from "@/components/sections/SalonSoftware/SswFaq";
 import { SswHero } from "@/components/sections/SalonSoftware/SswHero";
-import { SswIntro } from "@/components/sections/SalonSoftware/SswIntro";
-import { SswOps } from "@/components/sections/SalonSoftware/SswOps";
-import { SswServices } from "@/components/sections/SalonSoftware/SswServices";
-import { SswSystem } from "@/components/sections/SalonSoftware/SswSystem";
+import { SswProblem } from "@/components/sections/SalonSoftware/SswProblem";
+import { SswSalons } from "@/components/sections/SalonSoftware/SswSalons";
+import { SswWhy } from "@/components/sections/SalonSoftware/SswWhy";
 import { salonSoftware } from "@/data/dictionary/salon-software";
 import { SSW_CANONICAL } from "@/data/salon-software";
 import { OG_IMAGE_ALT, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "@/data/site";
@@ -76,7 +70,7 @@ const webPageStructuredData = {
     {
       "@type": "Service",
       name: "Salon Software",
-      serviceType: "Salon software and digital systems",
+      serviceType: "Salon software, POS and digital systems",
       provider: {
         "@type": "Organization",
         name: SITE_NAME,
@@ -85,6 +79,17 @@ const webPageStructuredData = {
       areaServed: "Worldwide",
       url: SSW_CANONICAL,
       description: pageCopy.meta.description,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: pageCopy.faq.items.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
     },
   ],
 };
@@ -102,18 +107,12 @@ const SalonSoftwarePage = (): ReactElement => {
         <HeaderNav />
         <main aria-label={pageCopy.navAria}>
           <SswHero />
-          <SswIntro />
-          <SswClientFocus />
-          <SswSystem />
-          <SswBooking />
-          <SswClient />
-          <SswServices />
-          <SswOps />
-          <SswBrandFit />
-          <SswEcosystem />
-          <SswCustom />
-          <SswAudience />
-          <SswDifference />
+          <SswProblem />
+          <SswCapabilities />
+          <SswConnected />
+          <SswSalons />
+          <SswWhy />
+          <SswFaq />
           <SswCta />
         </main>
         <Footer />

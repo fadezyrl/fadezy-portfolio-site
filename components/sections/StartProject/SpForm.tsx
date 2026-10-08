@@ -137,56 +137,66 @@ export const SpForm = (): ReactElement => {
   if (status === "success") {
     return (
       <section className="sp-form-section reveal" aria-live="polite">
-        <div className="sp-wrap sp-success">
-          <h2 className="sp-success-title">{copy.success.title}</h2>
-          <p className="sp-success-body">{copy.success.body}</p>
-          <button type="button" className="sp-submit" onClick={resetForm}>
-            {copy.success.again}
-          </button>
+        <div className="sp-inquiry">
+          <div className="sp-success">
+            <h2 className="sp-success-title">{copy.success.title}</h2>
+            <p className="sp-success-body">{copy.success.body}</p>
+            <button type="button" className="sp-submit" onClick={resetForm}>
+              {copy.success.again}
+            </button>
+          </div>
         </div>
       </section>
     );
   }
 
   return (
-    <section className="sp-form-section" aria-labelledby="sp-intro-title">
-      <div className="sp-wrap">
-        <header className="sp-intro reveal">
+    <section
+      id="project-inquiry"
+      className="sp-form-section"
+      aria-labelledby="sp-intro-title"
+    >
+      <div className="sp-inquiry">
+        <aside className="sp-inquiry-aside reveal">
+          <span className="sp-meta">{copy.intro.eyebrow}</span>
           <h2 id="sp-intro-title" className="sp-intro-headline">
             {copy.intro.headline}
           </h2>
           <p className="sp-intro-body">{copy.intro.body}</p>
-        </header>
+          <p className="sp-intro-note">{copy.intro.sideNote}</p>
+        </aside>
 
         <form className="sp-form reveal" onSubmit={onSubmit} noValidate>
-          <div className={`sp-field${errors.name ? " has-error" : ""}`}>
-            <label htmlFor="sp-name">{form.nameLabel}</label>
-            <input
-              id="sp-name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              placeholder={form.namePlaceholder}
-              value={values.name}
-              onChange={updateField("name")}
-            />
-            {errors.name ? <p className="sp-error">{errors.name}</p> : null}
-          </div>
+          <div className="sp-form-row">
+            <div className={`sp-field${errors.name ? " has-error" : ""}`}>
+              <label htmlFor="sp-name">{form.nameLabel}</label>
+              <input
+                id="sp-name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                placeholder={form.namePlaceholder}
+                value={values.name}
+                onChange={updateField("name")}
+              />
+              {errors.name ? <p className="sp-error">{errors.name}</p> : null}
+            </div>
 
-          <div className={`sp-field${errors.business ? " has-error" : ""}`}>
-            <label htmlFor="sp-business">{form.businessLabel}</label>
-            <input
-              id="sp-business"
-              name="business"
-              type="text"
-              autoComplete="organization"
-              placeholder={form.businessPlaceholder}
-              value={values.business}
-              onChange={updateField("business")}
-            />
-            {errors.business ? (
-              <p className="sp-error">{errors.business}</p>
-            ) : null}
+            <div className={`sp-field${errors.business ? " has-error" : ""}`}>
+              <label htmlFor="sp-business">{form.businessLabel}</label>
+              <input
+                id="sp-business"
+                name="business"
+                type="text"
+                autoComplete="organization"
+                placeholder={form.businessPlaceholder}
+                value={values.business}
+                onChange={updateField("business")}
+              />
+              {errors.business ? (
+                <p className="sp-error">{errors.business}</p>
+              ) : null}
+            </div>
           </div>
 
           <fieldset
@@ -206,6 +216,9 @@ export const SpForm = (): ReactElement => {
                     aria-pressed={checked}
                     onClick={() => toggleNeed(need.id)}
                   >
+                    <span className="sp-need-mark" aria-hidden="true">
+                      {checked ? "—" : "+"}
+                    </span>
                     {need.label}
                   </button>
                 );
@@ -214,29 +227,31 @@ export const SpForm = (): ReactElement => {
             {errors.need ? <p className="sp-error">{errors.need}</p> : null}
           </fieldset>
 
-          <div className="sp-field">
-            <label htmlFor="sp-link">{form.linkLabel}</label>
-            <input
-              id="sp-link"
-              name="link"
-              type="text"
-              inputMode="url"
-              placeholder={form.linkPlaceholder}
-              value={values.link}
-              onChange={updateField("link")}
-            />
-          </div>
+          <div className="sp-form-row">
+            <div className="sp-field">
+              <label htmlFor="sp-link">{form.linkLabel}</label>
+              <input
+                id="sp-link"
+                name="link"
+                type="text"
+                inputMode="url"
+                placeholder={form.linkPlaceholder}
+                value={values.link}
+                onChange={updateField("link")}
+              />
+            </div>
 
-          <div className="sp-field">
-            <label htmlFor="sp-location">{form.locationLabel}</label>
-            <input
-              id="sp-location"
-              name="location"
-              type="text"
-              placeholder={form.locationPlaceholder}
-              value={values.location}
-              onChange={updateField("location")}
-            />
+            <div className="sp-field">
+              <label htmlFor="sp-location">{form.locationLabel}</label>
+              <input
+                id="sp-location"
+                name="location"
+                type="text"
+                placeholder={form.locationPlaceholder}
+                value={values.location}
+                onChange={updateField("location")}
+              />
+            </div>
           </div>
 
           <div className={`sp-field${errors.project ? " has-error" : ""}`}>
@@ -244,7 +259,7 @@ export const SpForm = (): ReactElement => {
             <textarea
               id="sp-project"
               name="project"
-              rows={5}
+              rows={4}
               placeholder={form.projectPlaceholder}
               value={values.project}
               onChange={updateField("project")}
@@ -268,15 +283,16 @@ export const SpForm = (): ReactElement => {
             {errors.email ? <p className="sp-error">{errors.email}</p> : null}
           </div>
 
-          <button
-            type="submit"
-            className="sp-submit"
-            disabled={status === "submitting"}
-          >
-            {status === "submitting" ? form.submitting : form.submit}
-          </button>
-
-          <p className="sp-reassurance">{form.reassurance}</p>
+          <div className="sp-form-foot">
+            <button
+              type="submit"
+              className="sp-submit"
+              disabled={status === "submitting"}
+            >
+              {status === "submitting" ? form.submitting : form.submit}
+            </button>
+            <p className="sp-reassurance">{form.reassurance}</p>
+          </div>
         </form>
       </div>
     </section>

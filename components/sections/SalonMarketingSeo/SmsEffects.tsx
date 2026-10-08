@@ -25,11 +25,11 @@ export const SmsEffects = (): ReactElement | null => {
       gsap.utils.toArray<HTMLElement>(".sms-page .reveal").forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0, y: 28 },
+          { opacity: 0, y: 24 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.85,
             ease: EASE,
             scrollTrigger: {
               trigger: section,
@@ -39,47 +39,6 @@ export const SmsEffects = (): ReactElement | null => {
           },
         );
       });
-
-      gsap.utils
-        .toArray<HTMLElement>(".sms-page .sms-journey-flow > li")
-        .forEach((item, i) => {
-          gsap.fromTo(
-            item,
-            { opacity: 0, y: 18 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              delay: i * 0.06,
-              ease: EASE,
-              scrollTrigger: {
-                trigger: ".sms-journey-flow",
-                start: "top 78%",
-                once: true,
-              },
-            },
-          );
-        });
-
-      gsap.utils
-        .toArray<HTMLElement>(".sms-page .sms-measure-bar i")
-        .forEach((bar, i) => {
-          gsap.fromTo(
-            bar,
-            { scaleX: 0 },
-            {
-              scaleX: 0.45 + (i % 3) * 0.18,
-              duration: 0.9,
-              ease: EASE,
-              transformOrigin: "left center",
-              scrollTrigger: {
-                trigger: ".sms-measure-list",
-                start: "top 80%",
-                once: true,
-              },
-            },
-          );
-        });
     });
 
     return () => ctx.revert();

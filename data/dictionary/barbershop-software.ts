@@ -5,116 +5,48 @@ export type BarbershopSoftwareDict = {
   };
   navAria: string;
   hero: {
-    eyebrow: string;
-    title: string[];
+    label: string;
     h1: string;
     body: string;
     ctaPrimary: string;
     ctaSecondary: string;
     imageAlt: string;
-    uiLabel: string;
-    uiTime: string;
-    uiService: string;
-    uiBarber: string;
   };
-  intro: {
-    lines: string[];
-    body: string;
-    items: string[];
-  };
-  chair: {
-    eyebrow: string;
+  problem: {
     headline: string[];
     body: string;
-    items: string[];
-    imageAlt: string;
   };
-  system: {
-    eyebrow: string;
+  capabilities: {
+    label: string;
+    headline: string[];
+    items: Array<{ num: string; title: string; body: string }>;
+  };
+  connected: {
+    label: string;
     headline: string[];
     body: string;
-    areas: string[];
-    ui: {
-      title: string;
-      today: string;
-      overview: string;
-      appointments: string;
-      clients: string;
-      staff: string;
-      nextUp: string;
-      slots: Array<{ time: string; name: string; service: string }>;
-      metrics: Array<{ label: string; value: string }>;
-    };
+    steps: string[];
   };
-  booking: {
-    eyebrow: string;
+  shops: {
+    label: string;
     headline: string[];
-    body: string;
-    steps: Array<{ num: string; title: string; body: string }>;
-    ui: {
-      title: string;
-      service: string;
-      barber: string;
-      time: string;
-      confirm: string;
-    };
+    items: Array<{ title: string; body: string }>;
   };
-  client: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    ui: {
-      name: string;
-      meta: string;
-      preferred: string;
-      visits: string;
-      lastVisit: string;
-      notes: string;
-      history: Array<{ date: string; service: string; barber: string }>;
-    };
-  };
-  ops: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    items: string[];
-  };
-  brandFit: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    qualities: string[];
-    stack: string[];
-  };
-  custom: {
-    headline: string[];
-    body: string[];
-    around: string;
-    items: string[];
-  };
-  ecosystem: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    layers: Array<{ label: string; title: string }>;
-  };
-  audience: {
-    eyebrow: string;
-    headline: string[];
-    items: string[];
-  };
-  difference: {
-    eyebrow: string;
+  why: {
     headline: string;
-    body: string;
-    pillars: string[];
-    statement: string;
+    body: string[];
+  };
+  faq: {
+    label: string;
+    headline: string;
+    items: Array<{ q: string; a: string }>;
   };
   cta: {
     headline: string[];
     body: string;
     primary: string;
     secondary: string;
+    imageAlt: string;
   };
   related: {
     label: string;
@@ -128,251 +60,154 @@ export type BarbershopSoftwareDict = {
 
 export const barbershopSoftware: BarbershopSoftwareDict = {
   meta: {
-    title: "Barbershop Software & Digital Systems | Fadezy",
+    title: "Barbershop Software & POS Systems | Fadezy",
     description:
-      "Barbershop software and digital systems by Fadezy — booking, client management and operations designed around the way modern barbershops actually work.",
+      "Barbershop software by Fadezy — booking, POS, payments, client management, staff schedules and shop operations built around how your barbershop actually works.",
   },
   navAria: "Barbershop software",
   hero: {
-    eyebrow: "Fadezy / Barbershop Software",
-    title: [
-      "Barbershop software,",
-      "built around the way",
-      "your shop actually works.",
-    ],
+    label: "Fadezy / Software",
     h1: "Barbershop Software",
-    body: "From bookings and client management to day-to-day operations, we create digital systems designed around the way modern barbershops actually work.",
-    ctaPrimary: "Explore the system →",
-    ctaSecondary: "Talk to Fadezy →",
+    body: "Run bookings, payments, clients and daily shop operations from one connected system.",
+    ctaPrimary: "Talk to us ↗",
+    ctaSecondary: "See what's possible",
     imageAlt:
-      "Premium barbershop interior — chair, mirror and warm light in a modern shop",
-    uiLabel: "Today",
-    uiTime: "14:30",
-    uiService: "Skin fade + beard",
-    uiBarber: "Marcus",
+      "Barbershop owner using a POS tablet at a premium reception desk",
   },
-  intro: {
-    lines: [
-      "Your barbershop is already",
-      "running a system.",
-      "The question is whether",
-      "your digital tools are helping",
-      "or slowing it down.",
+  problem: {
+    headline: [
+      "Your barbershop is already running a system.",
+      "The question is whether your digital tools are helping it run better.",
     ],
-    body: "Every shop already has a rhythm — how clients book, how barbers move, how the day unfolds. Barbershop software should support that rhythm, not fight it.",
-    items: [
-      "Bookings",
-      "Client information",
-      "Staff schedules",
-      "Services",
-      "Payments",
-      "Customer relationships",
-      "Daily operations",
-    ],
+    body: "Bookings, payments, clients, staff and daily operations should work together — not live in disconnected tools.",
   },
-  chair: {
-    eyebrow: "The shop",
-    headline: ["Built around the chair.", "Not around generic software."],
-    body: "The system should adapt to how your barbershop operates — the services you run, the way your team works, and the experience clients expect when they sit down.",
-    items: [
-      "Bookings",
-      "Clients",
-      "Services",
-      "Barbers",
-      "Schedules",
-      "Payments",
-      "Customer history",
-      "Operations",
-    ],
-    imageAlt: "Barber at work in a premium shop — focus on craft and atmosphere",
-  },
-  system: {
-    eyebrow: "The system",
+  capabilities: {
+    label: "Capabilities",
     headline: ["Everything your shop needs.", "Nothing it doesn't."],
-    body: "A clear barbershop management software experience — appointments, clients, staff and the daily overview — designed with the same restraint as a well-run shop.",
-    areas: [
-      "Appointments",
-      "Calendar",
-      "Clients",
-      "Services",
-      "Barbers / Staff",
-      "Payments",
-      "Customer history",
-      "Business overview",
-    ],
-    ui: {
-      title: "Shop overview",
-      today: "Thursday",
-      overview: "Overview",
-      appointments: "Appointments",
-      clients: "Clients",
-      staff: "Staff",
-      nextUp: "Next up",
-      slots: [
-        { time: "10:00", name: "James R.", service: "Classic cut" },
-        { time: "11:30", name: "Omar K.", service: "Fade + beard" },
-        { time: "13:00", name: "Daniel M.", service: "Hot towel shave" },
-        { time: "15:00", name: "Leo A.", service: "Skin fade" },
-      ],
-      metrics: [
-        { label: "Booked today", value: "18" },
-        { label: "Open chairs", value: "02" },
-        { label: "Returning", value: "71%" },
-      ],
-    },
-  },
-  booking: {
-    eyebrow: "Booking",
-    headline: ["From first click", "to booked chair."],
-    body: "Barbershop booking software should feel as considered as the cut — fast for the client, clear for the shop, and connected to everything that happens after confirmation.",
-    steps: [
+    items: [
       {
         num: "01",
-        title: "Discover",
-        body: "Client finds the shop online.",
+        title: "POS & payments",
+        body: "Take payments, manage transactions and keep checkout simple.",
       },
       {
         num: "02",
-        title: "Choose",
-        body: "Selects a service and barber.",
+        title: "Online booking",
+        body: "Let clients book services and appointments without back-and-forth.",
       },
       {
         num: "03",
-        title: "Book",
-        body: "Picks a time and confirms.",
+        title: "Client management",
+        body: "Keep client profiles, visit history, preferences and notes organised.",
       },
       {
         num: "04",
-        title: "Arrive",
-        body: "Receives booking details and shows up ready.",
+        title: "Staff & schedules",
+        body: "Manage barbers, working hours, availability and appointments.",
+      },
+      {
+        num: "05",
+        title: "Services & pricing",
+        body: "Manage services, durations, pricing and changes from one place.",
+      },
+      {
+        num: "06",
+        title: "Inventory",
+        body: "Track retail products, stock levels and what is moving.",
+      },
+      {
+        num: "07",
+        title: "Reporting",
+        body: "See appointments, sales and business activity in one place.",
+      },
+      {
+        num: "08",
+        title: "Memberships / loyalty",
+        body: "Support memberships, packages or loyalty programs where needed.",
       },
     ],
-    ui: {
-      title: "Book an appointment",
-      service: "Skin fade",
-      barber: "Preferred barber",
-      time: "Thu · 14:30",
-      confirm: "Confirm booking",
-    },
   },
-  client: {
-    eyebrow: "Clients",
-    headline: ["Know the client.", "Remember the experience."],
-    body: "Barbershop client management is not about collecting data for its own sake. It is about remembering the person in the chair — so every visit feels considered.",
-    ui: {
-      name: "James Rivera",
-      meta: "Client since 2023",
-      preferred: "Marcus",
-      visits: "14 visits",
-      lastVisit: "12 days ago",
-      notes: "Prefers low fade. Beard trim every other visit. Usually books Thursday afternoon.",
-      history: [
-        { date: "12 Mar", service: "Skin fade + beard", barber: "Marcus" },
-        { date: "28 Feb", service: "Classic cut", barber: "Marcus" },
-        { date: "04 Feb", service: "Hot towel shave", barber: "Leo" },
-      ],
-    },
-  },
-  ops: {
-    eyebrow: "Operations",
-    headline: ["Less admin.", "More time behind the chair."],
-    body: "When appointments, staff, services and payments sit in one clear system, the shop spends less energy managing the day — and more of it delivering the work.",
-    items: [
-      "Appointments",
-      "Staff",
-      "Services",
-      "Payments",
-      "Daily activity",
-      "Customer records",
-    ],
-  },
-  brandFit: {
-    eyebrow: "Brand & system",
-    headline: ["Your software shouldn't feel", "separate from your brand."],
-    body: "Fadezy can design the digital experience around your barbershop's identity — so the website, booking flow and management system feel like one continuous presence.",
-    qualities: [
-      "On-brand",
-      "Simple",
-      "Premium",
-      "Easy to use",
-      "Consistent",
-      "Designed for the business",
-    ],
-    stack: [
-      "Barbershop",
-      "Brand",
-      "Website",
-      "Booking",
-      "Digital system",
-      "Customer experience",
-    ],
-  },
-  custom: {
-    headline: [
-      "Your barbershop isn't generic.",
-      "Your software shouldn't be either.",
-    ],
-    body: [
-      "No unnecessary complexity.",
-      "No generic dashboards.",
-      "No software designed for someone else's business.",
-    ],
-    around: "Fadezy approaches digital systems around:",
-    items: [
-      "The shop",
-      "The team",
-      "The services",
-      "The customer journey",
-      "The operational workflow",
-    ],
-  },
-  ecosystem: {
-    eyebrow: "The full picture",
+  connected: {
+    label: "Connected system",
     headline: [
       "Your website is the front door.",
       "Your software runs what happens behind it.",
     ],
-    body: "Fadezy can build the complete digital ecosystem around a barbershop — from discovery to booking to the system that keeps the shop running.",
-    layers: [
-      { label: "Discover", title: "Website" },
-      { label: "Explore", title: "Services" },
-      { label: "Book", title: "Booking system" },
-      { label: "Manage", title: "Digital system" },
-      { label: "Return", title: "Customer relationship" },
-    ],
-  },
-  audience: {
-    eyebrow: "Who it's for",
-    headline: ["Built for barbershops", "that are ready for more."],
-    items: [
-      "Independent barbershops",
-      "Premium barbershops",
-      "Multi-barber shops",
-      "Growing shops",
-      "Multi-location businesses",
-    ],
-  },
-  difference: {
-    eyebrow: "The Fadezy approach",
-    headline: "Software is only part of the system.",
-    body: "Fadezy doesn't approach digital as disconnected services. Website, brand, content, marketing, SEO, social and digital systems should work together — as one experience for the shop and the client.",
-    pillars: [
+    body: "Connect the customer-facing experience with the systems running your barbershop.",
+    steps: [
       "Website",
-      "Brand",
-      "Content",
-      "Marketing",
-      "SEO",
-      "Social",
-      "Digital systems",
+      "Booking",
+      "Client",
+      "Appointment",
+      "Payment",
+      "Shop operations",
     ],
-    statement:
-      "Fadezy is the digital partner built exclusively for barbershops and beauty salons.",
+  },
+  shops: {
+    label: "Built for your shop",
+    headline: ["One system.", "Built around how your shop actually works."],
+    items: [
+      {
+        title: "Independent barbers",
+        body: "Simple systems for a single shop and small team.",
+      },
+      {
+        title: "Multi-barber shops",
+        body: "Manage staff, schedules, services and clients together.",
+      },
+      {
+        title: "Multi-location shops",
+        body: "Keep operations connected across locations.",
+      },
+      {
+        title: "Growing barbershops",
+        body: "Build a system that can evolve as the business grows.",
+      },
+    ],
+  },
+  why: {
+    headline: "Software should feel like part of your brand.",
+    body: [
+      "Your booking, POS and digital systems should not feel disconnected from the experience your barbershop has built.",
+      "Fadezy designs digital systems around the business, the customer journey and the way the shop actually operates.",
+    ],
+  },
+  faq: {
+    label: "FAQ",
+    headline: "Practical questions from shop owners.",
+    items: [
+      {
+        q: "What software does a barbershop actually need?",
+        a: "Most shops need booking, payments, client records, staff schedules and a clear daily overview. The right system is the one that matches how your shop already runs.",
+      },
+      {
+        q: "Can Fadezy build or integrate a POS system?",
+        a: "Yes. We can design around POS and payment flows, or connect with platforms you already use — depending on what fits the shop.",
+      },
+      {
+        q: "Can the software connect with my existing website?",
+        a: "Yes. Booking and systems can connect to your current site, or sit inside a new barbershop website built with Fadezy.",
+      },
+      {
+        q: "Can clients book appointments online?",
+        a: "Yes. Online booking can let clients choose services, times and barbers without calls or message threads.",
+      },
+      {
+        q: "Can the system support multiple barbers or locations?",
+        a: "Yes. We can structure systems for multi-barber teams and multi-location shops so schedules, services and clients stay connected.",
+      },
+    ],
   },
   cta: {
-    headline: ["Let's build the digital", "system behind your shop."],
-    body: "Tell us how your barbershop works. We'll help you figure out what should happen digitally.",
-    primary: "Start a project →",
-    secondary: "Talk to Fadezy →",
+    headline: [
+      "Your barbershop isn't generic.",
+      "Your software shouldn't be either.",
+    ],
+    body: "Tell us how your shop works and what you need the system to handle.",
+    primary: "Build your system ↗",
+    secondary: "Talk to Fadezy ↗",
+    imageAlt:
+      "Premium barbershop reception workstation with POS tablet and grooming products",
   },
   related: {
     label: "Continue",

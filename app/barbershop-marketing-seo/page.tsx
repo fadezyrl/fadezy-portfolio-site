@@ -2,23 +2,15 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import { Footer } from "@/components/Footer/Footer";
 import { HeaderNav } from "@/components/HeaderNav/HeaderNav";
-import { BmsApproach } from "@/components/sections/BarbershopMarketingSeo/BmsApproach";
-import { BmsAudience } from "@/components/sections/BarbershopMarketingSeo/BmsAudience";
-import { BmsChannels } from "@/components/sections/BarbershopMarketingSeo/BmsChannels";
+import { BmsBooking } from "@/components/sections/BarbershopMarketingSeo/BmsBooking";
 import { BmsContent } from "@/components/sections/BarbershopMarketingSeo/BmsContent";
 import { BmsCta } from "@/components/sections/BarbershopMarketingSeo/BmsCta";
-import { BmsDifference } from "@/components/sections/BarbershopMarketingSeo/BmsDifference";
 import { BmsEffects } from "@/components/sections/BarbershopMarketingSeo/BmsEffects";
+import { BmsFaq } from "@/components/sections/BarbershopMarketingSeo/BmsFaq";
 import { BmsHero } from "@/components/sections/BarbershopMarketingSeo/BmsHero";
-import { BmsIntro } from "@/components/sections/BarbershopMarketingSeo/BmsIntro";
-import { BmsJourney } from "@/components/sections/BarbershopMarketingSeo/BmsJourney";
 import { BmsLocal } from "@/components/sections/BarbershopMarketingSeo/BmsLocal";
 import { BmsMeasure } from "@/components/sections/BarbershopMarketingSeo/BmsMeasure";
-import { BmsPresence } from "@/components/sections/BarbershopMarketingSeo/BmsPresence";
-import { BmsSystem } from "@/components/sections/BarbershopMarketingSeo/BmsSystem";
-import { BmsTrust } from "@/components/sections/BarbershopMarketingSeo/BmsTrust";
-import { BmsVanity } from "@/components/sections/BarbershopMarketingSeo/BmsVanity";
-import { BmsWebsite } from "@/components/sections/BarbershopMarketingSeo/BmsWebsite";
+import { BmsServices } from "@/components/sections/BarbershopMarketingSeo/BmsServices";
 import { BMS_CANONICAL } from "@/data/barbershop-marketing-seo";
 import { barbershopMarketingSeo } from "@/data/dictionary/barbershop-marketing-seo";
 import { OG_IMAGE_ALT, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "@/data/site";
@@ -60,6 +52,19 @@ export const metadata: Metadata = {
   },
 };
 
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: pageCopy.faq.items.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
 const webPageStructuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -97,6 +102,12 @@ const BarbershopMarketingSeoPage = (): ReactElement => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
           __html: JSON.stringify(webPageStructuredData),
         }}
       />
@@ -104,20 +115,12 @@ const BarbershopMarketingSeoPage = (): ReactElement => {
         <HeaderNav />
         <main aria-label={pageCopy.navAria}>
           <BmsHero />
-          <BmsIntro />
-          <BmsJourney />
+          <BmsServices />
           <BmsLocal />
-          <BmsPresence />
           <BmsContent />
-          <BmsChannels />
-          <BmsWebsite />
-          <BmsTrust />
-          <BmsSystem />
+          <BmsBooking />
           <BmsMeasure />
-          <BmsApproach />
-          <BmsVanity />
-          <BmsDifference />
-          <BmsAudience />
+          <BmsFaq />
           <BmsCta />
         </main>
         <Footer />

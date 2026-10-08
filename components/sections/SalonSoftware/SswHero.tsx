@@ -10,74 +10,63 @@ export const SswHero = (): ReactElement => {
   const copy = t.salonSoftware.hero;
 
   useEffect(() => {
+    const root = document.querySelector(".ssw-hero");
+    if (!root) return;
+
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const root = document.querySelector(".ssw-hero");
-    if (!root) return;
 
     if (reduceMotion) {
       root.classList.add("is-ready");
       return;
     }
 
-    const frame = requestAnimationFrame(() => {
+    const frame = window.setTimeout(() => {
       root.classList.add("is-ready");
-    });
+    }, 40);
 
-    return () => cancelAnimationFrame(frame);
+    return () => window.clearTimeout(frame);
   }, []);
 
   return (
     <section className="ssw-hero" aria-labelledby="ssw-hero-title">
-      <div className="ssw-hero-stage">
+      <div className="ssw-hero-media" aria-hidden="true">
+        <img
+          src={SSW_ASSETS.hero}
+          alt=""
+          className="ssw-hero-img"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+        />
+        <div className="ssw-hero-veil" />
+      </div>
+
+      <div className="ssw-wrap ssw-hero-inner">
         <div className="ssw-hero-copy">
-          <span className="ssw-meta">{copy.eyebrow}</span>
-          <h1 id="ssw-hero-title" className="ssw-hero-h1">
+          <span className="ssw-meta on-dark">{copy.label}</span>
+          <h1 id="ssw-hero-title" className="ssw-hero-title">
             {copy.h1}
           </h1>
-          <p className="ssw-hero-title">
-            {copy.title.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </p>
           <p className="ssw-hero-body">{copy.body}</p>
           <div className="ssw-hero-ctas">
-            <a href="#system" className="ssw-link-primary">
-              {copy.ctaPrimary}
-            </a>
             <a
               href={CONTACT.whatsappUrl}
-              className="ssw-link-secondary"
+              className="ssw-link-secondary on-dark"
               target="_blank"
               rel="noopener noreferrer"
             >
+              {copy.ctaPrimary}
+            </a>
+            <a href="#capabilities" className="ssw-link-primary on-dark">
               {copy.ctaSecondary}
             </a>
           </div>
         </div>
-
-        <figure className="ssw-hero-visual">
-          <div className="ssw-hero-frame">
-            <img
-              src={SSW_ASSETS.hero}
-              alt={copy.imageAlt}
-              className="ssw-hero-img"
-              width={1600}
-              height={2000}
-              fetchPriority="high"
-            />
-            <div className="ssw-hero-veil" aria-hidden="true" />
-          </div>
-
-          <aside className="ssw-hero-ui" aria-hidden="true">
-            <span className="ssw-hero-ui-label">{copy.uiLabel}</span>
-            <strong className="ssw-hero-ui-time">{copy.uiTime}</strong>
-            <span className="ssw-hero-ui-service">{copy.uiService}</span>
-            <span className="ssw-hero-ui-barber">{copy.uiStylist}</span>
-          </aside>
-        </figure>
       </div>
+
+      <span className="ssw-sr-only">{copy.imageAlt}</span>
     </section>
   );
 };

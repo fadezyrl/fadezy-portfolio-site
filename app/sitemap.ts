@@ -5,9 +5,18 @@ import { BSW_CANONICAL } from "@/data/barbershop-software";
 import { BWD_CANONICAL } from "@/data/barbershop-web-design";
 import { SMS_CANONICAL } from "@/data/salon-marketing-seo";
 import { SSW_CANONICAL } from "@/data/salon-software";
-import { SWD_CANONICAL } from "@/data/salon-website-design";
+import { SWD_CANONICAL, SWD_PROJECTS } from "@/data/salon-website-design";
 import { SITE_URL } from "@/data/site";
 import { START_PROJECT_CANONICAL } from "@/data/start-project";
+
+const salonProjectEntries: MetadataRoute.Sitemap = SWD_PROJECTS.map(
+  (project) => ({
+    url: `${SWD_CANONICAL}/work/${project.id}`,
+    lastModified: new Date("2026-10-08"),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }),
+);
 
 const sitemap = (): MetadataRoute.Sitemap => [
   {
@@ -24,10 +33,11 @@ const sitemap = (): MetadataRoute.Sitemap => [
   },
   {
     url: SWD_CANONICAL,
-    lastModified: new Date("2026-09-15"),
+    lastModified: new Date("2026-10-08"),
     changeFrequency: "monthly",
     priority: 0.9,
   },
+  ...salonProjectEntries,
   {
     url: BSW_CANONICAL,
     lastModified: new Date("2026-10-07"),

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactElement } from "react";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const SpClose = (): ReactElement => {
@@ -8,11 +9,17 @@ export const SpClose = (): ReactElement => {
   const copy = t.startProject.close;
 
   return (
-    <section className="sp-close" aria-label={copy.mark}>
-      <div className="sp-wrap sp-close-frame reveal">
-        <p className="sp-close-mark">{copy.mark}</p>
-        <p className="sp-close-line">{copy.line}</p>
-        <p className="sp-close-location">{copy.location}</p>
+    <section className="sp-close" aria-labelledby="sp-close-title">
+      <div className="sp-close-frame reveal">
+        <h2 id="sp-close-title" className="sp-close-headline">
+          {copy.headline.map((line) => (
+            <span key={line}>{line}</span>
+          ))}
+        </h2>
+        <p className="sp-close-body">{copy.body}</p>
+        <a href={`${START_PROJECT_PATH}#project-inquiry`} className="sp-close-cta">
+          {copy.cta}
+        </a>
       </div>
     </section>
   );

@@ -2,20 +2,15 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 import { Footer } from "@/components/Footer/Footer";
 import { HeaderNav } from "@/components/HeaderNav/HeaderNav";
-import { BswAudience } from "@/components/sections/BarbershopSoftware/BswAudience";
-import { BswBooking } from "@/components/sections/BarbershopSoftware/BswBooking";
-import { BswBrandFit } from "@/components/sections/BarbershopSoftware/BswBrandFit";
-import { BswChair } from "@/components/sections/BarbershopSoftware/BswChair";
-import { BswClient } from "@/components/sections/BarbershopSoftware/BswClient";
+import { BswCapabilities } from "@/components/sections/BarbershopSoftware/BswCapabilities";
+import { BswConnected } from "@/components/sections/BarbershopSoftware/BswConnected";
 import { BswCta } from "@/components/sections/BarbershopSoftware/BswCta";
-import { BswCustom } from "@/components/sections/BarbershopSoftware/BswCustom";
-import { BswDifference } from "@/components/sections/BarbershopSoftware/BswDifference";
-import { BswEcosystem } from "@/components/sections/BarbershopSoftware/BswEcosystem";
 import { BswEffects } from "@/components/sections/BarbershopSoftware/BswEffects";
+import { BswFaq } from "@/components/sections/BarbershopSoftware/BswFaq";
 import { BswHero } from "@/components/sections/BarbershopSoftware/BswHero";
-import { BswIntro } from "@/components/sections/BarbershopSoftware/BswIntro";
-import { BswOps } from "@/components/sections/BarbershopSoftware/BswOps";
-import { BswSystem } from "@/components/sections/BarbershopSoftware/BswSystem";
+import { BswProblem } from "@/components/sections/BarbershopSoftware/BswProblem";
+import { BswShops } from "@/components/sections/BarbershopSoftware/BswShops";
+import { BswWhy } from "@/components/sections/BarbershopSoftware/BswWhy";
 import { BSW_CANONICAL } from "@/data/barbershop-software";
 import { barbershopSoftware } from "@/data/dictionary/barbershop-software";
 import { OG_IMAGE_ALT, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "@/data/site";
@@ -57,6 +52,19 @@ export const metadata: Metadata = {
   },
 };
 
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: pageCopy.faq.items.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
 const webPageStructuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -75,7 +83,7 @@ const webPageStructuredData = {
     {
       "@type": "Service",
       name: "Barbershop Software",
-      serviceType: "Barbershop software and digital systems",
+      serviceType: "Barbershop software, POS and digital systems",
       provider: {
         "@type": "Organization",
         name: SITE_NAME,
@@ -94,6 +102,12 @@ const BarbershopSoftwarePage = (): ReactElement => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
           __html: JSON.stringify(webPageStructuredData),
         }}
       />
@@ -101,17 +115,12 @@ const BarbershopSoftwarePage = (): ReactElement => {
         <HeaderNav />
         <main aria-label={pageCopy.navAria}>
           <BswHero />
-          <BswIntro />
-          <BswChair />
-          <BswSystem />
-          <BswBooking />
-          <BswClient />
-          <BswOps />
-          <BswBrandFit />
-          <BswCustom />
-          <BswEcosystem />
-          <BswAudience />
-          <BswDifference />
+          <BswProblem />
+          <BswCapabilities />
+          <BswConnected />
+          <BswShops />
+          <BswWhy />
+          <BswFaq />
           <BswCta />
         </main>
         <Footer />

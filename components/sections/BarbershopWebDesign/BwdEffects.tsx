@@ -81,27 +81,6 @@ export const BwdEffects = (): ReactElement | null => {
             },
           );
         });
-
-      gsap.utils
-        .toArray<HTMLElement>(".bwd-page .bwd-project")
-        .forEach((project) => {
-          const img = project.querySelector("img");
-          if (!img) return;
-          gsap.fromTo(
-            img,
-            { scale: 1.06 },
-            {
-              scale: 1,
-              duration: 1.2,
-              ease: EASE,
-              scrollTrigger: {
-                trigger: project,
-                start: "top 75%",
-                once: true,
-              },
-            },
-          );
-        });
     });
 
     return () => ctx.revert();

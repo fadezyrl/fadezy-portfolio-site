@@ -2033,10 +2033,23 @@ footer.site-footer .tagline {
   max-width: 280px;
 }
 
+footer.site-footer .footer-remote {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-on-black-30);
+}
+
 .footer-cols {
   display: flex;
-  gap: 70px;
+  gap: 56px;
   flex-wrap: wrap;
+}
+
+.footer-social a:first-child {
+  color: var(--paper-on-black);
 }
 
 .footer-col {

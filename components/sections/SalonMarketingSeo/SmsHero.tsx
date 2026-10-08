@@ -2,7 +2,7 @@
 
 import { useEffect, type ReactElement } from "react";
 import { SMS_ASSETS } from "@/data/salon-marketing-seo";
-import { CONTACT } from "@/data/contact";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const SmsHero = (): ReactElement => {
@@ -38,22 +38,12 @@ export const SmsHero = (): ReactElement => {
               <span key={line}>{line}</span>
             ))}
           </h1>
-          <p className="sms-hero-statement">
-            {copy.statement.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </p>
           <p className="sms-hero-body">{copy.body}</p>
           <div className="sms-hero-ctas">
-            <a href="#journey" className="sms-link-primary">
+            <a href={START_PROJECT_PATH} className="sms-link-primary">
               {copy.ctaPrimary}
             </a>
-            <a
-              href={CONTACT.whatsappUrl}
-              className="sms-link-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="#services" className="sms-link-secondary">
               {copy.ctaSecondary}
             </a>
           </div>
@@ -66,17 +56,10 @@ export const SmsHero = (): ReactElement => {
               alt={copy.imageAlt}
               className="sms-hero-img"
               width={1600}
-              height={2000}
+              height={900}
               fetchPriority="high"
             />
-            <div className="sms-hero-veil" aria-hidden="true" />
           </div>
-          <aside className="sms-hero-ui" aria-hidden="true">
-            <span className="sms-hero-ui-label">{copy.uiLabel}</span>
-            <strong className="sms-hero-ui-query">{copy.uiQuery}</strong>
-            <span className="sms-hero-ui-place">{copy.uiPlace}</span>
-            <span className="sms-hero-ui-result">{copy.uiResult}</span>
-          </aside>
         </figure>
       </div>
     </section>

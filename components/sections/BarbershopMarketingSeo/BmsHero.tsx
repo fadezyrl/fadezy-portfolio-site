@@ -2,7 +2,7 @@
 
 import { useEffect, type ReactElement } from "react";
 import { BMS_ASSETS } from "@/data/barbershop-marketing-seo";
-import { CONTACT } from "@/data/contact";
+import { START_PROJECT_PATH } from "@/data/start-project";
 import { useLocale } from "@/hooks/useLocale";
 
 export const BmsHero = (): ReactElement => {
@@ -38,22 +38,12 @@ export const BmsHero = (): ReactElement => {
               <span key={line}>{line}</span>
             ))}
           </h1>
-          <p className="bms-hero-statement">
-            {copy.statement.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </p>
           <p className="bms-hero-body">{copy.body}</p>
           <div className="bms-hero-ctas">
-            <a href="#journey" className="bms-link-primary">
+            <a href={START_PROJECT_PATH} className="bms-link-primary">
               {copy.ctaPrimary}
             </a>
-            <a
-              href={CONTACT.whatsappUrl}
-              className="bms-link-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="#services" className="bms-link-secondary">
               {copy.ctaSecondary}
             </a>
           </div>
@@ -66,17 +56,10 @@ export const BmsHero = (): ReactElement => {
               alt={copy.imageAlt}
               className="bms-hero-img"
               width={1600}
-              height={2000}
+              height={1200}
               fetchPriority="high"
             />
-            <div className="bms-hero-veil" aria-hidden="true" />
           </div>
-          <aside className="bms-hero-ui" aria-hidden="true">
-            <span className="bms-hero-ui-label">{copy.uiLabel}</span>
-            <strong className="bms-hero-ui-query">{copy.uiQuery}</strong>
-            <span className="bms-hero-ui-place">{copy.uiPlace}</span>
-            <span className="bms-hero-ui-result">{copy.uiResult}</span>
-          </aside>
         </figure>
       </div>
     </section>

@@ -1,23 +1,215 @@
 "use client";
 
-import type { ReactElement } from "react";
-import { SWD_ASSETS } from "@/data/salon-website-design";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+  type ReactElement,
+} from "react";
+import { SWD_PROJECTS } from "@/data/salon-website-design";
 import { useLocale } from "@/hooks/useLocale";
-
-const PROJECT_IMAGES: Record<string, { hero: string; full?: string }> = {
-  "beauty-n-blendz": {
-    hero: SWD_ASSETS.beautyHero,
-    full: SWD_ASSETS.beautyFull,
-  },
-  "mane-rumor": {
-    hero: SWD_ASSETS.maneHero,
-    full: SWD_ASSETS.maneFull,
-  },
-};
 
 export const SwdWork = (): ReactElement => {
   const { t } = useLocale();
   const copy = t.salonWebsiteDesign.work;
+  const trackRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const velocityRef = useRef(0);
+  const pausedRef = useRef(false);
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartYRef = useRef(0);
+  const dragScrollRef = useRef(0);
+  const didDragRef = useRef(false);
+  const axisRef = useRef<"pending" | "x" | "y" | "none">("none");
+  const activePointerRef = useRef<number | null>(null);
+  const [index, setIndex] = useState(1);
+  const total = SWD_PROJECTS.length;
+
+  const projectCopy = (id: string) =>
+    copy.projects.find((project) => project.id === id);
+
+  const updateIndex = (): void => {
+    const track = trackRef.current;
+    if (!track) return;
+    const cards = Array.from(
+      track.querySelectorAll<HTMLElement>(".swd-work-card"),
+    ).slice(0, total);
+    if (cards.length === 0) return;
+
+    const center = track.scrollLeft + track.clientWidth * 0.35;
+    let best = 0;
+    let bestDist = Number.POSITIVE_INFINITY;
+    cards.forEach((card, i) => {
+      const dist = Math.abs(card.offsetLeft - center);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = i;
+      }
+    });
+    setIndex(best + 1);
+  };
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const onScroll = (): void => updateIndex();
+    const onTouchStart = (): void => {
+      pausedRef.current = true;
+      velocityRef.current = 0;
+    };
+    const onTouchEnd = (): void => {
+      window.setTimeout(() => {
+        pausedRef.current = false;
+      }, 1200);
+    };
+
+    track.addEventListener("scroll", onScroll, { passive: true });
+    track.addEventListener("touchstart", onTouchStart, { passive: true });
+    track.addEventListener("touchend", onTouchEnd, { passive: true });
+    track.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    updateIndex();
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) {
+      return () => {
+        track.removeEventListener("scroll", onScroll);
+        track.removeEventListener("touchstart", onTouchStart);
+        track.removeEventListener("touchend", onTouchEnd);
+        track.removeEventListener("touchcancel", onTouchEnd);
+      };
+    }
+
+    const tick = (): void => {
+      if (!track) return;
+
+      if (!pausedRef.current && !draggingRef.current) {
+        if (Math.abs(velocityRef.current) > 0.05) {
+          track.scrollLeft += velocityRef.current;
+          velocityRef.current *= 0.92;
+        } else {
+          track.scrollLeft += 0.22;
+          velocityRef.current = 0;
+        }
+
+        const half = track.scrollWidth / 2;
+        if (half > 0 && track.scrollLeft >= half) {
+          track.scrollLeft -= half;
+        }
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      track.removeEventListener("scroll", onScroll);
+      track.removeEventListener("touchstart", onTouchStart);
+      track.removeEventListener("touchend", onTouchEnd);
+      track.removeEventListener("touchcancel", onTouchEnd);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [total]);
+
+  const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>): void => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    if (event.pointerType !== "mouse") {
+      pausedRef.current = true;
+      velocityRef.current = 0;
+      axisRef.current = "none";
+      return;
+    }
+
+    draggingRef.current = true;
+    didDragRef.current = false;
+    pausedRef.current = true;
+    velocityRef.current = 0;
+    axisRef.current = "pending";
+    activePointerRef.current = event.pointerId;
+    dragStartXRef.current = event.clientX;
+    dragStartYRef.current = event.clientY;
+    dragScrollRef.current = track.scrollLeft;
+  };
+
+  const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>): void => {
+    const track = trackRef.current;
+    if (!track || !draggingRef.current) return;
+    if (
+      activePointerRef.current !== null &&
+      event.pointerId !== activePointerRef.current
+    ) {
+      return;
+    }
+
+    const deltaX = event.clientX - dragStartXRef.current;
+    const deltaY = event.clientY - dragStartYRef.current;
+
+    if (axisRef.current === "pending") {
+      if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
+
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        axisRef.current = "y";
+        draggingRef.current = false;
+        activePointerRef.current = null;
+        track.classList.remove("is-dragging");
+        return;
+      }
+
+      axisRef.current = "x";
+      track.setPointerCapture(event.pointerId);
+      track.classList.add("is-dragging");
+    }
+
+    if (axisRef.current !== "x") return;
+
+    if (Math.abs(deltaX) > 6) didDragRef.current = true;
+    const next = dragScrollRef.current - deltaX;
+    velocityRef.current = next - track.scrollLeft;
+    track.scrollLeft = next;
+  };
+
+  const endDrag = (event: ReactPointerEvent<HTMLDivElement>): void => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    if (
+      activePointerRef.current !== null &&
+      track.hasPointerCapture(event.pointerId)
+    ) {
+      track.releasePointerCapture(event.pointerId);
+    }
+
+    draggingRef.current = false;
+    axisRef.current = "none";
+    activePointerRef.current = null;
+    track.classList.remove("is-dragging");
+    window.setTimeout(() => {
+      pausedRef.current = false;
+    }, 900);
+  };
+
+  const scrollByCard = (direction: -1 | 1): void => {
+    const track = trackRef.current;
+    if (!track) return;
+    pausedRef.current = true;
+    velocityRef.current = 0;
+    const card = track.querySelector<HTMLElement>(".swd-work-card");
+    const amount = (card?.offsetWidth ?? track.clientWidth * 0.72) + 40;
+    track.scrollBy({ left: amount * direction, behavior: "smooth" });
+    window.setTimeout(() => {
+      pausedRef.current = false;
+    }, 1400);
+  };
+
+  const loopedProjects = [...SWD_PROJECTS, ...SWD_PROJECTS];
+  const indexLabel = `${String(index).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
 
   return (
     <section className="swd-work reveal" id="work" aria-labelledby="swd-work-label">
@@ -26,59 +218,127 @@ export const SwdWork = (): ReactElement => {
           <span className="swd-meta" id="swd-work-label">
             {copy.label}
           </span>
-          <h2>{copy.headline}</h2>
+          <h2 className="swd-work-headline">
+            {copy.headline.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
+          </h2>
+          <p className="swd-work-support">{copy.support}</p>
+          <p className="swd-work-markets">{copy.markets}</p>
         </header>
+
+        <div className="swd-work-controls">
+          <span className="swd-work-index" aria-live="polite">
+            {indexLabel}
+          </span>
+          <div className="swd-work-nav">
+            <button
+              type="button"
+              className="swd-work-arrow"
+              aria-label={copy.prev}
+              onClick={() => scrollByCard(-1)}
+            >
+              ←
+            </button>
+            <span className="swd-work-drag-hint">{copy.dragHint}</span>
+            <button
+              type="button"
+              className="swd-work-arrow"
+              aria-label={copy.next}
+              onClick={() => scrollByCard(1)}
+            >
+              →
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className="swd-work-track">
-        {copy.projects.map((project, index) => {
-          const images = PROJECT_IMAGES[project.id];
-          const imageSrc = images?.full ?? images?.hero ?? "";
+      <div
+        className="swd-work-track"
+        ref={trackRef}
+        aria-label={copy.dragHint}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onMouseEnter={() => {
+          pausedRef.current = true;
+        }}
+        onMouseLeave={() => {
+          if (!draggingRef.current) pausedRef.current = false;
+        }}
+      >
+        <div className="swd-work-rail">
+          {loopedProjects.map((project, i) => {
+            const meta = projectCopy(project.id);
+            if (!meta) return null;
 
-          return (
-            <article
-              className={`swd-project${index % 2 === 1 ? " is-alt" : ""}`}
-              key={project.id}
-            >
-              {project.url ? (
+            return (
+              <article
+                className={`swd-work-card is-${project.composition}`}
+                key={`${project.id}-${i}`}
+              >
                 <a
-                  href={project.url}
-                  className="swd-project-visual"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${copy.viewProject}: ${project.title}`}
+                  href={project.href}
+                  className={`swd-work-visual${
+                    project.mobileImage &&
+                    (project.composition === "focus" ||
+                      project.composition === "offset")
+                      ? " has-pair"
+                      : ""
+                  }`}
+                  aria-label={`${copy.viewProject}: ${meta.title}`}
+                  onClick={(event) => {
+                    if (didDragRef.current) {
+                      event.preventDefault();
+                    }
+                  }}
                 >
-                  <img src={imageSrc} alt={project.imageAlt} loading="lazy" />
+                  <img
+                    className="swd-work-desktop"
+                    src={project.image}
+                    alt={meta.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                  />
+                  {project.mobileImage &&
+                  (project.composition === "focus" ||
+                    project.composition === "offset") ? (
+                    <img
+                      className="swd-work-phone"
+                      src={project.mobileImage}
+                      alt={meta.mobileImageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                  ) : null}
                 </a>
-              ) : (
-                <div className="swd-project-visual">
-                  <img src={imageSrc} alt={project.imageAlt} loading="lazy" />
-                </div>
-              )}
-              <div className="swd-project-meta">
-                <div>
-                  <p className="swd-project-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3>{project.title}</h3>
-                  <span className="swd-project-loc">{project.location}</span>
-                  <p className="swd-project-tags">{project.meta}</p>
-                  <p className="swd-project-desc">{project.desc}</p>
-                </div>
-                {project.url ? (
+
+                <div className="swd-work-meta">
+                  <div className="swd-work-meta-main">
+                    <h3>{meta.title}</h3>
+                    <p className="swd-work-loc">{meta.location}</p>
+                    <p className="swd-work-type">{meta.type}</p>
+                    {project.status === "concept" ? (
+                      <p className="swd-work-status">{copy.conceptLabel}</p>
+                    ) : null}
+                  </div>
                   <a
-                    href={project.url}
-                    className="btn-text"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={project.href}
+                    className="swd-work-link"
+                    onClick={(event) => {
+                      if (didDragRef.current) event.preventDefault();
+                    }}
                   >
-                    {copy.viewProject} <span aria-hidden="true">→</span>
+                    {copy.viewProject}
                   </a>
-                ) : null}
-              </div>
-            </article>
-          );
-        })}
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

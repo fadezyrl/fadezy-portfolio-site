@@ -25,15 +25,15 @@ export const SswEffects = (): ReactElement | null => {
       gsap.utils.toArray<HTMLElement>(".ssw-page .reveal").forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0, y: 28 },
+          { opacity: 0, y: 32 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.95,
             ease: EASE,
             scrollTrigger: {
               trigger: section,
-              start: "top 82%",
+              start: "top 84%",
               once: true,
             },
           },
@@ -41,19 +41,19 @@ export const SswEffects = (): ReactElement | null => {
       });
 
       gsap.utils
-        .toArray<HTMLElement>(".ssw-page .ssw-eco-flow > li")
+        .toArray<HTMLElement>(".ssw-page .ssw-flow > li")
         .forEach((item, i) => {
           gsap.fromTo(
             item,
-            { opacity: 0, y: 16 },
+            { opacity: 0, y: 14 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.65,
-              delay: i * 0.07,
+              duration: 0.55,
+              delay: i * 0.06,
               ease: EASE,
               scrollTrigger: {
-                trigger: ".ssw-eco-flow",
+                trigger: ".ssw-flow",
                 start: "top 78%",
                 once: true,
               },
@@ -61,20 +61,37 @@ export const SswEffects = (): ReactElement | null => {
           );
         });
 
-      const heroImg = document.querySelector(".ssw-hero-img");
+      gsap.utils
+        .toArray<HTMLElement>(".ssw-page .ssw-cap-row")
+        .forEach((row, i) => {
+          gsap.fromTo(
+            row,
+            { opacity: 0, y: 18 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              delay: i * 0.04,
+              ease: EASE,
+              scrollTrigger: {
+                trigger: row,
+                start: "top 88%",
+                once: true,
+              },
+            },
+          );
+        });
+
+      const heroImg = document.querySelector<HTMLElement>(".ssw-hero-img");
       if (heroImg) {
         gsap.fromTo(
           heroImg,
-          { scale: 1.08 },
+          { scale: 1.03 },
           {
             scale: 1,
-            duration: 1.4,
+            duration: 1.45,
             ease: EASE,
-            scrollTrigger: {
-              trigger: ".ssw-hero",
-              start: "top top",
-              once: true,
-            },
+            transformOrigin: "30% center",
           },
         );
       }

@@ -4,133 +4,59 @@ export type SalonMarketingSeoDict = {
   hero: {
     eyebrow: string;
     h1: string[];
-    statement: string[];
     body: string;
     ctaPrimary: string;
     ctaSecondary: string;
     imageAlt: string;
-    uiLabel: string;
-    uiQuery: string;
-    uiPlace: string;
-    uiResult: string;
   };
-  intro: {
-    lines: string[];
-    body: string;
-    steps: string[];
-  };
-  journey: {
+  services: {
     eyebrow: string;
     headline: string;
-    stages: Array<{ label: string; body: string }>;
+    body: string;
+    items: Array<{ num: string; title: string; body: string }>;
   };
   local: {
     eyebrow: string;
     headline: string[];
     body: string;
-    queries: string[];
-    purpose: string;
-    links: Array<{ label: string; title: string }>;
-  };
-  presence: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    elements: string[];
-    goals: string[];
-    profile: {
-      name: string;
-      category: string;
-      hours: string;
-      rating: string;
-      reviews: string;
-      action: string;
-    };
+    flow: string[];
+    points: string[];
   };
   content: {
     eyebrow: string;
     headline: string[];
     body: string;
-    themes: string[];
-    imageAlts: string[];
+    pillars: Array<{ num: string; title: string; body: string }>;
   };
-  channels: {
+  booking: {
     eyebrow: string;
-    headline: string[];
+    headline: string;
     body: string;
-    layers: Array<{ label: string; title: string; body: string }>;
-  };
-  website: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    points: string[];
     flow: string[];
-    imageAlt: string;
-    projectLabel: string;
-  };
-  brand: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    signals: string[];
-  };
-  reviews: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    signals: string[];
-  };
-  system: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    pillars: string[];
+    note: string;
+    websiteLink: string;
   };
   measure: {
     eyebrow: string;
     headline: string[];
-    body: string;
-    note: string;
-    metrics: Array<{ label: string; hint: string }>;
+    items: Array<{ title: string; body: string }>;
   };
-  approach: {
+  faq: {
     eyebrow: string;
     headline: string;
-    steps: Array<{ num: string; title: string; body: string }>;
-  };
-  vanity: {
-    headline: string[];
-    body: string;
-    focus: string[];
-  };
-  difference: {
-    eyebrow: string;
-    headline: string[];
-    body: string;
-    pillars: string[];
-    statement: string;
-  };
-  audience: {
-    eyebrow: string;
-    headline: string[];
-    items: string[];
+    items: Array<{ q: string; a: string }>;
   };
   cta: {
     headline: string[];
     body: string;
     primary: string;
-    secondary: string;
+    imageAlt: string;
   };
   related: {
     label: string;
     website: string;
-    barbershopWebsite: string;
     software: string;
-    barbershopSoftware: string;
     barbershopMarketing: string;
-    services: string;
-    work: string;
     about: string;
   };
 };
@@ -139,365 +65,176 @@ export const salonMarketingSeo: SalonMarketingSeoDict = {
   meta: {
     title: "Salon Marketing & SEO | Fadezy",
     description:
-      "Salon marketing and SEO by Fadezy — local search, content and digital visibility designed to help modern beauty salons get discovered and booked.",
+      "Salon marketing and SEO by Fadezy — local SEO, Google Business Profile, content, reviews and website conversion for beauty salons that want to be found and booked.",
   },
   navAria: "Salon marketing and SEO",
   hero: {
     eyebrow: "Fadezy / Salon Marketing & SEO",
     h1: ["Salon", "Marketing & SEO"],
-    statement: [
-      "Be discovered by the",
-      "people already looking",
-      "for their next salon.",
-    ],
-    body: "We help salons build meaningful visibility across search, local discovery, content and digital channels — creating a digital presence that turns attention into appointments.",
-    ctaPrimary: "Grow your salon →",
-    ctaSecondary: "Talk to Fadezy →",
+    body: "Get discovered by the right clients, build trust before the first appointment, and turn your digital presence into a stronger path to booking.",
+    ctaPrimary: "Talk to Fadezy ↗",
+    ctaSecondary: "See what we do",
     imageAlt:
-      "Luxury beauty salon — stylist working with a client in soft cinematic light",
-    uiLabel: "Nearby",
-    uiQuery: "salon near me",
-    uiPlace: "Your city",
-    uiResult: "Open · Highly rated",
+      "Salon owner reviewing her business digital presence on a phone inside a sophisticated beauty salon",
   },
-  intro: {
-    lines: [
-      "Your salon can be exceptional.",
-      "But first, people have to find it.",
-    ],
-    body: "They search. They discover. They compare. They look at the work. They check reviews. They explore services. They visit Instagram. They look at the website. Then they decide where to book. Fadezy's marketing and SEO work is built to make your salon visible and compelling throughout that journey.",
-    steps: [
-      "Search",
-      "Discover",
-      "Compare",
-      "Work",
-      "Reviews",
-      "Services",
-      "Instagram",
-      "Website",
-      "Book",
-    ],
-  },
-  journey: {
-    eyebrow: "The journey",
-    headline: "Before the appointment, there is discovery.",
-    stages: [
+  services: {
+    eyebrow: "What Fadezy does",
+    headline: "Marketing that has a job to do.",
+    body: "We help salons get discovered, look credible online and turn digital attention into real appointment opportunities.",
+    items: [
       {
-        label: "Search",
-        body: "A potential client starts looking for a salon or service.",
+        num: "01",
+        title: "Local SEO",
+        body: "Improve how your salon appears when nearby clients search for the services you offer.",
       },
       {
-        label: "Discover",
-        body: "Your salon appears where they are searching.",
+        num: "02",
+        title: "Google Business Profile",
+        body: "Strengthen your local presence, services, information, photos and customer journey.",
       },
       {
-        label: "Explore",
-        body: "They see your work, services and identity.",
+        num: "03",
+        title: "Website conversion",
+        body: "Make sure people who discover your salon have a clear path from your website to enquiry or booking.",
       },
       {
-        label: "Trust",
-        body: "Your digital presence makes the salon feel credible.",
+        num: "04",
+        title: "Content & social",
+        body: "Build content around your work, brand, expertise and the experience you offer.",
       },
       {
-        label: "Book",
-        body: "The experience makes taking action simple.",
+        num: "05",
+        title: "Reviews & reputation",
+        body: "Turn strong client experiences into social proof and stronger local trust.",
       },
       {
-        label: "Return",
-        body: "A strong digital relationship encourages repeat visits.",
+        num: "06",
+        title: "Tracking & improvement",
+        body: "Measure what is attracting attention and what is creating genuine appointment intent.",
       },
     ],
   },
   local: {
     eyebrow: "Local search",
     headline: [
-      "When someone searches",
-      "for a salon near them,",
-      "your salon should be there.",
+      "When someone searches for your service,",
+      "your salon should be easy to find.",
     ],
-    body: "Local SEO for salons is about showing up when people nearby are already looking — not chasing empty traffic.",
-    queries: [
-      "salon near me",
-      "beauty salon near me",
-      "best salon in your city",
-      "hair salon nearby",
-      "hair color in your city",
-      "beauty treatments nearby",
-    ],
-    purpose: "Be visible when high-intent local customers are actively searching.",
-    links: [
-      { label: "Search", title: "How they find you" },
-      { label: "Local result", title: "Where you appear" },
-      { label: "Salon profile", title: "What they judge" },
-      { label: "Website", title: "Where trust builds" },
-      { label: "Booking", title: "What they do next" },
-    ],
-  },
-  presence: {
-    eyebrow: "Local presence",
-    headline: [
-      "Your Google presence",
-      "is part of your salon's storefront.",
-    ],
-    body: "Photos, reviews, services, hours and your website help potential clients understand the salon before they ever walk through the door. We help that presence feel as considered as the floor itself.",
-    elements: [
-      "Business profile",
+    body: "We work on the parts of your local search presence that help potential clients discover, evaluate and choose your salon.",
+    flow: ["Search", "Discover", "Explore", "Trust", "Book"],
+    points: [
+      "Google Business Profile",
+      "Local relevance",
+      "Service visibility",
+      "Location signals",
       "Reviews",
-      "Photos",
-      "Services",
-      "Opening hours",
-      "Location",
-      "Website",
-      "Booking",
+      "Website experience",
     ],
-    goals: ["Visibility", "Accuracy", "Presentation", "Trust", "Action"],
-    profile: {
-      name: "Your Salon",
-      category: "Beauty salon",
-      hours: "Open · Closes 7 PM",
-      rating: "4.9",
-      reviews: "Based on real reviews",
-      action: "Book / Directions / Website",
-    },
   },
   content: {
-    eyebrow: "Content",
-    headline: ["Don't just create content.", "Create desire."],
-    body: "Salon content should communicate the work, the transformation, the stylist, the atmosphere, the expertise, the personality, the experience and the result — so people remember you when they're ready to book.",
-    themes: [
-      "Hair transformation",
-      "Color work",
-      "Styling",
-      "Salon interiors",
-      "Stylist at work",
-      "Client experience",
-      "Signature services",
-    ],
-    imageAlts: [
-      "Salon craft — color and finish in soft light",
-      "Premium salon atmosphere — chair, mirror and detail",
-      "Editorial beauty moment — texture and presence",
-    ],
-  },
-  channels: {
-    eyebrow: "Search & social",
-    headline: [
-      "Search makes you discoverable.",
-      "Content makes you memorable.",
-    ],
-    body: "High-intent search, brand recognition through content, a website that builds trust, a clear path to booking, and a relationship that brings people back.",
-    layers: [
-      {
-        label: "Search",
-        title: "High-intent discovery",
-        body: "People looking for a salon now.",
-      },
-      {
-        label: "Social",
-        title: "Brand recognition",
-        body: "Your craft becomes familiar.",
-      },
-      {
-        label: "Website",
-        title: "Trust + information",
-        body: "Where decisions get made.",
-      },
-      {
-        label: "Booking",
-        title: "Action",
-        body: "Attention becomes an appointment.",
-      },
-      {
-        label: "Return",
-        title: "Relationship",
-        body: "The experience continues.",
-      },
-    ],
-  },
-  website: {
-    eyebrow: "Website",
-    headline: [
-      "Visibility earns the click.",
-      "Your website earns the appointment.",
-    ],
-    body: "Marketing brings potential clients into the digital experience. The website then needs to show the salon identity, present services beautifully, show the work, build trust, answer questions and make booking simple.",
-    points: [
-      "Show the salon identity",
-      "Present services beautifully",
-      "Show the work",
-      "Build trust",
-      "Answer questions",
-      "Make booking simple",
-    ],
-    flow: ["Search", "Website", "Trust", "Booking"],
-    imageAlt: "Premium salon website presentation by Fadezy",
-    projectLabel: "Selected website",
-  },
-  brand: {
-    eyebrow: "Brand & trust",
-    headline: [
-      "Before they book,",
-      "they decide how your salon feels.",
-    ],
-    body: "Digital perception is shaped by brand identity, photography, website, reviews, content, social presence, services and search presence. The salon should feel consistent from the first search to the final booking.",
-    signals: [
-      "Brand identity",
-      "Photography",
-      "Website",
-      "Reviews",
-      "Content",
-      "Social presence",
-      "Services",
-      "Search presence",
-    ],
-  },
-  reviews: {
-    eyebrow: "Social proof",
-    headline: [
-      "Clients don't just compare salons.",
-      "They compare confidence.",
-    ],
-    body: "Reviews, ratings, real photography, client results, social proof, a professional website, clear services and a consistent brand all shape that confidence — long before anyone arrives.",
-    signals: [
-      "Reviews",
-      "Ratings",
-      "Real photography",
-      "Client results",
-      "Social proof",
-      "Professional website",
-      "Clear services",
-      "Consistent brand",
-    ],
-  },
-  system: {
-    eyebrow: "The system",
-    headline: ["Growth doesn't happen", "in one channel."],
-    body: "Every part should support the next — local SEO, content, social, website, search and booking working as one connected system rather than isolated activity.",
+    eyebrow: "Content + social",
+    headline: ["Don't just post.", "Make the salon memorable."],
+    body: "Your content should communicate the work, atmosphere and identity that make someone want to book.",
     pillars: [
-      "Local SEO",
-      "Content",
-      "Social",
-      "Website",
-      "Search",
-      "Booking",
-    ],
-  },
-  measure: {
-    eyebrow: "Measurement",
-    headline: [
-      "Beautiful is only the beginning.",
-      "We measure what happens next.",
-    ],
-    body: "We track the signals that matter to a salon — visibility, qualified visits, engagement, service discovery and booking actions — so the work stays connected to growth.",
-    note: "Example signals — not fabricated client results.",
-    metrics: [
-      { label: "Search visibility", hint: "How often you appear" },
-      { label: "Qualified traffic", hint: "Local, relevant demand" },
-      { label: "Website engagement", hint: "Time spent deciding" },
-      { label: "Service discovery", hint: "What they explore" },
-      { label: "Booking actions", hint: "What happens next" },
-      { label: "Conversion signals", hint: "Path to the chair" },
-    ],
-  },
-  approach: {
-    eyebrow: "Approach",
-    headline: "Strategy before activity.",
-    steps: [
       {
         num: "01",
-        title: "Understand",
-        body: "Your salon, market and client journey.",
+        title: "Work",
+        body: "Show the transformations, results and details clients care about.",
       },
       {
         num: "02",
-        title: "Position",
-        body: "How you should be found and remembered.",
+        title: "Brand",
+        body: "Make the salon recognisable beyond its logo.",
       },
       {
         num: "03",
-        title: "Optimize",
-        body: "Local presence, search and website foundations.",
+        title: "Experience",
+        body: "Show the atmosphere, people and details behind the appointment.",
       },
       {
         num: "04",
-        title: "Create",
-        body: "Content that builds desire and trust.",
-      },
-      {
-        num: "05",
-        title: "Distribute",
-        body: "The right channels, with restraint.",
-      },
-      {
-        num: "06",
-        title: "Measure",
-        body: "What moved visibility, trust and bookings.",
+        title: "Proof",
+        body: "Use reviews, real clients and genuine results where appropriate.",
       },
     ],
   },
-  vanity: {
-    headline: ["More followers aren't", "the finish line."],
-    body: "The goal is to be discovered by the right clients, trusted quickly and chosen when they're ready to book.",
-    focus: [
-      "Visibility",
-      "Intent",
-      "Trust",
-      "Appointments",
-      "Repeat clients",
-      "Business growth",
-    ],
+  booking: {
+    eyebrow: "Discovery to appointment",
+    headline: "Getting discovered isn't the finish line.",
+    body: "A client can find your salon, like what they see and still leave without booking.",
+    flow: ["Search", "Social", "Website", "Trust", "Appointment"],
+    note: "Your search presence, content and website should work together rather than operate as separate marketing channels.",
+    websiteLink: "Explore salon website design ↗",
   },
-  difference: {
-    eyebrow: "The Fadezy approach",
-    headline: [
-      "Marketing works better",
-      "when the entire experience",
-      "speaks the same language.",
-    ],
-    body: "Website, brand, content, SEO, social, marketing and digital systems should work together — one presence for the client, not a pile of disconnected tactics.",
-    pillars: [
-      "Website",
-      "Brand",
-      "Content",
-      "SEO",
-      "Social",
-      "Marketing",
-      "Digital systems",
-    ],
-    statement:
-      "Fadezy is the digital partner built exclusively for barbershops and beauty salons.",
-  },
-  audience: {
-    eyebrow: "Who it's for",
-    headline: [
-      "For salons ready",
-      "to be discovered",
-      "beyond their neighborhood.",
-    ],
+  measure: {
+    eyebrow: "What we measure",
+    headline: ["No vanity metrics.", "Look at what matters."],
     items: [
-      "Independent salons",
-      "Premium beauty salons",
-      "Hair salons",
-      "Growing salons",
-      "Multi-stylist businesses",
-      "Multi-location salon brands",
+      {
+        title: "Local discovery",
+        body: "How often the salon appears for relevant local searches.",
+      },
+      {
+        title: "Website visibility",
+        body: "Which pages and search terms are attracting relevant visitors.",
+      },
+      {
+        title: "Engagement",
+        body: "What visitors actually do after discovering the salon.",
+      },
+      {
+        title: "Appointment intent",
+        body: "Clicks, enquiries and actions that indicate genuine customer interest.",
+      },
+      {
+        title: "Content performance",
+        body: "Which content attracts attention from the right audience.",
+      },
+    ],
+  },
+  faq: {
+    eyebrow: "FAQ",
+    headline: "Straight answers.",
+    items: [
+      {
+        q: "What does salon SEO include?",
+        a: "Local search foundations, Google Business Profile work, service and location visibility, and the website experience that helps discovery turn into enquiry or booking interest.",
+      },
+      {
+        q: "Can you improve our Google Business Profile?",
+        a: "Yes. We strengthen the profile information, services, photos and customer journey that help nearby clients evaluate your salon.",
+      },
+      {
+        q: "Can you help our salon appear in local searches?",
+        a: "Yes. We work on salon local SEO and presence so you can appear for relevant nearby searches — without promising rankings or guaranteed outcomes.",
+      },
+      {
+        q: "Do you manage social media and content too?",
+        a: "Yes. We can build content around your work, brand and salon experience so your digital presence feels consistent and recognisable.",
+      },
+      {
+        q: "How long does salon SEO take to show results?",
+        a: "It varies by market, competition and starting point. Some improvements show sooner; stronger local visibility usually builds over time. We set expectations honestly rather than promising instant results.",
+      },
     ],
   },
   cta: {
-    headline: ["Let's make your", "salon easier to find."],
-    body: "Tell us where your salon is today. We'll help build the digital presence that moves it forward.",
-    primary: "Start a project →",
-    secondary: "Talk to Fadezy →",
+    headline: [
+      "Your salon should be",
+      "easy to find.",
+      "Easy to trust.",
+      "Easy to book.",
+    ],
+    body: "Tell us where your salon is today and what you want to improve.",
+    primary: "Talk to Fadezy ↗",
+    imageAlt:
+      "Sophisticated beauty salon interior with soft light, mirrors and refined materials",
   },
   related: {
-    label: "Continue",
+    label: "Related",
     website: "Salon Website Design",
-    barbershopWebsite: "Barbershop Website Design",
     software: "Salon Software",
-    barbershopSoftware: "Barbershop Software",
     barbershopMarketing: "Barbershop Marketing & SEO",
-    services: "Services",
-    work: "Work",
-    about: "About",
+    about: "About Fadezy",
   },
 };

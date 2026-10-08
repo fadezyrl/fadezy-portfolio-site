@@ -47,8 +47,8 @@ export const SpHero = (): ReactElement => {
               src={START_PROJECT_ASSETS.hero}
               alt={copy.imageAlt}
               className="sp-hero-img"
-              width={1400}
-              height={1600}
+              width={1600}
+              height={1200}
               fetchPriority="high"
             />
           </div>

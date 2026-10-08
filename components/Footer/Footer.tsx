@@ -30,7 +30,7 @@ export const Footer = (): ReactElement => {
     <footer className="site-footer">
       <div className="wrap">
         <div className="footer-top">
-          <div>
+          <div className="footer-brand">
             <a href={homeHref} className="mark" aria-label={t.brand}>
               <img
                 src={LOGO_SRC}
@@ -41,21 +41,27 @@ export const Footer = (): ReactElement => {
               />
             </a>
             <p className="tagline">{t.footer.tagline}</p>
+            <p className="footer-remote">{t.footer.worldwide}</p>
           </div>
+
           <div className="footer-cols">
             <div className="footer-col">
               <a href={workHref}>{t.footer.work}</a>
               <a href={servicesHref}>{t.footer.services}</a>
+              <a href={aboutHref}>{t.footer.about}</a>
+              <a href={contactHref}>{t.footer.contact}</a>
+            </div>
+
+            <div className="footer-col">
               <a href={BWD_PATH}>{t.footer.barbershopWebDesign}</a>
               <a href={SWD_PATH}>{t.footer.salonWebsiteDesign}</a>
               <a href={BSW_PATH}>{t.footer.barbershopSoftware}</a>
               <a href={SSW_PATH}>{t.footer.salonSoftware}</a>
               <a href={BMS_PATH}>{t.footer.barbershopMarketingSeo}</a>
               <a href={SMS_PATH}>{t.footer.salonMarketingSeo}</a>
-              <a href={aboutHref}>{t.footer.about}</a>
-              <a href={contactHref}>{t.footer.contact}</a>
             </div>
-            <div className="footer-col">
+
+            <div className="footer-col footer-social">
               <a
                 href={CONTACT.instagram}
                 target="_blank"
@@ -87,6 +93,7 @@ export const Footer = (): ReactElement => {
             </div>
           </div>
         </div>
+
         <div className="footer-bottom">
           <span>{t.footer.worldwide}</span>
           <span>{t.footer.copyright}</span>

@@ -14,7 +14,6 @@ export const BwdStatement = (): ReactElement => {
           <span>{copy.line1}</span>
           <em>{copy.line2}</em>
         </h2>
-        <p className="bwd-statement-body">{copy.body}</p>
       </div>
     </section>
   );

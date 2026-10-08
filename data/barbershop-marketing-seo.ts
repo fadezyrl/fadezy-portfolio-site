@@ -1,20 +1,13 @@
 export const BMS_ASSETS = {
-  hero: "/assets/barbershop/barbershop-hero.jpg",
-  craft: "/assets/images/success-barber-hero.png",
-  website: "/assets/images/full-page-mane-rumor.png",
-  atmosphere: "/assets/images/about.jpeg",
-  contentA: "/assets/images/mane-rumorhero.png",
-  contentB: "/assets/images/success-barber-hero.png",
-  contentC: "/assets/images/after.jpeg",
-  workPath: "/#work",
+  hero: "/assets/barbershop/bms-hero-editorial.jpg",
+  cta: "/assets/barbershop/bms-cta-editorial.jpg",
   homePath: "/",
   aboutPath: "/about",
-  contactPath: "#contact",
   websitePath: "/barbershop-web-design",
   salonWebsitePath: "/salon-website-design",
   softwarePath: "/barbershop-software",
-  salonSoftwarePath: "/salon-software",
-  servicesPath: "/#services",
+  salonMarketingPath: "/salon-marketing-seo",
+  startProjectPath: "/start-a-project",
 } as const;
 
 export const BMS_PATH = "/barbershop-marketing-seo";

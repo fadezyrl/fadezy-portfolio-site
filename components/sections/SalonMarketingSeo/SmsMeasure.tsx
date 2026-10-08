@@ -8,30 +8,25 @@ export const SmsMeasure = (): ReactElement => {
   const copy = t.salonMarketingSeo.measure;
 
   return (
-    <section className="sms-measure" aria-labelledby="sms-measure-title">
-      <div className="sms-wrap sms-measure-grid">
-        <div className="sms-measure-copy reveal">
+    <section className="sms-measure reveal" aria-labelledby="sms-measure-title">
+      <div className="sms-wrap">
+        <header className="sms-section-head">
           <span className="sms-meta">{copy.eyebrow}</span>
-          <h2 id="sms-measure-title" className="sms-display">
+          <h2 id="sms-measure-title">
             {copy.headline.map((line) => (
               <span key={line}>{line}</span>
             ))}
           </h2>
-          <p className="sms-lead">{copy.body}</p>
-          <p className="sms-measure-note">{copy.note}</p>
-        </div>
+        </header>
 
-        <ul className="sms-measure-list reveal">
-          {copy.metrics.map((metric) => (
-            <li key={metric.label}>
-              <strong>{metric.label}</strong>
-              <span>{metric.hint}</span>
-              <div className="sms-measure-bar" aria-hidden="true">
-                <i />
-              </div>
+        <ol className="sms-measure-list">
+          {copy.items.map((item) => (
+            <li key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </section>
   );

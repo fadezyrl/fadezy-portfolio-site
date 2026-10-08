@@ -30,51 +30,40 @@ export const BswHero = (): ReactElement => {
 
   return (
     <section className="bsw-hero" aria-labelledby="bsw-hero-title">
-      <div className="bsw-hero-stage">
-        <div className="bsw-hero-copy">
-          <span className="bsw-meta">{copy.eyebrow}</span>
-          <h1 id="bsw-hero-title" className="bsw-hero-title">
-            {copy.title.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </h1>
-          <p className="bsw-hero-body">{copy.body}</p>
-          <div className="bsw-hero-ctas">
-            <a href="#system" className="bsw-link-primary">
-              {copy.ctaPrimary}
-            </a>
-            <a
-              href={CONTACT.whatsappUrl}
-              className="bsw-link-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {copy.ctaSecondary}
-            </a>
-          </div>
-        </div>
-
-        <figure className="bsw-hero-visual">
-          <div className="bsw-hero-frame">
-            <img
-              src={BSW_ASSETS.hero}
-              alt={copy.imageAlt}
-              className="bsw-hero-img"
-              width={1600}
-              height={2000}
-              fetchPriority="high"
-            />
-            <div className="bsw-hero-veil" aria-hidden="true" />
-          </div>
-
-          <aside className="bsw-hero-ui" aria-hidden="true">
-            <span className="bsw-hero-ui-label">{copy.uiLabel}</span>
-            <strong className="bsw-hero-ui-time">{copy.uiTime}</strong>
-            <span className="bsw-hero-ui-service">{copy.uiService}</span>
-            <span className="bsw-hero-ui-barber">{copy.uiBarber}</span>
-          </aside>
-        </figure>
+      <div className="bsw-hero-media" aria-hidden="true">
+        <img
+          src={BSW_ASSETS.hero}
+          alt=""
+          className="bsw-hero-img"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+        />
+        <div className="bsw-hero-veil" />
       </div>
+
+      <div className="bsw-wrap bsw-hero-copy">
+        <span className="bsw-meta on-dark">{copy.label}</span>
+        <h1 id="bsw-hero-title" className="bsw-hero-title">
+          {copy.h1}
+        </h1>
+        <p className="bsw-hero-body">{copy.body}</p>
+        <div className="bsw-hero-ctas">
+          <a
+            href={CONTACT.whatsappUrl}
+            className="bsw-link-secondary on-dark"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {copy.ctaPrimary}
+          </a>
+          <a href="#capabilities" className="bsw-link-primary on-dark">
+            {copy.ctaSecondary}
+          </a>
+        </div>
+      </div>
+
+      <span className="bsw-sr-only">{copy.imageAlt}</span>
     </section>
   );
 };

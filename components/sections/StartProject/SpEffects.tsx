@@ -25,15 +25,15 @@ export const SpEffects = (): ReactElement | null => {
       gsap.utils.toArray<HTMLElement>(".sp-page .reveal").forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0, y: 24 },
+          { opacity: 0, y: 28 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.85,
+            duration: 0.9,
             ease: EASE,
             scrollTrigger: {
               trigger: section,
-              start: "top 84%",
+              start: "top 86%",
               once: true,
             },
           },
